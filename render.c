@@ -40,7 +40,7 @@ void	ft_hook(void *param)
 		m->side = perform_dda(m);
 		m->perp_wall_dist
 			= getperp_wall_dist(m->side, m->side_dist, m->delta_dist);
-		draw_ver_line(m, x);
+		draw_tex(m, x);
 		x++;
 	}
 }

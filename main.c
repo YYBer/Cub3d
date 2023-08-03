@@ -24,6 +24,8 @@ int	init_m(t_main *m)
 		return (1);
 	}
 	init_world_map(m);
+	m->texture = create_2d_array();
+	generate_textures(m);
 	m->pos.x = 2;
 	m->pos.y = 2;
 	m->dir.x = 1;
@@ -32,6 +34,7 @@ int	init_m(t_main *m)
 	m->plane.y = 0.66;
 	m->move_speed = SQRS_PER_SEC / 100; 
 	m->rot_speed = RADS_PER_SEC / 100;
+	m->pitch = 100;
 	m->key_w_pressed = false;
 	m->key_s_pressed = false;
 	m->key_a_pressed = false;
@@ -46,6 +49,7 @@ void	my_closehook(void *param)
 	m = (t_main *)param;
 	mlx_terminate(m->mlx);
 	free_world_map(m);
+	free_2d_array(m->texture);
 	exit(0);
 }
 

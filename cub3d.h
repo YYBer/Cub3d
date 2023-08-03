@@ -25,6 +25,8 @@
 
 #define WIN_WIDTH 640
 #define WIN_HEIGHT 480
+#define TEX_WIDTH 64
+#define TEX_HEIGHT 64
 #define SQRS_PER_SEC 5.0
 #define RADS_PER_SEC 3.0
 
@@ -53,6 +55,7 @@ typedef struct s_main {
 	int				**world_map;
 	mlx_t			*mlx;
 	mlx_image_t		*img;
+	int				**texture;
 	t_pt2d_d		pos; // start position:	
 	t_pt2d_d		dir; // initial direction vector:
 	t_pt2d_d		plane; // 2d raycaster version of camera plane:
@@ -61,10 +64,13 @@ typedef struct s_main {
 	t_pt2d_d		delta_dist;
 	t_pt2d_i		map;
 	t_pt2d_i		step; //what direction to step in x or y-direction (either +1 or -1)
+	t_pt2d_i		tex;
 	double			move_speed;
 	double			rot_speed;
 	int				side;
 	double			perp_wall_dist;
+	int				lineHeight;
+	int				pitch;
 	bool			key_w_pressed;
 	bool			key_s_pressed;
 	bool			key_d_pressed;
@@ -82,6 +88,10 @@ t_pt2d_d 	calc_delta_dist(t_pt2d_d delta_dist, t_pt2d_d raydr);
 void		calc_step_and_side_dist(t_main *m);
 int			perform_dda(t_main *m);
 double		getperp_wall_dist(int side, t_pt2d_d side_dist, t_pt2d_d delta_dist);
-void		draw_ver_line(t_main *m, int x);
+void		draw_tex(t_main *m, int x);
+void		draw_tex2(t_main *m, int x, int drawStart, int drawEnd);
+void  		generate_textures(t_main *m);
+int** 		create_2d_array();
+void		free_2d_array(int** array);
 
 #endif
