@@ -1,3 +1,7 @@
+// TEXTURE TODO: need to resize?
+//std::vector<Uint32> texture[8];
+//for(int i = 0; i < 8; i++) texture[i].resize(texWidth * texHeight);
+
 //TODO: read map from file and include in main struct
 //TODO: norminette what you've got!
 //TODO: leak check (currently it seems MLX42 itself leaks)
