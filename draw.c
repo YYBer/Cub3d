@@ -35,15 +35,15 @@ int	get_wall_color(t_main *m)
 
 	map_value = m->world_map[m->map.x][m->map.y];
 	if (map_value == 1)
-		color = 0xFF0000FF;
+		color = COLOUR_RED;
 	else if (map_value == 2)
-		color = 0x00FF00FF;
+		color = COLOUR_BLUE;
 	else if (map_value == 3)
-		color = 0x0000FFFF;
+		color = COLOUR_GREEN;
 	else if (map_value == 4)
-		color = 0xFFFFFFFF;
+		color = COLOUR_WHITE;
 	else
-		color = 0xFFFF00FF;
+		color = COLOUR_YELLOW;
 	return (color);
 }
 
@@ -79,7 +79,8 @@ void	draw_ver_line(t_main *m, int x)
 	color = get_wall_color(m);
 	//give x and y sides different brightness
 	if (m->side == 1)
-		color = color / 2;
+	// 	color = color / 2;
+		color = (color >> 1) & 8355711; // make a bit darker
 	//draw the pixels of the stripe as a vertical line
 	ver_line(m->img, x, drawStart, drawEnd, color);
 }

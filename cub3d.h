@@ -28,6 +28,12 @@
 #define SQRS_PER_SEC 5.0
 #define RADS_PER_SEC 3.0
 
+#define COLOUR_RED 0xFF0000FF
+#define COLOUR_BLUE 0x00FF00FF
+#define COLOUR_GREEN 0x0000FFFF
+#define COLOUR_WHITE 0xFFFFFFFF
+#define COLOUR_YELLOW 0XFFFF00FF
+
 extern int wm[24][24];
 
 typedef struct s_point2Dd {

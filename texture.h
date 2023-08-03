@@ -45,3 +45,36 @@
 // 	place_png_to_img(game, &game->img.wall, PNG_WALL);
 // 	place_png_to_img(game, &game->img.number[0], PNG_NUM0);
 // }
+
+
+///////////////////////////////////////////////////////////////
+
+
+// t_image	ft_new_sprite(void *mlx, char *path, t_game *game)
+// {
+// 	t_image	sprite;
+
+// 	sprite.xpm_ptr = mlx_xpm_file_to_image(mlx, \
+// 	path, &sprite.x, &sprite.y);
+// 	if (sprite.xpm_ptr == NULL)
+// 		ft_error("can't find the sprite", game);
+// 	return (sprite);
+// }
+
+// void	ft_init_sprite(t_game *game)
+// {
+// 	void	*mlx;
+
+// 	mlx = game->mlx_ptr;
+// 	game->wall = ft_new_sprite(mlx, WALL_XPM, game);
+// 	game->floor = ft_new_sprite(mlx, FLOOR_XPM, game);
+// 	game->gold = ft_new_sprite(mlx, GOLD_XPM, game);
+// 	game->stone = ft_new_sprite(mlx, STONE_XPM, game);
+// 	game->player_f = ft_new_sprite(mlx, PLAYER_F_XPM, game);
+// 	game->player_r = ft_new_sprite(mlx, PLAYER_R_XPM, game);
+// 	game->player_b = ft_new_sprite(mlx, PLAYER_B_XPM, game);
+// 	game->player_l = ft_new_sprite(mlx, PLAYER_L_XPM, game);
+// 	game->open = ft_new_sprite(mlx, OPEN_XPM, game);
+// 	game->exit = ft_new_sprite(mlx, EXIT_XPM, game);
+// 	game->sprite_alloc = true;
+// }
