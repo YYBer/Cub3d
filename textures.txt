@@ -1,0 +1,8 @@
+// textured raycaster principles
+
+// loop in the y-direction is required to go through every pixel to determinate which texel (texture pixel) of the texture should be used for it.
+// use a 2D array as screen buffer this time, and copy it to the screen at once
+// need extra array for textures
+// we already have a screen buffer in the form of mlx->img
+// the resize function resizes the array to the give size i.e. 64 x 64 (why don't we just generate the required size for now)
+// they generate some textures, which we can also do but need RGB color values

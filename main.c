@@ -24,8 +24,8 @@ int	init_m(t_main *m)
 		return (1);
 	}
 	init_world_map(m);
-	m->texture = create_2d_array();
-	generate_textures(m);
+	m->texture = create_texture_array();
+	generate_texture(m);
 	m->pos.x = 2;
 	m->pos.y = 2;
 	m->dir.x = 1;
@@ -49,7 +49,7 @@ void	my_closehook(void *param)
 	m = (t_main *)param;
 	mlx_terminate(m->mlx);
 	free_world_map(m);
-	free_2d_array(m->texture);
+	free_texture_array(m->texture);
 	exit(0);
 }
 

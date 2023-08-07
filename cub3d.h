@@ -94,8 +94,8 @@ int			perform_dda(t_main *m);
 double		getperp_wall_dist(int side, t_pt2d_d side_dist, t_pt2d_d delta_dist);
 void		draw_tex(t_main *m, int x);
 void		draw_tex2(t_main *m, int x, int drawStart, int drawEnd);
-void  		generate_textures(t_main *m);
-int** 		create_2d_array();
-void		free_2d_array(int** array);
+void  		generate_texture(t_main *m);
+int** 		create_texture_array();
+void		free_texture_array(int** array);
 
 #endif
