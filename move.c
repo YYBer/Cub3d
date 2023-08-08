@@ -3,10 +3,10 @@
 //move forward if no wall in front of you
 void	move_forwards(t_main *m)
 {
-	if (m->world_map[(int)(m->pos.x + m->dir.x
+	if (m->map.data[(int)(m->pos.x + m->dir.x
 			* m->move_speed)][(int)(m->pos.y)] == false) m->pos.x += m->dir.x
 			* m->move_speed;
-	if (m->world_map[(int)(m->pos.x)][(int)(m->pos.y + m->dir.y
+	if (m->map.data[(int)(m->pos.x)][(int)(m->pos.y + m->dir.y
 			* m->move_speed)] == false) m->pos.y += m->dir.y
 			* m->move_speed;
 }
@@ -14,10 +14,10 @@ void	move_forwards(t_main *m)
 //move backwards if no wall behind you
 void	move_backwards(t_main *m)
 {
-	if (m->world_map[(int)(m->pos.x - m->dir.x
+	if (m->map.data[(int)(m->pos.x - m->dir.x
 			* m->move_speed)][(int)(m->pos.y)] == false) m->pos.x -= m->dir.x
 			* m->move_speed;
-	if (m->world_map[(int)(m->pos.x)][(int)(m->pos.y - m->dir.y
+	if (m->map.data[(int)(m->pos.x)][(int)(m->pos.y - m->dir.y
 			* m->move_speed)] == false) m->pos.y -= m->dir.y
 			* m->move_speed;
 }

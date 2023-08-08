@@ -36,7 +36,7 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
 		mlx_terminate(m->mlx);
-		free_world_map(m);
+		free_map_data(&m->map);
 		exit(0);
 	}
 }

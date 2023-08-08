@@ -1,22 +1,3 @@
-// TEXTURE TODO: need to resize?
-//std::vector<Uint32> texture[8];
-//for(int i = 0; i < 8; i++) texture[i].resize(texWidth * texHeight);
-
-//TODO: read map from file and include in main struct
-//TODO: norminette what you've got!
-//TODO: leak check (currently it seems MLX42 itself leaks)
-
-// REMOVED FPS COUNTER:
-// double time = 0; //time of current frame
-// double oldTime = 0; //time of previous frame
-// double frameTime;
-//timing for input and FPS counter
-// oldTime = time;
-// time = getTicks();
-// frameTime = (time - oldTime) / 1000.0;
-// print(1.0 / frameTime); //FPS counter
-// m.move_speed = frameTime * SQRS_PER_SEC; 
-// m.rot_speed = frameTime * RADS_PER_SEC;
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -25,6 +6,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <fcntl.h>
 #include "MLX42.h"
 
 #define WIN_WIDTH 640
@@ -40,8 +22,6 @@
 #define COLOUR_WHITE 0xFFFFFFFF
 #define COLOUR_YELLOW 0XFFFF00FF
 
-extern int wm[24][24];
-
 typedef struct s_point2Dd {
 	double	x;
 	double	y;
@@ -52,11 +32,16 @@ typedef struct s_point2Di {
 	int	y;
 }	t_pt2d_i;
 
+typedef struct s_map {
+	int	nrows;
+	int	ncols;
+    int **data;
+}	t_map;
+
 // comment all vars below
 typedef struct s_main {
-	int				map_width;
-	int				map_height;
-	int				**world_map;
+	char 			*filename;
+	t_map 			map;
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 	int				**texture;
@@ -66,7 +51,7 @@ typedef struct s_main {
 	t_pt2d_d		raydr;
 	t_pt2d_d		side_dist;
 	t_pt2d_d		delta_dist;
-	t_pt2d_i		map;
+	t_pt2d_i		map_pos; // which square the player is in on the map
 	t_pt2d_i		step; //what direction to step in x or y-direction (either +1 or -1)
 	t_pt2d_i		tex;
 	double			move_speed;
@@ -81,11 +66,11 @@ typedef struct s_main {
 	bool			key_a_pressed;
 }	t_main;
 
-int			alloc_world_map(t_main *m);
-void		init_world_map(t_main *m);
-void		free_world_map(t_main *m);
+int			alloc_map(t_main *m);
+void		init_map(t_map *map, char *filename);
+void		free_map(t_main *m);
 void		my_keyhook(mlx_key_data_t keydata, void *param);
-void		ft_hook(void *param);
+void		ft_raycast(void *param);
 void		move_player(t_main *m);
 t_pt2d_d	calc_ray_dir(int x, t_pt2d_d raydr, t_pt2d_d dir, t_pt2d_d plane);
 t_pt2d_d 	calc_delta_dist(t_pt2d_d delta_dist, t_pt2d_d raydr);
@@ -97,5 +82,9 @@ void		draw_tex2(t_main *m, int x, int drawStart, int drawEnd);
 void  		generate_texture(t_main *m);
 int** 		create_texture_array();
 void		free_texture_array(int** array);
+t_map		get_map_dims(char *filename);
+void		fill_map(t_map *map, char *filename);
+void 		print_map(t_map *map);
+void		free_map_data(t_map *map);
 
 #endif

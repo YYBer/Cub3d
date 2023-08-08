@@ -1,5 +1,17 @@
 #include "cub3d.h"
 
+void init_map(t_map *map, char *filename)
+{
+    *map = get_map_dims(filename);
+    if (map->nrows == -1)
+    {
+        printf("invalid character in map\n");
+        exit(EXIT_FAILURE);
+    }
+    printf("map dimensions: %i %i\n", map->nrows, map->ncols);
+    fill_map(map, filename);
+}
+
 int	init_m(t_main *m)
 {
 	m->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Raycaster", false);
@@ -15,15 +27,9 @@ int	init_m(t_main *m)
 		// free m->mlx
 		return (1);
 	}
-	m->map_width = 24;
-	m->map_height = 24;
-	if (alloc_world_map(m))
-	{
-		printf("Error: Could not allocate world map.\n");
-		// free m->mlx m->img
-		return (1);
-	}
-	init_world_map(m);
+	init_map(&m->map, m->filename);
+	print_map(&m->map);
+	// printf("Q: are x and y coords the right way round? %i\n", m->map.data[1][3]);
 	m->texture = create_texture_array();
 	generate_texture(m);
 	m->pos.x = 2;
@@ -42,20 +48,27 @@ int	init_m(t_main *m)
 	return (0);
 }
 
-void	my_closehook(void *param)
+void my_closehook(void *param)
 {
 	t_main	*m;
 
 	m = (t_main *)param;
 	mlx_terminate(m->mlx);
-	free_world_map(m);
+	free_map_data(&m->map);
 	free_texture_array(m->texture);
 	exit(0);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_main	m;
+
+	if(argc != 2)
+	{
+		printf("wrong number of args\n"); // replace with ft_printf
+		return(1);
+	}
+	m.filename = argv[1];
 
 	mlx_set_setting(MLX_STRETCH_IMAGE, false);
 	if (init_m(&m))
@@ -67,9 +80,9 @@ int	main(void)
 	}
 	mlx_key_hook(m.mlx, &my_keyhook, &m);
 	mlx_close_hook(m.mlx, &my_closehook, &m);
-	mlx_loop_hook(m.mlx, ft_hook, &m);
+	mlx_loop_hook(m.mlx, ft_raycast, &m);
 	mlx_loop(m.mlx);
 	mlx_terminate(m.mlx);
-	free_world_map(&m);
+	free_map_data(&m.map);
 	return (0);
 }

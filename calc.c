@@ -30,22 +30,22 @@ void	calc_step_and_side_dist(t_main *m)
 	if (m->raydr.x < 0)
 	{
 		m->step.x = -1;
-		m->side_dist.x = (m->pos.x - m->map.x) * m->delta_dist.x;
+		m->side_dist.x = (m->pos.x - m->map_pos.x) * m->delta_dist.x;
 	}
 	else
 	{
 		m->step.x = 1;
-		m->side_dist.x = (m->map.x + 1.0 - m->pos.x) * m->delta_dist.x;
+		m->side_dist.x = (m->map_pos.x + 1.0 - m->pos.x) * m->delta_dist.x;
 	}
 	if (m->raydr.y < 0)
 	{
 		m->step.y = -1;
-		m->side_dist.y = (m->pos.y - m->map.y) * m->delta_dist.y;
+		m->side_dist.y = (m->pos.y - m->map_pos.y) * m->delta_dist.y;
 	}
 	else
 	{
 		m->step.y = 1;
-		m->side_dist.y = (m->map.y + 1.0 - m->pos.y) * m->delta_dist.y;
+		m->side_dist.y = (m->map_pos.y + 1.0 - m->pos.y) * m->delta_dist.y;
 	}
 }
 
@@ -63,17 +63,17 @@ int	perform_dda(t_main *m)
 		if (m->side_dist.x < m->side_dist.y)
 		{
 			m->side_dist.x += m->delta_dist.x;
-			m->map.x += m->step.x;
+			m->map_pos.x += m->step.x;
 			side = 0;
 		}
 		else
 		{
 			m->side_dist.y += m->delta_dist.y;
-			m->map.y += m->step.y;
+			m->map_pos.y += m->step.y;
 			side = 1;
 		}
-		//Check if ray has hit a wall
-		if (m->world_map[m->map.x][m->map.y] > 0)
+		// Check if ray has hit a wall
+		if (m->map.data[m->map_pos.x][m->map_pos.y] > 0)
 			hit = 1;
 	}
 	return (side);

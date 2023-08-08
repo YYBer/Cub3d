@@ -18,8 +18,7 @@ void	clear_image(t_main *m)
 	}
 }
 
-// cast rays!
-void	ft_hook(void *param)
+void	ft_raycast(void *param)
 {
 	t_main	*m;
 	int		x;
@@ -33,8 +32,8 @@ void	ft_hook(void *param)
 		//calculate ray position and direction
 		//length of ray from current position to next x or y-side:
 		m->raydr = calc_ray_dir(x, m->raydr, m->dir, m->plane);
-		m->map.x = (int)(m->pos.x);
-		m->map.y = (int)(m->pos.y);
+		m->map_pos.x = (int)(m->pos.x);
+		m->map_pos.y = (int)(m->pos.y);
 		m->delta_dist = calc_delta_dist(m->delta_dist, m->raydr);
 		calc_step_and_side_dist(m);
 		m->side = perform_dda(m);
