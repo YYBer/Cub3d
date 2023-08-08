@@ -3,11 +3,6 @@
 void init_map(t_map *map, char *filename)
 {
     *map = get_map_dims(filename);
-    if (map->nrows == -1)
-    {
-        printf("invalid character in map\n");
-        exit(EXIT_FAILURE);
-    }
     printf("map dimensions: %i %i\n", map->nrows, map->ncols);
     fill_map(map, filename);
 }
