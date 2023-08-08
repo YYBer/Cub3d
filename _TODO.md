@@ -7,7 +7,6 @@ TODO: sometimes on run the 0's in the map are 8's!!
 TODO: are x and y coords read the right way round in read.c?
 TODO: norminette what's there
 TODO: leak check (currently it seems MLX42 itself leaks)
-TODO: printf to ft_printf
 
 ## Mandatory
 

@@ -12,7 +12,7 @@ void init_map(t_map *map, char *filename)
     fill_map(map, filename);
 }
 
-int	init_m(t_main *m)
+void init_m(t_main *m)
 {
 	m->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Raycaster", false);
 	if (!m->mlx)
@@ -45,7 +45,6 @@ int	init_m(t_main *m)
 	m->key_s_pressed = false;
 	m->key_a_pressed = false;
 	m->key_d_pressed = false;
-	return (0);
 }
 
 void my_closehook(void *param)
@@ -65,14 +64,12 @@ int	main(int argc, char **argv)
 
 	if(argc != 2)
 	{
-		printf("wrong number of args\n"); // replace with ft_printf
+		printf("wrong number of args\n");
 		exit(EXIT_FAILURE);
 	}
 	m.filename = argv[1];
-
 	mlx_set_setting(MLX_STRETCH_IMAGE, false);
-	if (init_m(&m))
-		exit(EXIT_FAILURE);
+	init_m(&m);
 	if ((mlx_image_to_window(m.mlx, m.img, 0, 0) < 0))
 	{
 		printf("Error: Could not put image to window.\n");

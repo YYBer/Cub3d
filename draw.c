@@ -41,7 +41,7 @@ void	draw_tex2(t_main *m, int x, int drawStart, int drawEnd)
 {
 	//calculate value of wallX
 	double wallX; //where exactly the wall was hit
-	if(m->side == 0)
+	if (m->side == 0)
 		wallX = m->pos.y + m->perp_wall_dist * m->raydr.y;
 	else
 		wallX = m->pos.x + m->perp_wall_dist * m->raydr.x;
@@ -49,9 +49,9 @@ void	draw_tex2(t_main *m, int x, int drawStart, int drawEnd)
 
 	//x coordinate on the texture
 	int texX = (int)(wallX * TEX_WIDTH);
-	if(m->side == 0 && m->raydr.x > 0)
+	if (m->side == 0 && m->raydr.x > 0)
 		texX = TEX_WIDTH - texX - 1;
-	if(m->side == 1 && m->raydr.y < 0)
+	if (m->side == 1 && m->raydr.y < 0)
 		texX = TEX_WIDTH - texX - 1;
 
 	// TODO: an integer-only bresenham or DDA like algorithm could make the texture coordinate stepping faster
@@ -60,7 +60,9 @@ void	draw_tex2(t_main *m, int x, int drawStart, int drawEnd)
 	// Starting texture coordinate
 	double texPos = (drawStart - m->pitch - WIN_HEIGHT / 2 + m->lineHeight / 2) * step;
 
-	for(int y = drawStart; y < drawEnd; y++)
+	int y;
+	y = drawStart;
+	while (y < drawEnd)
 	{
 		// Cast the texture coordinate to integer, and mask with (TEX_HEIGHT - 1) in case of overflow
 		int texY = (int)texPos & (TEX_HEIGHT - 1);
@@ -70,10 +72,12 @@ void	draw_tex2(t_main *m, int x, int drawStart, int drawEnd)
 		if(m->side == 1)
 			color = (color >> 1) & 8355711;
 		mlx_put_pixel(m->img, x, y, color);
+		y++;
 	}
 }
 
 // algorithmically generates a simple cross texture
+// left for loops in here as this function will eventually be removed
 void generate_texture(t_main *m)
 {
     for (int x = 0; x < TEX_WIDTH; x++)
@@ -99,20 +103,29 @@ int** create_texture_array() {
         printf("Memory allocation error for row pointers.\n");
         exit(EXIT_FAILURE);
     }
-    for (int i = 0; i < TEX_HEIGHT; i++)
+	int i;
+	i = 0;
+    while (i < TEX_HEIGHT)
     {
         array[i] = (int*)malloc(TEX_WIDTH * sizeof(int));
         if (array[i] == NULL) {
             printf("Memory allocation error for row %d.\n", i);
             exit(EXIT_FAILURE);
         }
+		i++;
     }
     return array;
 }
 
-void free_texture_array(int** array) {
-    for (int i = 0; i < TEX_HEIGHT; i++) {
+void free_texture_array(int** array)
+{
+	int i;
+
+	i = 0;
+    while (i < TEX_HEIGHT)
+	{
         free(array[i]);
+		i++;
     }
     free(array);
 }

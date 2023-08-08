@@ -52,21 +52,28 @@ void malloc_map(t_map *map)
         printf("Memory allocation error for row pointers.\n");
         exit(EXIT_FAILURE);
     }
-    for (int i = 0; i < map->nrows; i++)
+    int i;
+    i = 0;
+    while (i < map->nrows)
     {
         map->data[i] = (int*)malloc(map->ncols * sizeof(int));
         if (map->data[i] == NULL) {
             printf("Memory allocation error for row %d.\n", i);
             exit(EXIT_FAILURE);
         }
+        i++;
     }
 }
 
 void free_map_data(t_map *map)
 {
-    for (int i = 0; i < map->nrows; i++)
+    int i;
+
+    i = 0;
+    while (i < map->nrows)
     {
         free(map->data[i]);
+        i++;
     }
     free(map->data);
 }
@@ -116,10 +123,10 @@ void print_map(t_map *map)
         col = 0;
 		while(col < map->ncols)
 		{
-			printf("%i", map->data[row][col]); // REPLACE WITH ft_printf
+			printf("%i", map->data[row][col]);
 			col++;
 		}
-		printf("\n"); // REPLACE WITH ft_printf
+		printf("\n");
 		row++;
 	}
 }
