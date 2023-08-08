@@ -19,7 +19,7 @@ t_pt2d_d calc_delta_dist(t_pt2d_d delta_dist, t_pt2d_d raydr)
 		delta_dist.x = fabs(1 / raydr.x);
 	if (raydr.y == 0)
 		delta_dist.y = 1e30;
-	else
+	elseF
 		delta_dist.y = fabs(1 / raydr.y);
 	return (delta_dist);
 }
