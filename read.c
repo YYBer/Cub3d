@@ -30,7 +30,9 @@ t_map get_map_dims(char *filename)
     map.ncols = 0;
     while(read(fd, &onechar, 1) > 0)
     {
-        if ((onechar[0] < '0' || onechar[0] > '4') && onechar[0] != '\n')
+        if ((onechar[0] < '0' || onechar[0] > '1') && 
+            onechar[0] != 'N' && onechar[0] != 'E' && onechar[0] != 'S' && onechar[0] != 'W' &&
+                onechar[0] != '\n')
         {
             printf("invalid character in map\n");
             close(fd);
@@ -55,7 +57,7 @@ t_map get_map_dims(char *filename)
 
 void malloc_map(t_map *map)
 {
-    map->data = (int**)malloc(map->nrows * sizeof(int*));
+    map->data = (char**)malloc(map->nrows * sizeof(char*));
     if (map->data == NULL)
     {
         printf("Memory allocation error for row pointers.\n");
@@ -65,7 +67,7 @@ void malloc_map(t_map *map)
     i = 0;
     while (i < map->nrows)
     {
-        map->data[i] = (int*)malloc(map->ncols * sizeof(int));
+        map->data[i] = (char*)malloc(map->ncols * sizeof(char));
         if (map->data[i] == NULL) {
             printf("Memory allocation error for row %d.\n", i);
             exit(EXIT_FAILURE);

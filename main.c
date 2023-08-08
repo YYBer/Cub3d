@@ -7,7 +7,7 @@ void init_map(t_map *map, char *filename)
     fill_map(map, filename);
 }
 
-void init_m(t_main *m)
+void init_m(char **argv, t_main *m)
 {
 	m->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Raycaster", false);
 	if (!m->mlx)
@@ -22,6 +22,8 @@ void init_m(t_main *m)
 		// free m->mlx
 		exit(EXIT_FAILURE);
 	}
+
+	m->filename = argv[1];
 	init_map(&m->map, m->filename);
 	print_map(&m->map);
 	// printf("Q: are x and y coords the right way round? %i\n", m->map.data[1][3]);
@@ -29,6 +31,7 @@ void init_m(t_main *m)
 	generate_textures(m);
 	m->pos.x = 2;
 	m->pos.y = 2;
+	// change this based on whether N S E W in map
 	m->dir.x = 1;
 	m->dir.y = 0;
 	m->plane.x = 0;
@@ -60,8 +63,7 @@ int	main(int argc, char **argv)
 	if (ft_check_map_command(argc, argv))
 		exit(1);
 	mlx_set_setting(MLX_STRETCH_IMAGE, false);
-	m.filename = argv[1];
-	init_m(&m);
+	init_m(argv, &m);
 	if ((mlx_image_to_window(m.mlx, m.img, 0, 0) < 0))
 	{
 		printf("Error: Could not put image to window.\n");

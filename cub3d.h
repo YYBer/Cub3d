@@ -36,7 +36,7 @@ typedef struct s_point2Di {
 typedef struct s_map {
 	int	nrows;
 	int	ncols;
-    int **data;
+    char **data;
 }	t_map;
 
 // comment all vars below
