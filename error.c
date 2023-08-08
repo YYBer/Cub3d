@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-int	ft_error(char *str)
+void	ft_error(char *str, t_main *m)
 {
 	int	i;
 
@@ -9,5 +9,11 @@ int	ft_error(char *str)
 		i++;
 	write(2, str, i);
 	write(2, "\n", 1);
-	return (1);
+	if (m)
+	{
+		if (m->texture_alloc == true)
+			free_textures(m->textures);
+		if (m->map.data_alloc == true)
+			free_map_data(&m->map);
+	}
 }

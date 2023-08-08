@@ -83,7 +83,8 @@ int*** create_textures()
 {
     int*** textures = (int***)malloc(NUM_TEXTURES * sizeof(int**));
     if (textures == NULL) {
-        printf("Memory allocation error for texture array pointers.\n");
+        ft_error("Memory allocation error for texture array pointers.", NULL);
+        //printf("Memory allocation error for texture array pointers.\n");
         exit(EXIT_FAILURE);
     }
 
@@ -91,6 +92,7 @@ int*** create_textures()
         textures[n] = (int**)malloc(TEX_HEIGHT * sizeof(int*));
         if (textures[n] == NULL) {
             printf("Memory allocation error for row pointers of texture %d.\n", n);
+
             exit(EXIT_FAILURE);
         }
 

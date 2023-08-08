@@ -12,22 +12,27 @@ void init_m(char **argv, t_main *m)
 	m->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Raycaster", false);
 	if (!m->mlx)
 	{
-		printf("Error: Could not create MLX window.\n");
+		//printf("Error: Could not create MLX window.\n");
+		ft_error("Error: Could not create MLX window.", m);
 		exit(EXIT_FAILURE);
 	}
 	m->img = mlx_new_image(m->mlx, WIN_WIDTH, WIN_HEIGHT);
 	if (!m->img)
 	{
-		printf("Error: Could not create MLX image.\n");
+		//printf("Error: Could not create MLX image.\n");
 		// free m->mlx
+		ft_error("Error: Could not create MLX image.", m);
 		exit(EXIT_FAILURE);
 	}
-
 	m->filename = argv[1];
 	init_map(&m->map, m->filename);
+	m->texture_alloc = false;
+	if (ft_map_parameters_check(m))
+		exit(1);
 	print_map(&m->map);
 	// printf("Q: are x and y coords the right way round? %i\n", m->map.data[1][3]);
 	m->textures = create_textures();
+	m->texture_alloc = true;
 	generate_textures(m);
 	m->pos.x = 2;
 	m->pos.y = 2;
@@ -66,7 +71,8 @@ int	main(int argc, char **argv)
 	init_m(argv, &m);
 	if ((mlx_image_to_window(m.mlx, m.img, 0, 0) < 0))
 	{
-		printf("Error: Could not put image to window.\n");
+		//printf("Error: Could not put image to window.\n");
+		ft_error("Error: Could not put image to window.", &m);
 		exit(EXIT_FAILURE);
 	}
 	mlx_key_hook(m.mlx, &my_keyhook, &m);

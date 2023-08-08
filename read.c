@@ -14,6 +14,9 @@
 // 			  __glibc_objsize0 (__buf),
 // 			  __fd, __buf, __nbytes);
 // }
+
+void	ft_putstr_fd(char *s, int fd);
+
 t_map get_map_dims(char *filename)
 {
     t_map map;
@@ -60,16 +63,21 @@ void malloc_map(t_map *map)
     map->data = (char**)malloc(map->nrows * sizeof(char*));
     if (map->data == NULL)
     {
-        printf("Memory allocation error for row pointers.\n");
+        ft_putstr_fd("Memory allocation error for row pointers.\n", 2);
+        //printf("Memory allocation error for row pointers.\n");
         exit(EXIT_FAILURE);
     }
+    map->data_alloc = true;
     int i;
     i = 0;
     while (i < map->nrows)
     {
         map->data[i] = (char*)malloc(map->ncols * sizeof(char));
         if (map->data[i] == NULL) {
-            printf("Memory allocation error for row %d.\n", i);
+            ft_putstr_fd("Memory allocation error for row ", 2);
+            ft_putnbr_fd(i, 2);
+            ft_putstr_fd(".\n", 2);
+            //printf("Memory allocation error for row %d.\n", i);
             exit(EXIT_FAILURE);
         }
         i++;
@@ -94,11 +102,13 @@ void fill_map(t_map *map, char *filename)
     int fd;
     char onechar[1];
 
+    map->data_alloc = false;
     malloc_map(map);
     fd = open(filename, O_RDONLY);
     if (fd == -1)
     {
-        printf("file error\n");
+        //printf("file error\n");
+        ft_putstr_fd("file error\n", 2);
         exit(EXIT_FAILURE);
     }
     int col = 0;
@@ -110,7 +120,8 @@ void fill_map(t_map *map, char *filename)
         {
             if (read(fd, &onechar, 1) < 1)
             {
-                printf("read error\n");
+                //printf("read error\n");
+                ft_putstr_fd("read error\n", 2);
                 exit(EXIT_FAILURE);
             }
             map->data[row][col] = atoi(onechar); // REPLACE WITH ft_atoi // rewrite to be x, y

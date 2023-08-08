@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include "MLX42.h"
+#include "libft/libft.h"
 
 #define WIN_WIDTH 640
 #define WIN_HEIGHT 480
@@ -23,6 +24,15 @@
 #define COLOUR_WHITE 0xFFFFFFFF
 #define COLOUR_YELLOW 0XFFFF00FF
 
+// #define false 0;
+// #define	true  1;
+
+// typedef enum e_bool
+// {
+// 	false,
+// 	true
+// }	t_bool;
+
 typedef struct s_point2Dd {
 	double	x;
 	double	y;
@@ -37,6 +47,7 @@ typedef struct s_map {
 	int	nrows;
 	int	ncols;
     char **data;
+	bool	data_alloc;
 }	t_map;
 
 // comment all vars below
@@ -46,6 +57,7 @@ typedef struct s_main {
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 	int				***textures;
+	bool			texture_alloc;
 	t_pt2d_d		pos; // start position:	
 	t_pt2d_d		dir; // initial direction vector:
 	t_pt2d_d		plane; // 2d raycaster version of camera plane:
@@ -87,6 +99,8 @@ t_map		get_map_dims(char *filename);
 void		fill_map(t_map *map, char *filename);
 void 		print_map(t_map *map);
 void		free_map_data(t_map *map);
-int	ft_check_map_command(int argc, char **argv);
+void		ft_error(char *str, t_main *m);
+int			ft_check_map_command(int argc, char **argv);
+int			ft_map_parameters_check(t_main *m);
 
 #endif
