@@ -1,25 +1,5 @@
 #include "cub3d.h"
 
-// red, green, blue, white, yellow
-int	get_wall_color(t_main *m)
-{
-	int	color;
-	int	map_value;
-
-	map_value = m->map.data[m->map_pos.x][m->map_pos.y];
-	if (map_value == 1)
-		color = COLOUR_RED;
-	else if (map_value == 2)
-		color = COLOUR_BLUE;
-	else if (map_value == 3)
-		color = COLOUR_GREEN;
-	else if (map_value == 4)
-		color = COLOUR_WHITE;
-	else
-		color = COLOUR_YELLOW;
-	return (color);
-}
-
 void	draw_tex(t_main *m, int x)
 {
 	//Calculate height of line to draw on screen
@@ -62,15 +42,19 @@ void	draw_tex2(t_main *m, int x, int drawStart, int drawEnd)
 
 	int y;
 	y = drawStart;
+
+	int texNum;
+	texNum = m->map.data[m->map_pos.x][m->map_pos.y] - 1;
+
 	while (y < drawEnd)
 	{
 		// Cast the texture coordinate to integer, and mask with (TEX_HEIGHT - 1) in case of overflow
 		int texY = (int)texPos & (TEX_HEIGHT - 1);
 		texPos += step;
-		int color = m->texture[texX][texY];
+		int color = m->textures[texNum][texX][texY];
 		//make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
 		if(m->side == 1)
-			color = (color >> 1) & 8355711;
+			color = (color >> 1) & 0xFF7F7F7F;
 		mlx_put_pixel(m->img, x, y, color);
 		y++;
 	}
@@ -78,54 +62,63 @@ void	draw_tex2(t_main *m, int x, int drawStart, int drawEnd)
 
 // algorithmically generates a simple cross texture
 // left for loops in here as this function will eventually be removed
-void generate_texture(t_main *m)
-{
-    for (int x = 0; x < TEX_WIDTH; x++)
-    {
-        for (int y = 0; y < TEX_HEIGHT; y++)
-        {
-            if (x == y || x == TEX_WIDTH - y)
-            {
-                m->texture[x][y] = 0xFF0000FF; // Opaque blue for the cross
+void generate_textures(t_main *m) {
+    for (int x = 0; x < TEX_WIDTH; x++) {
+        for (int y = 0; y < TEX_HEIGHT; y++) {
+            if (x == y || x == TEX_WIDTH - y) {
+                m->textures[0][x][y] = 0xFF0000FF; // Red color
+            } else {
+                m->textures[0][x][y] = 0x000000FF; // Transparent (black) color
             }
-            else
-            {
-                m->texture[x][y] = 0x00000000; // Black for the rest of the texture
-            }
+
+            // Extra Texture 1: Sloped Greyscale
+            int xycolor = (x + y) / 2;
+            m->textures[1][x][y] = 0xAA0000FF | (xycolor + 256 * xycolor + 65536 * xycolor);
+
+            // Extra Texture 2: Sloped Yellow Gradient
+            m->textures[2][x][y] = 0x00AA00FF | (256 * xycolor + 65536 * xycolor);
+
+            // Extra Texture 3: XOR Greyscale
+            int xorcolor = x ^ y;
+            m->textures[3][x][y] = 0x0000AAFF | (xorcolor + 256 * xorcolor + 65536 * xorcolor);
         }
     }
 }
 
-int** create_texture_array() {
-    int** array = (int**)malloc(TEX_HEIGHT * sizeof(int*));
-    if (array == NULL)
-    {
-        printf("Memory allocation error for row pointers.\n");
+int*** create_textures()
+{
+    int*** textures = (int***)malloc(NUM_TEXTURES * sizeof(int**));
+    if (textures == NULL) {
+        printf("Memory allocation error for texture array pointers.\n");
         exit(EXIT_FAILURE);
     }
-	int i;
-	i = 0;
-    while (i < TEX_HEIGHT)
-    {
-        array[i] = (int*)malloc(TEX_WIDTH * sizeof(int));
-        if (array[i] == NULL) {
-            printf("Memory allocation error for row %d.\n", i);
+
+    for (int n = 0; n < NUM_TEXTURES; n++) {
+        textures[n] = (int**)malloc(TEX_HEIGHT * sizeof(int*));
+        if (textures[n] == NULL) {
+            printf("Memory allocation error for row pointers of texture %d.\n", n);
             exit(EXIT_FAILURE);
         }
-		i++;
+
+        for (int i = 0; i < TEX_HEIGHT; i++) {
+            textures[n][i] = (int*)malloc(TEX_WIDTH * sizeof(int));
+            if (textures[n][i] == NULL) {
+                printf("Memory allocation error for row %d of texture %d.\n", i, n);
+                exit(EXIT_FAILURE);
+            }
+        }
     }
-    return array;
+
+    return textures;
 }
 
-void free_texture_array(int** array)
+void free_textures(int*** textures)
 {
-	int i;
-
-	i = 0;
-    while (i < TEX_HEIGHT)
-	{
-        free(array[i]);
-		i++;
+    for (int n = 0; n < NUM_TEXTURES; n++) {
+        for (int i = 0; i < TEX_HEIGHT; i++) {
+            free(textures[n][i]);
+        }
+        free(textures[n]);
     }
-    free(array);
+    free(textures);
 }

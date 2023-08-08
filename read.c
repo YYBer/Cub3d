@@ -22,11 +22,12 @@ t_map get_map_dims(char *filename)
     map.ncols = 0;
     while(read(fd, &onechar, 1) > 0)
     {
-        if ((onechar[0] < '0' || onechar[0] > '5') && onechar[0] != '\n')
+        if ((onechar[0] < '0' || onechar[0] > '4') && onechar[0] != '\n')
         {
-            map.nrows = -1;
-            map.ncols = -1;
-            break;
+            printf("invalid character in map\n");
+            close(fd);
+            // free
+            exit(EXIT_FAILURE);
         }
         if (onechar[0] == '\n')
         {
