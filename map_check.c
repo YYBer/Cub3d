@@ -1,57 +1,5 @@
 #include "cub3d.h"
 
-// char	*ft_strnstr(const char *big, const char *little, size_t n)
-// {
-// 	size_t	i;
-// 	size_t	j;
-
-// 	i = 0;
-// 	if (little[0] == '\0')
-// 		return ((char *)big);
-// 	while (big[i] != '\0')
-// 	{
-// 		j = 0;
-// 		while (big[i + j] == little[j] && ((i + j) < n))
-// 		{
-// 			if (big[i + j] == '\0' && little [j] == '\0')
-// 				return ((char *)&big[i]);
-// 			j++;
-// 		}
-// 		if (little[j] == '\0')
-// 			return ((char *)big + i);
-// 		i++;
-// 	}
-// 	return (0);
-// } //from libft
-
-// size_t	ft_strlen(const char *str)
-// {
-// 	size_t	i;
-
-// 	i = 0;
-// 	while (str[i] != '\0')
-// 	{
-// 		i++;
-// 	}
-// 	return (i);
-// } //from libft
-
-// char	*ft_strchr(char *src, int c)
-// {
-// 	char	ch;
-
-// 	ch = (char) c;
-// 	while (*src)
-// 	{
-// 		if (*src == ch)
-// 			return ((char *) src);
-// 		src++;
-// 	}
-// 	if (!ch)
-// 		return ((char *) src);
-// 	return (NULL);
-// } //from libft
-
 int	ft_check_map_command(int argc, char **argv)
 {
     size_t i;
