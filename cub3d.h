@@ -86,5 +86,6 @@ t_map		get_map_dims(char *filename);
 void		fill_map(t_map *map, char *filename);
 void 		print_map(t_map *map);
 void		free_map_data(t_map *map);
+int	ft_check_map_command(int argc, char **argv);
 
 #endif

@@ -7,11 +7,19 @@
 
 #include "cub3d.h"
 
+// __fortify_function __wur ssize_t
+// read (int __fd, void *__buf, size_t __nbytes)
+// {
+//   return __glibc_fortify (read, __nbytes, sizeof (char),
+// 			  __glibc_objsize0 (__buf),
+// 			  __fd, __buf, __nbytes);
+// }
 t_map get_map_dims(char *filename)
 {
     t_map map;
     int fd;
     char onechar[1];
+
     fd = open(filename, O_RDONLY);
     if (fd == -1)
     {

@@ -62,13 +62,10 @@ int	main(int argc, char **argv)
 {
 	t_main	m;
 
-	if(argc != 2)
-	{
-		printf("wrong number of args\n");
-		exit(EXIT_FAILURE);
-	}
-	m.filename = argv[1];
+	if (ft_check_map_command(argc, argv))
+		exit(1);
 	mlx_set_setting(MLX_STRETCH_IMAGE, false);
+	m.filename = argv[1];
 	init_m(&m);
 	if ((mlx_image_to_window(m.mlx, m.img, 0, 0) < 0))
 	{
