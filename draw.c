@@ -43,18 +43,12 @@ void	draw_tex2(t_main *m, int x, int drawStart, int drawEnd)
 	int y;
 	y = drawStart;
 
-	int texNum;
-	texNum = m->map.data[m->map_pos.x][m->map_pos.y] - 1;
-
 	while (y < drawEnd)
 	{
 		// Cast the texture coordinate to integer, and mask with (TEX_HEIGHT - 1) in case of overflow
 		int texY = (int)texPos & (TEX_HEIGHT - 1);
 		texPos += step;
-		int color = m->textures[texNum][texX][texY];
-		//make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
-		if(m->side == 1)
-			color = (color >> 1) & 0xFF7F7F7F;
+		int color = m->textures[m->side][texX][texY];
 		mlx_put_pixel(m->img, x, y, color);
 		y++;
 	}
