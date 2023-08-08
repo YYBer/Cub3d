@@ -15,6 +15,7 @@
 #define TEX_HEIGHT 64
 #define SQRS_PER_SEC 5.0
 #define RADS_PER_SEC 3.0
+#define NUM_TEXTURES 4
 
 #define COLOUR_RED 0xFF0000FF
 #define COLOUR_BLUE 0x00FF00FF
@@ -44,7 +45,7 @@ typedef struct s_main {
 	t_map 			map;
 	mlx_t			*mlx;
 	mlx_image_t		*img;
-	int				**texture;
+	int				***textures;
 	t_pt2d_d		pos; // start position:	
 	t_pt2d_d		dir; // initial direction vector:
 	t_pt2d_d		plane; // 2d raycaster version of camera plane:
@@ -79,9 +80,9 @@ int			perform_dda(t_main *m);
 double		getperp_wall_dist(int side, t_pt2d_d side_dist, t_pt2d_d delta_dist);
 void		draw_tex(t_main *m, int x);
 void		draw_tex2(t_main *m, int x, int drawStart, int drawEnd);
-void  		generate_texture(t_main *m);
-int** 		create_texture_array();
-void		free_texture_array(int** array);
+void  		generate_textures(t_main *m);
+int*** 		create_textures();
+void		free_textures(int*** textures);
 t_map		get_map_dims(char *filename);
 void		fill_map(t_map *map, char *filename);
 void 		print_map(t_map *map);

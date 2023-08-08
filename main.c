@@ -30,8 +30,8 @@ void init_m(t_main *m)
 	init_map(&m->map, m->filename);
 	print_map(&m->map);
 	// printf("Q: are x and y coords the right way round? %i\n", m->map.data[1][3]);
-	m->texture = create_texture_array();
-	generate_texture(m);
+	m->textures = create_textures();
+	generate_textures(m);
 	m->pos.x = 2;
 	m->pos.y = 2;
 	m->dir.x = 1;
@@ -54,7 +54,7 @@ void my_closehook(void *param)
 	m = (t_main *)param;
 	mlx_terminate(m->mlx);
 	free_map_data(&m->map);
-	free_texture_array(m->texture);
+	free_textures(m->textures);
 	exit(0);
 }
 
