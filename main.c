@@ -18,14 +18,14 @@ int	init_m(t_main *m)
 	if (!m->mlx)
 	{
 		printf("Error: Could not create MLX window.\n");
-		return (1);
+		exit(EXIT_FAILURE);
 	}
 	m->img = mlx_new_image(m->mlx, WIN_WIDTH, WIN_HEIGHT);
 	if (!m->img)
 	{
 		printf("Error: Could not create MLX image.\n");
 		// free m->mlx
-		return (1);
+		exit(EXIT_FAILURE);
 	}
 	init_map(&m->map, m->filename);
 	print_map(&m->map);
@@ -66,17 +66,17 @@ int	main(int argc, char **argv)
 	if(argc != 2)
 	{
 		printf("wrong number of args\n"); // replace with ft_printf
-		return(1);
+		exit(EXIT_FAILURE);
 	}
 	m.filename = argv[1];
 
 	mlx_set_setting(MLX_STRETCH_IMAGE, false);
 	if (init_m(&m))
-		return (1);
+		exit(EXIT_FAILURE);
 	if ((mlx_image_to_window(m.mlx, m.img, 0, 0) < 0))
 	{
 		printf("Error: Could not put image to window.\n");
-		return (1);
+		exit(EXIT_FAILURE);
 	}
 	mlx_key_hook(m.mlx, &my_keyhook, &m);
 	mlx_close_hook(m.mlx, &my_closehook, &m);
@@ -84,5 +84,5 @@ int	main(int argc, char **argv)
 	mlx_loop(m.mlx);
 	mlx_terminate(m.mlx);
 	free_map_data(&m.map);
-	return (0);
+	return(EXIT_SUCCESS);
 }
