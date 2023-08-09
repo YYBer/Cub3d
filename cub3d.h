@@ -77,6 +77,8 @@ typedef struct s_main {
 	bool			key_s_pressed;
 	bool			key_d_pressed;
 	bool			key_a_pressed;
+	int				ceiling_color;
+	int				floor_color;
 }	t_main;
 
 int			alloc_map(t_main *m);

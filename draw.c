@@ -14,6 +14,24 @@ void	draw_tex(t_main *m, int x)
 	drawEnd = m->lineHeight / 2 + WIN_HEIGHT / 2 + m->pitch;
 	if (drawEnd >= WIN_HEIGHT)
 		drawEnd = WIN_HEIGHT - 1;
+
+    // draw ceiling
+    int y;
+    y = 0;
+	while (y < drawStart)
+	{
+		mlx_put_pixel(m->img, x, y, m->ceiling_color);
+		y++;
+	}
+
+     // draw floor
+    y = drawEnd;
+	while (y < WIN_HEIGHT)
+	{
+		mlx_put_pixel(m->img, x, y, m->floor_color);
+		y++;
+	}   
+
 	draw_tex2(m, x, drawStart, drawEnd);
 }
 

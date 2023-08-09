@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "array": "c",
-        "cstdlib": "c"
+        "cstdlib": "c",
+        "stdlib.h": "c"
     }
 }

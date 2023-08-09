@@ -48,6 +48,8 @@ void init_m(char **argv, t_main *m)
 	m->key_s_pressed = false;
 	m->key_a_pressed = false;
 	m->key_d_pressed = false;
+	m->ceiling_color = 0x005555FF;
+	m->floor_color = 0x555500FF;
 }
 
 void my_closehook(void *param)
