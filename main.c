@@ -1,10 +1,10 @@
 #include "cub3d.h"
 
-void init_map(t_map *map, char *filename)
+void init_map(int fd, t_map *map, char *filename)
 {
-    *map = get_map_dims(filename);
+    *map = get_map_dims(fd);
     printf("map dimensions: %i %i\n", map->nrows, map->ncols);
-    fill_map(map, filename);
+    fill_map(fd, map, filename);
 }
 
 void init_m(char **argv, t_main *m)
@@ -25,7 +25,11 @@ void init_m(char **argv, t_main *m)
 		exit(EXIT_FAILURE);
 	}
 	m->filename = argv[1];
-	init_map(&m->map, m->filename);
+	m->fd = open_subject_file(m->filename);
+	read_subject_file(m);
+	printf("here!\n");
+	init_map(m->fd, &m->map, m->filename);
+	close(m->fd);
 	m->texture_alloc = false;
 	if (ft_map_parameters_check(m))
 		exit(1);
@@ -48,8 +52,6 @@ void init_m(char **argv, t_main *m)
 	m->key_s_pressed = false;
 	m->key_a_pressed = false;
 	m->key_d_pressed = false;
-	m->ceiling_color = 0x005555FF;
-	m->floor_color = 0x555500FF;
 }
 
 void my_closehook(void *param)

@@ -7,6 +7,8 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <limits.h>
+#include <stdbool.h>
 #include "MLX42.h"
 #include "libft/libft.h"
 
@@ -53,6 +55,7 @@ typedef struct s_map {
 // comment all vars below
 typedef struct s_main {
 	char 			*filename;
+	int				fd;
 	t_map 			map;
 	mlx_t			*mlx;
 	mlx_image_t		*img;
@@ -82,7 +85,9 @@ typedef struct s_main {
 }	t_main;
 
 int			alloc_map(t_main *m);
-void		init_map(t_map *map, char *filename);
+int			open_subject_file(char *filename);
+void		read_subject_file(t_main *m);
+void		init_map(int fd, t_map *map, char *filename);
 void		free_map(t_main *m);
 void		my_keyhook(mlx_key_data_t keydata, void *param);
 void		ft_raycast(void *param);
@@ -97,8 +102,8 @@ void		draw_tex2(t_main *m, int x, int drawStart, int drawEnd);
 void  		generate_textures(t_main *m);
 int*** 		create_textures();
 void		free_textures(int*** textures);
-t_map		get_map_dims(char *filename);
-void		fill_map(t_map *map, char *filename);
+t_map		get_map_dims(int fd);
+void		fill_map(int fd, t_map *map, char *filename);
 void 		print_map(t_map *map);
 void		free_map_data(t_map *map);
 void		ft_error(char *str, t_main *m);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:00:24 by yli               #+#    #+#             */
-/*   Updated: 2022/12/13 16:09:00 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/09 08:52:14 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,6 @@ size_t	ft_strlen(const char *str)
 		i++;
 	}
 	return (i);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	if (!s)
-		return ;
-	write(fd, s, ft_strlen(s));
 }
 
 void	ft_putchar_fd(char c, int fd)
