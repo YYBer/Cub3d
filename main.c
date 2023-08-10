@@ -73,7 +73,6 @@ int	main(int argc, char **argv)
 	init_m(argv, &m);
 	if ((mlx_image_to_window(m.mlx, m.img, 0, 0) < 0))
 	{
-		//printf("Error: Could not put image to window.\n");
 		ft_error("Error: Could not put image to window.", &m);
 		exit(EXIT_FAILURE);
 	}
