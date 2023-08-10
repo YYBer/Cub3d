@@ -46,15 +46,15 @@ void	draw_tex2(t_main *m, int x, int drawStart, int drawEnd)
 	wallX -= floor((wallX));
 
 	//x coordinate on the texture
-	int texX = (int)(wallX * TEX_WIDTH);
+	int texX = (int)(wallX * m->textures[m->side]->width);
 	if (m->side == 0 && m->raydr.x > 0)
-		texX = TEX_WIDTH - texX - 1;
+		texX = m->textures[m->side]->width - texX - 1;
 	if (m->side == 1 && m->raydr.y < 0)
-		texX = TEX_WIDTH - texX - 1;
+		texX = m->textures[m->side]->width - texX - 1;
 
 	// TODO: an integer-only bresenham or DDA like algorithm could make the texture coordinate stepping faster
 	// How much to increase the texture coordinate per screen pixel
-	double step = 1.0 * TEX_HEIGHT / m->lineHeight;
+	double step = 1.0 * m->textures[m->side]->height / m->lineHeight;
 	// Starting texture coordinate
 	double texPos = (drawStart - m->pitch - WIN_HEIGHT / 2 + m->lineHeight / 2) * step;
 
@@ -63,76 +63,15 @@ void	draw_tex2(t_main *m, int x, int drawStart, int drawEnd)
 
 	while (y < drawEnd)
 	{
+		u_int8_t	*pixel;
 		// Cast the texture coordinate to integer, and mask with (TEX_HEIGHT - 1) in case of overflow
-		int texY = (int)texPos & (TEX_HEIGHT - 1);
+		int texY = (int)texPos & (m->textures[m->side]->height - 1);
 		texPos += step;
-		int color = m->textures[m->side][texX][texY];
+		// int color = m->textures[m->side][texX][texY];
+		// printf("%i %i %i %i %i\n", x, y, texX, texY, texY + texY);
+		pixel = &m->textures[m->side]->pixels[(texX + texY * m->textures[m->side]->width) * m->textures[m->side]->bytes_per_pixel];
+		int color = pixel[0] << 24 | pixel[1] << 16 | pixel[2] << 8 | pixel[3]; // get colour from pixel
 		mlx_put_pixel(m->img, x, y, color);
 		y++;
 	}
-}
-
-// algorithmically generates a simple cross texture
-// left for loops in here as this function will eventually be removed
-void generate_textures(t_main *m) {
-    for (int x = 0; x < TEX_WIDTH; x++) {
-        for (int y = 0; y < TEX_HEIGHT; y++) {
-            if (x == y || x == TEX_WIDTH - y) {
-                m->textures[0][x][y] = 0xFF0000FF; // Red color
-            } else {
-                m->textures[0][x][y] = 0x000000FF; // Transparent (black) color
-            }
-
-            // Extra Texture 1: Sloped Greyscale
-            int xycolor = (x + y) / 2;
-            m->textures[1][x][y] = 0xAA0000FF | (xycolor + 256 * xycolor + 65536 * xycolor);
-
-            // Extra Texture 2: Sloped Yellow Gradient
-            m->textures[2][x][y] = 0x00AA00FF | (256 * xycolor + 65536 * xycolor);
-
-            // Extra Texture 3: XOR Greyscale
-            int xorcolor = x ^ y;
-            m->textures[3][x][y] = 0x0000AAFF | (xorcolor + 256 * xorcolor + 65536 * xorcolor);
-        }
-    }
-}
-
-int*** create_textures()
-{
-    int*** textures = (int***)malloc(NUM_TEXTURES * sizeof(int**));
-    if (textures == NULL) {
-        ft_error("Memory allocation error for texture array pointers.", NULL);
-        //printf("Memory allocation error for texture array pointers.\n");
-        exit(EXIT_FAILURE);
-    }
-
-    for (int n = 0; n < NUM_TEXTURES; n++) {
-        textures[n] = (int**)malloc(TEX_HEIGHT * sizeof(int*));
-        if (textures[n] == NULL) {
-            printf("Memory allocation error for row pointers of texture %d.\n", n);
-
-            exit(EXIT_FAILURE);
-        }
-
-        for (int i = 0; i < TEX_HEIGHT; i++) {
-            textures[n][i] = (int*)malloc(TEX_WIDTH * sizeof(int));
-            if (textures[n][i] == NULL) {
-                printf("Memory allocation error for row %d of texture %d.\n", i, n);
-                exit(EXIT_FAILURE);
-            }
-        }
-    }
-
-    return textures;
-}
-
-void free_textures(int*** textures)
-{
-    for (int n = 0; n < NUM_TEXTURES; n++) {
-        for (int i = 0; i < TEX_HEIGHT; i++) {
-            free(textures[n][i]);
-        }
-        free(textures[n]);
-    }
-    free(textures);
 }

@@ -12,7 +12,7 @@ void	ft_error(char *str, t_main *m)
 	if (m)
 	{
 		if (m->texture_alloc == true)
-			free_textures(m->textures);
+			delete_textures(m);
 		if (m->map.data_alloc == true)
 			free_map_data(&m->map);
 	}

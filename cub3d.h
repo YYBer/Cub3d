@@ -14,8 +14,6 @@
 
 #define WIN_WIDTH 640
 #define WIN_HEIGHT 480
-#define TEX_WIDTH 64
-#define TEX_HEIGHT 64
 #define SQRS_PER_SEC 5.0
 #define RADS_PER_SEC 3.0
 #define NUM_TEXTURES 4
@@ -25,15 +23,6 @@
 #define COLOUR_GREEN 0x0000FFFF
 #define COLOUR_WHITE 0xFFFFFFFF
 #define COLOUR_YELLOW 0XFFFF00FF
-
-// #define false 0;
-// #define	true  1;
-
-// typedef enum e_bool
-// {
-// 	false,
-// 	true
-// }	t_bool;
 
 typedef struct s_point2Dd {
 	double	x;
@@ -57,10 +46,11 @@ typedef struct s_main {
 	char 			*filename;
 	int				fd;
 	int				num_chars_read;
+	char			*tex_paths[4];
 	t_map 			map;
 	mlx_t			*mlx;
 	mlx_image_t		*img;
-	int				***textures;
+	mlx_texture_t*	textures[4];
 	bool			texture_alloc;
 	t_pt2d_d		pos; // start position:	
 	t_pt2d_d		dir; // initial direction vector:
@@ -86,8 +76,9 @@ typedef struct s_main {
 }	t_main;
 
 int			alloc_map(t_main *m);
-void		open_subject_file(t_main *m);
-void		read_subject_file(t_main *m);
+void 		read_subject_file(char **argv, t_main *m);
+void 		load_textures(t_main *m);
+void		delete_textures(t_main *m);
 void		free_map(t_main *m);
 void		my_keyhook(mlx_key_data_t keydata, void *param);
 void		ft_raycast(void *param);
@@ -99,9 +90,6 @@ int			perform_dda(t_main *m);
 double		getperp_wall_dist(int side, t_pt2d_d side_dist, t_pt2d_d delta_dist);
 void		draw_tex(t_main *m, int x);
 void		draw_tex2(t_main *m, int x, int drawStart, int drawEnd);
-void  		generate_textures(t_main *m);
-int*** 		create_textures();
-void		free_textures(int*** textures);
 void		get_map_dims(t_main *m);
 void 		fill_map(t_main *m);
 void 		print_map(t_map *map);
@@ -109,5 +97,7 @@ void		free_map_data(t_map *map);
 void		ft_error(char *str, t_main *m);
 int			ft_check_map_command(int argc, char **argv);
 int			ft_map_parameters_check(t_main *m);
+
+
 
 #endif

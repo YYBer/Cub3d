@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-void init_m(char **argv, t_main *m)
+void init_window(t_main *m)
 {
 	m->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Raycaster", false);
 	if (!m->mlx)
@@ -16,28 +16,28 @@ void init_m(char **argv, t_main *m)
 		// free m->mlx
 		ft_error("Error: Could not create MLX image.", m);
 		exit(EXIT_FAILURE);
-	}
-	m->filename = argv[1];
-	m->num_chars_read = 0;
-	open_subject_file(m);
-	read_subject_file(m);
+	}	
+}
+
+// printf("tex_paths:\nNO:%s\nSO:%s\nWE:%s\nEA:%s\n", m->tex_paths[0], m->tex_paths[1], m->tex_paths[2], m->tex_paths[3]);
+// printf("map dimensions: %i %i\n", m->map.nrows, m->map.ncols);
+// print_map(&m->map);
+// printf("Q: are x and y coords the right way round? %i\n", m->map.data[1][3]);
+void init_m(char **argv, t_main *m)
+{
+	read_subject_file(argv, m);
     get_map_dims(m);
-    // printf("map dimensions: %i %i\n", m->map.nrows, m->map.ncols);
     fill_map(m);
-	close(m->fd);
-	m->texture_alloc = false;
+	printf("map dimensions: %i %i\n", m->map.nrows, m->map.ncols);	
+	print_map(&m->map);
+	m->texture_alloc = false; // where should this go?
 	if (ft_map_parameters_check(m))
 		exit(1);
-	print_map(&m->map);
-	// printf("Q: are x and y coords the right way round? %i\n", m->map.data[1][3]);
-	m->textures = create_textures();
-	m->texture_alloc = true;
-	generate_textures(m);
+	load_textures(m);
 	m->pos.x = 2;
 	m->pos.y = 2;
-	// change this based on whether N S E W in map
-	m->dir.x = 1;
-	m->dir.y = 0;
+	m->dir.x = 1; // change this based on whether N S E W in map
+	m->dir.y = 0; // change this based on whether N S E W in map
 	m->plane.x = 0;
 	m->plane.y = 0.66;
 	m->move_speed = SQRS_PER_SEC / 100; 
@@ -47,6 +47,7 @@ void init_m(char **argv, t_main *m)
 	m->key_s_pressed = false;
 	m->key_a_pressed = false;
 	m->key_d_pressed = false;
+	init_window(m);
 }
 
 void my_closehook(void *param)
@@ -56,7 +57,7 @@ void my_closehook(void *param)
 	m = (t_main *)param;
 	mlx_terminate(m->mlx);
 	free_map_data(&m->map);
-	free_textures(m->textures);
+	delete_textures(m);
 	exit(0);
 }
 
