@@ -47,6 +47,8 @@ void init_m(char **argv, t_main *m)
 	m->key_s_pressed = false;
 	m->key_a_pressed = false;
 	m->key_d_pressed = false;
+	m->key_left_pressed = false;
+	m->key_right_pressed = false;	
 	init_window(m);
 }
 

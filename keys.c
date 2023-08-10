@@ -32,6 +32,20 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 			m->key_d_pressed = true;
 		if (keydata.action == MLX_RELEASE)
 			m->key_d_pressed = false;
+	}
+	if (keydata.key == MLX_KEY_LEFT)
+	{
+		if (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT)
+			m->key_left_pressed = true;
+		if (keydata.action == MLX_RELEASE)
+			m->key_left_pressed = false;
+	}
+	if (keydata.key == MLX_KEY_RIGHT)
+	{
+		if (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT)
+			m->key_right_pressed = true;
+		if (keydata.action == MLX_RELEASE)
+			m->key_right_pressed = false;
 	}			
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{

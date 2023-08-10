@@ -1,21 +1,7 @@
 #include "cub3d.h"
 
-void	draw_tex(t_main *m, int x)
+void draw_floor_ceiling(t_main *m, int x, int drawStart, int drawEnd)
 {
-	//Calculate height of line to draw on screen
-	int	drawStart;
-	int	drawEnd;
-
-	m->lineHeight = (int)(WIN_HEIGHT / m->perp_wall_dist);
-	//calculate lowest and highest pixel to fill in current stripe
-	drawStart = -m->lineHeight / 2 + WIN_HEIGHT / 2 + m->pitch;
-	if (drawStart < 0)
-		drawStart = 0;
-	drawEnd = m->lineHeight / 2 + WIN_HEIGHT / 2 + m->pitch;
-	if (drawEnd >= WIN_HEIGHT)
-		drawEnd = WIN_HEIGHT - 1;
-
-    // draw ceiling
     int y;
     y = 0;
 	while (y < drawStart)
@@ -23,16 +9,12 @@ void	draw_tex(t_main *m, int x)
 		mlx_put_pixel(m->img, x, y, m->ceiling_color);
 		y++;
 	}
-
-     // draw floor
     y = drawEnd;
 	while (y < WIN_HEIGHT)
 	{
 		mlx_put_pixel(m->img, x, y, m->floor_color);
 		y++;
-	}   
-
-	draw_tex2(m, x, drawStart, drawEnd);
+	}
 }
 
 void	draw_tex2(t_main *m, int x, int drawStart, int drawEnd)
@@ -67,11 +49,27 @@ void	draw_tex2(t_main *m, int x, int drawStart, int drawEnd)
 		// Cast the texture coordinate to integer, and mask with (TEX_HEIGHT - 1) in case of overflow
 		int texY = (int)texPos & (m->textures[m->side]->height - 1);
 		texPos += step;
-		// int color = m->textures[m->side][texX][texY];
-		// printf("%i %i %i %i %i\n", x, y, texX, texY, texY + texY);
 		pixel = &m->textures[m->side]->pixels[(texX + texY * m->textures[m->side]->width) * m->textures[m->side]->bytes_per_pixel];
 		int color = pixel[0] << 24 | pixel[1] << 16 | pixel[2] << 8 | pixel[3]; // get colour from pixel
 		mlx_put_pixel(m->img, x, y, color);
 		y++;
 	}
+}
+
+void	draw_tex(t_main *m, int x)
+{
+	//Calculate height of line to draw on screen
+	int	drawStart;
+	int	drawEnd;
+
+	m->lineHeight = (int)(WIN_HEIGHT / m->perp_wall_dist);
+	//calculate lowest and highest pixel to fill in current stripe
+	drawStart = -m->lineHeight / 2 + WIN_HEIGHT / 2 + m->pitch;
+	if (drawStart < 0)
+		drawStart = 0;
+	drawEnd = m->lineHeight / 2 + WIN_HEIGHT / 2 + m->pitch;
+	if (drawEnd >= WIN_HEIGHT)
+		drawEnd = WIN_HEIGHT - 1;
+	draw_floor_ceiling(m, x, drawStart, drawEnd);
+	draw_tex2(m, x, drawStart, drawEnd);
 }
