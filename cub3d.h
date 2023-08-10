@@ -64,6 +64,7 @@ typedef struct s_main {
 	double			move_speed;
 	double			rot_speed;
 	int				side;
+	int				wall_direction;
 	double			perp_wall_dist;
 	int				lineHeight;
 	int				pitch;
@@ -90,7 +91,7 @@ void		move_player(t_main *m);
 t_pt2d_d	calc_ray_dir(int x, t_pt2d_d raydr, t_pt2d_d dir, t_pt2d_d plane);
 t_pt2d_d 	calc_delta_dist(t_pt2d_d delta_dist, t_pt2d_d raydr);
 void		calc_step_and_side_dist(t_main *m);
-int			perform_dda(t_main *m);
+void			perform_dda(t_main *m);
 double		getperp_wall_dist(int side, t_pt2d_d side_dist, t_pt2d_d delta_dist);
 void		draw_tex(t_main *m, int x);
 void		draw_tex2(t_main *m, int x, int drawStart, int drawEnd);

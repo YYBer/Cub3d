@@ -28,15 +28,15 @@ void	draw_tex2(t_main *m, int x, int drawStart, int drawEnd)
 	wallX -= floor((wallX));
 
 	//x coordinate on the texture
-	int texX = (int)(wallX * m->textures[m->side]->width);
+	int texX = (int)(wallX * m->textures[m->wall_direction]->width);
 	if (m->side == 0 && m->raydr.x > 0)
-		texX = m->textures[m->side]->width - texX - 1;
+		texX = m->textures[m->wall_direction]->width - texX - 1;
 	if (m->side == 1 && m->raydr.y < 0)
-		texX = m->textures[m->side]->width - texX - 1;
+		texX = m->textures[m->wall_direction]->width - texX - 1;
 
 	// TODO: an integer-only bresenham or DDA like algorithm could make the texture coordinate stepping faster
 	// How much to increase the texture coordinate per screen pixel
-	double step = 1.0 * m->textures[m->side]->height / m->lineHeight;
+	double step = 1.0 * m->textures[m->wall_direction]->height / m->lineHeight;
 	// Starting texture coordinate
 	double texPos = (drawStart - m->pitch - WIN_HEIGHT / 2 + m->lineHeight / 2) * step;
 
@@ -47,9 +47,9 @@ void	draw_tex2(t_main *m, int x, int drawStart, int drawEnd)
 	{
 		u_int8_t	*pixel;
 		// Cast the texture coordinate to integer, and mask with (TEX_HEIGHT - 1) in case of overflow
-		int texY = (int)texPos & (m->textures[m->side]->height - 1);
+		int texY = (int)texPos & (m->textures[m->wall_direction]->height - 1);
 		texPos += step;
-		pixel = &m->textures[m->side]->pixels[(texX + texY * m->textures[m->side]->width) * m->textures[m->side]->bytes_per_pixel];
+		pixel = &m->textures[m->wall_direction]->pixels[(texX + texY * m->textures[m->wall_direction]->width) * m->textures[m->wall_direction]->bytes_per_pixel];
 		int color = pixel[0] << 24 | pixel[1] << 16 | pixel[2] << 8 | pixel[3]; // get colour from pixel
 		mlx_put_pixel(m->img, x, y, color);
 		y++;

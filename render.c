@@ -36,9 +36,8 @@ void	ft_raycast(void *param)
 		m->map_pos.y = (int)(m->pos.y);
 		m->delta_dist = calc_delta_dist(m->delta_dist, m->raydr);
 		calc_step_and_side_dist(m);
-		m->side = perform_dda(m);
-		m->perp_wall_dist
-			= getperp_wall_dist(m->side, m->side_dist, m->delta_dist);
+		perform_dda(m);
+		m->perp_wall_dist = getperp_wall_dist(m->side, m->side_dist, m->delta_dist);
 		draw_tex(m, x);
 		x++;
 	}

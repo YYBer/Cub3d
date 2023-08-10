@@ -51,15 +51,17 @@ void	calc_step_and_side_dist(t_main *m)
 
 // hit = was there a wall hit?
 // side = was a NS or a EW wall hit?
-int	perform_dda(t_main *m)
+void perform_dda(t_main *m)
 {
 	int	hit; 
 	int	side; 
+	// m->side; // Variable to store the wall side (0 for NS, 1 for EW)
+	// m->wall_direction; // Variable to store the wall direction (0 for N, 1 for S, 2 for E, 3 for W)
 
 	hit = 0;
 	while (hit == 0)
 	{
-		//jump to next map square, either in x-direction, or in y-direction
+		// Jump to next map square, either in x-direction, or in y-direction
 		if (m->side_dist.x < m->side_dist.y)
 		{
 			m->side_dist.x += m->delta_dist.x;
@@ -74,9 +76,30 @@ int	perform_dda(t_main *m)
 		}
 		// Check if ray has hit a wall
 		if (m->map.data[m->map_pos.x][m->map_pos.y] > 0)
+		{
 			hit = 1;
+			// Determine which wall side and direction were hit
+			if (side == 0) // NS wall
+			{
+				m->side = 0;
+				if (m->step.x < 0) // West wall
+					m->wall_direction = 3;
+				else // East wall
+					m->wall_direction = 2;
+			}
+			else // EW wall
+			{
+				m->side = 1;
+				if (m->step.y < 0) // North wall
+					m->wall_direction = 0;
+				else // South wall
+					m->wall_direction = 1;
+			}
+		}
 	}
-	return (side);
+
+	// You can now use wall_side and wall_direction to determine the type of wall hit
+	// For example: N, S, E, or W
 }
 
 double	getperp_wall_dist(int side, t_pt2d_d side_dist, t_pt2d_d delta_dist)
