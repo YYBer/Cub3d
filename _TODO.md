@@ -1,30 +1,24 @@
 # TODO:
 
-## Interim
-
-DONE: read map from file and include in main struct
-TODO: sometimes on run the 0's in the map are 8's!!
-TODO: are x and y coords read the right way round in read.c?
-TODO: norminette what's there
-TODO: leak check (currently it seems MLX42 itself leaks)
-
 ## Mandatory
-
-DONE: make map dynamic size and not global
-DONE: load map from file
-TODO: map error checking
-TODO: add floor and ceiling colours
-TODO: take floor and ceiling colour from file (RGB)
-TODO: create an array to store multiple textures. We need to store 4: NO, SO, WE & EA
-TODO: load textures from file
-TODO: take texture names from file
+TOFIX: sometimes on run the 0's in the map are 8's!!
+TODO : handle that first lines in map file can come in any order and can have any number of newlines between them [GRAHAM]
+TODO : take texture names from map file [GRAHAM]
+TODO : load textures as an array of mlx images [GRAHAM]
+TODO : map error checking (make sure has surrounding wall, player position is there, can handle different line lengths and spaces within the map) [YUANYING]
+TODO : The left and right arrow keys of the keyboard must allow you to look left and right in the maze
+TODO : Pressing ESC must close the window and quit the program cleanly
+TODO : detect whether we see N E S W of a wall and provide the right texture (current we only detect NS and EW using 'side' variable)
+TODO : use player position (N E S W) on map to set 'dir.x' and 'dir.y' in main.c 'init_m' function
+TODO : tidy up and refactor code into 5 function per file, then norminette
+TODO : leak check (currently it seems MLX42 itself leaks)
 
 ## Bonus
 
-TODO: minimap
-TODO: opening/closing doors
-TODO: animated sprite
-TODO: point of view rotation with mouse
+TODO : minimap
+TODO : opening/closing doors
+TODO : animated sprite
+TODO : point of view rotation with mouse
 
 # NOTES:
 
