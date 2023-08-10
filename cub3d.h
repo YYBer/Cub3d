@@ -79,6 +79,8 @@ typedef struct s_main {
 
 int			alloc_map(t_main *m);
 void 		read_subject_file(char **argv, t_main *m);
+void		read_tex_filenames(t_main *m);
+int 		read_color_value(t_main *m, char *onecharbuf);
 void 		load_textures(t_main *m);
 void		delete_textures(t_main *m);
 void		free_map(t_main *m);
@@ -99,7 +101,5 @@ void		free_map_data(t_map *map);
 void		ft_error(char *str, t_main *m);
 int			ft_check_map_command(int argc, char **argv);
 int			ft_map_parameters_check(t_main *m);
-
-
-
+void 		check_map_position(int x, int y, t_main *m);
 #endif

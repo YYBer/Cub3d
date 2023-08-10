@@ -4,7 +4,11 @@
 TOFIX: sometimes on run the 0's in the map are 8's!!
 TOFIX: worlds are mirrored!
 TODO : handle that first lines in map file can come in any order and can have any number of newlines between them [GRAHAM]
-TODO : map error checking (make sure has surrounding wall, player position is there, can handle different line lengths and spaces within the map) [YUANYING]
+TODO : map error checking [YUANYING]
+    - make sure has surrounding wall
+    - has single player position (N,E,S or W)
+    - can handle different row lengths
+    - can handle spaces within the map
 TODO : detect whether we see N E S W of a wall and provide the right texture (current we only detect NS and EW using 'side' variable)
 TODO : use player position (N E S W) on map to set 'dir.x' and 'dir.y' in main.c 'init_m' function
 TODO : tidy up and refactor code into 5 functions per file, then norminette
