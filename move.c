@@ -25,9 +25,16 @@ void move_left(t_main *m)
     double side_y = -m->dir.x;
 
     if (m->map.data[(int)(m->pos.x + side_x * m->move_speed)][(int)(m->pos.y)] == false)
+	{
         m->pos.x += side_x * m->move_speed;
+		if (m->pos.x <= 1.05)
+			m->pos.x = 1.05;
+	}
     if (m->map.data[(int)(m->pos.x)][(int)(m->pos.y + side_y * m->move_speed)] == false)
+	{
         m->pos.y += side_y * m->move_speed;
+	}
+	printf("pos:%f %f\n", m->pos.x, m->pos.y);
 }
 
 // move right if no wall on the right side
@@ -37,9 +44,21 @@ void move_right(t_main *m)
     double side_y = m->dir.x;
 
     if (m->map.data[(int)(m->pos.x + side_x * m->move_speed)][(int)(m->pos.y)] == false)
-        m->pos.x += side_x * m->move_speed;
+	{
+    	m->pos.x += side_x * m->move_speed;
+		if (m->pos.x >= m->map.nrows -1.05)
+			m->pos.x = m->map.nrows -1.05;
+	}    
+	
     if (m->map.data[(int)(m->pos.x)][(int)(m->pos.y + side_y * m->move_speed)] == false)
+	{
         m->pos.y += side_y * m->move_speed;
+		// if (m->pos.y < 2)
+		// 	m->pos.y = 2;
+		// if (m->pos.y >= m->map.nrows -1)
+		// 	m->pos.y = m->map.nrows;
+	}
+	printf("pos:%f %f\n", m->pos.x, m->pos.y);
 }
 
 //both camera direction and camera plane must be rotated
