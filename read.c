@@ -15,38 +15,38 @@
 // 			  __fd, __buf, __nbytes);
 // }
 
+// reading map
+
 // modify to work with fd
-t_map get_map_dims(int fd)
+void get_map_dims(t_main *m)
 {
-    t_map map;
     char onechar[1];
 
-    map.nrows = 0;
-    map.ncols = 0;
-    while(read(fd, &onechar, 1) > 0)
+    m->map.nrows = 0;
+    m->map.ncols = 0;
+    while(read(m->fd, &onechar, 1) > 0)
     {
         if ((onechar[0] < '0' || onechar[0] > '1') && 
             onechar[0] != 'N' && onechar[0] != 'E' && onechar[0] != 'S' && onechar[0] != 'W' &&
                 onechar[0] != '\n')
         {
             printf("invalid character in map\n");
-            close(fd);
+            close(m->fd);
             // free
             exit(EXIT_FAILURE);
         }
         if (onechar[0] == '\n')
         {
-            map.ncols = 0;
-            map.nrows++;
+            m->map.ncols = 0;
+            m->map.nrows++;
         }
         else
         {
-            map.ncols++;
+            m->map.ncols++;
         }
     }
-    map.nrows++;
-    map.data = NULL;
-    return(map);
+    m->map.nrows++;
+    m->map.data = NULL;
 }
 
 void malloc_map(t_map *map)
@@ -84,42 +84,45 @@ void free_map_data(t_map *map)
     free(map->data);
 }
 
-void fill_map(int fd, t_map *map, char *filename)
+void fill_map(t_main *m)
 {
     char onechar[1];
+    int i;
 
-    
-
-    map->data_alloc = false;
-    malloc_map(map);
-    close(fd);
-    // close fd, reopen file and seek to same point
-    // keep a read count
-    fd = open(filename, O_RDONLY);
-    if (fd == -1)
+    m->map.data_alloc = false;
+    malloc_map(&m->map);
+    close(m->fd);
+    m->fd = open(m->filename, O_RDONLY); // re-read
+    if (m->fd == -1)
     {
         printf("file error\n");
         exit(EXIT_FAILURE);
     }
+    i = 0;
+    while(i < m->num_chars_read) // seek to same point as before
+    {
+        read(m->fd, &onechar, 1);
+        i++;
+    }
     int col = 0;
     int row = 0;
-    while(row < map->nrows)
+    while(row < m->map.nrows)
     {
         col = 0;
-        while(col < map->ncols)
+        while(col < m->map.ncols)
         {
-            if (read(fd, &onechar, 1) < 1)
+            if (read(m->fd, &onechar, 1) < 1)
             {
                 printf("read error\n");
                 exit(EXIT_FAILURE);
             }
-            map->data[row][col] = atoi(onechar); // REPLACE WITH ft_atoi
+            m->map.data[row][col] = atoi(onechar); // REPLACE WITH ft_atoi
             col++;
         }
-        read(fd, &onechar, 1); // read the newline char but don't use it
+        read(m->fd, &onechar, 1); // read the newline char but don't use it
         row++;
     }
-    close(fd);
+    close(m->fd);
 }
 
 void print_map(t_map *map)
@@ -142,10 +145,9 @@ void print_map(t_map *map)
 	}
 }
 
+// reading textures
 
-//
-
-void read_wall_tex_path(int fd)
+void read_wall_tex_path(t_main *m)
 {
     char onechar[1];
     char   path_str[PATH_MAX];
@@ -154,7 +156,7 @@ void read_wall_tex_path(int fd)
     i = 0;
     while(1)
     {
-        if (read(fd, &onechar, 1) < 1)
+        if ((m->num_chars_read += read(m->fd, &onechar, 1)) < 1)
         {
             printf("file error\n");
             exit(EXIT_FAILURE);
@@ -168,7 +170,7 @@ void read_wall_tex_path(int fd)
     printf("path is: %s\n", path_str);
 }
 
-int read_wall_tex_prefix(int fd, char *prefix)
+int read_wall_tex_prefix(t_main *m, char *prefix)
 {
     char onechar[1];
     int i;
@@ -177,7 +179,7 @@ int read_wall_tex_prefix(int fd, char *prefix)
     i = 0;
     while(i < 3)
     {
-        if (read(fd, &onechar, 1) < 1)
+        if ((m->num_chars_read += read(m->fd, &onechar, 1)) < 1)
         {
             printf("file error\n");
             exit(EXIT_FAILURE);
@@ -193,7 +195,7 @@ int read_wall_tex_prefix(int fd, char *prefix)
     return (0);
 }
 
-void read_tex_filenames(int fd)
+void read_tex_filenames(t_main *m)
 {
     char    *prefix[4];
     int     i;
@@ -205,17 +207,17 @@ void read_tex_filenames(int fd)
     i = 0;
     while(i < 4)
     {
-        if (read_wall_tex_prefix(fd, prefix[i]))
+        if (read_wall_tex_prefix(m, prefix[i]))
         {
             printf("invalid map format\n");
             exit(EXIT_FAILURE);
         }
-        read_wall_tex_path(fd);
+        read_wall_tex_path(m);
         i++;
     }
 }
 
-int read_color_value(int fd, char *onecharbuf)
+int read_color_value(t_main *m, char *onecharbuf)
 {    
     char    onechar[1];
     char    color_str[PATH_MAX]; 
@@ -226,7 +228,7 @@ int read_color_value(int fd, char *onecharbuf)
     i = 0;
     while(non_digit_found == false)
     {
-        if (read(fd, &onechar, 1) < 1)
+        if ((m->num_chars_read += read(m->fd, &onechar, 1)) < 1)
         {
             printf("file error\n");
             exit(EXIT_FAILURE);
@@ -254,11 +256,11 @@ int read_color_value(int fd, char *onecharbuf)
     return (atoi(color_str)); // convert to ft_atoi!
 }
 
-void read_char(int fd, char tofind)
+void read_char(t_main *m, char tofind)
 {
     char onechar[1];
 
-    if (read(fd, &onechar, 1) < 1)
+    if ((m->num_chars_read += read(m->fd, &onechar, 1)) < 1)
     {
         printf("file error\n");
         exit(EXIT_FAILURE);
@@ -279,48 +281,40 @@ void read_charbuf(char onecharbuf, char tofind)
     }
 }
 
-int read_floor_ceiling_color(int fd, char floor_ceiling)
+int read_floor_ceiling_color(t_main *m, char floor_ceiling)
 {
     int     red;
     int     green;
     int     blue;
     char    onecharbuf;
 
-    read_char(fd, floor_ceiling);
-    read_char(fd, ' ');
-    red = read_color_value(fd, &onecharbuf);
-    printf("red val:%i\n", red);
+    read_char(m, floor_ceiling);
+    read_char(m, ' ');
+    red = read_color_value(m, &onecharbuf);
     read_charbuf(onecharbuf, ',');
-    green = read_color_value(fd, &onecharbuf);
-    printf("green val:%i\n", green);
+    green = read_color_value(m, &onecharbuf);
     read_charbuf(onecharbuf, ',');
-    blue = read_color_value(fd, &onecharbuf);
-    printf("blue val:%i\n", blue);
+    blue = read_color_value(m, &onecharbuf);
     read_charbuf(onecharbuf, '\n');
-    return ((0xFF << 24) | (red << 16) | (green << 8) | blue);
+    return ((red << 24) | (green << 16) | (blue << 8) | 0xFF);
 }
 
-int open_subject_file(char *filename)
+void open_subject_file(t_main *m)
 {
-    int     fd;
-
-    fd = open(filename, O_RDONLY);
-    if (fd == -1)
+    m->fd = open(m->filename, O_RDONLY);
+    if (m->fd == -1)
     {
         printf("file error\n");
         exit(EXIT_FAILURE);
     }
-    return (fd); 
 }
 
 void read_subject_file(t_main *m)
 {
-    read_tex_filenames(m->fd);
-    m->floor_color = read_floor_ceiling_color(m->fd, 'F');
-    printf("floor_color val:%i\n\n", m->floor_color);
-    m->ceiling_color = read_floor_ceiling_color(m->fd, 'C');
-    printf("ceiling_color val:%i\n\n", m->ceiling_color);
-    // read two more newlines to get us up to part where we accept world map
-    read_char(m->fd, '\n');
-    read_char(m->fd, '\n');
+    read_tex_filenames(m);
+    m->floor_color = read_floor_ceiling_color(m, 'F');
+    m->ceiling_color = read_floor_ceiling_color(m, 'C');
+    // read any number of newlines to get us up to part where we accept world map
+    read_char(m, '\n');
+    read_char(m, '\n');
 }

@@ -1,12 +1,5 @@
 #include "cub3d.h"
 
-void init_map(int fd, t_map *map, char *filename)
-{
-    *map = get_map_dims(fd);
-    printf("map dimensions: %i %i\n", map->nrows, map->ncols);
-    fill_map(fd, map, filename);
-}
-
 void init_m(char **argv, t_main *m)
 {
 	m->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Raycaster", false);
@@ -25,10 +18,12 @@ void init_m(char **argv, t_main *m)
 		exit(EXIT_FAILURE);
 	}
 	m->filename = argv[1];
-	m->fd = open_subject_file(m->filename);
+	m->num_chars_read = 0;
+	open_subject_file(m);
 	read_subject_file(m);
-	printf("here!\n");
-	init_map(m->fd, &m->map, m->filename);
+    get_map_dims(m);
+    // printf("map dimensions: %i %i\n", m->map.nrows, m->map.ncols);
+    fill_map(m);
 	close(m->fd);
 	m->texture_alloc = false;
 	if (ft_map_parameters_check(m))

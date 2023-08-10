@@ -56,6 +56,7 @@ typedef struct s_map {
 typedef struct s_main {
 	char 			*filename;
 	int				fd;
+	int				num_chars_read;
 	t_map 			map;
 	mlx_t			*mlx;
 	mlx_image_t		*img;
@@ -85,9 +86,8 @@ typedef struct s_main {
 }	t_main;
 
 int			alloc_map(t_main *m);
-int			open_subject_file(char *filename);
+void		open_subject_file(t_main *m);
 void		read_subject_file(t_main *m);
-void		init_map(int fd, t_map *map, char *filename);
 void		free_map(t_main *m);
 void		my_keyhook(mlx_key_data_t keydata, void *param);
 void		ft_raycast(void *param);
@@ -102,8 +102,8 @@ void		draw_tex2(t_main *m, int x, int drawStart, int drawEnd);
 void  		generate_textures(t_main *m);
 int*** 		create_textures();
 void		free_textures(int*** textures);
-t_map		get_map_dims(int fd);
-void		fill_map(int fd, t_map *map, char *filename);
+void		get_map_dims(t_main *m);
+void 		fill_map(t_main *m);
 void 		print_map(t_map *map);
 void		free_map_data(t_map *map);
 void		ft_error(char *str, t_main *m);
