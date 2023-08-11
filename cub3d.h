@@ -37,7 +37,7 @@ typedef struct s_point2Di {
 typedef struct s_map {
 	int	nrows;
 	int	ncols;
-    char **data;
+    int **data;
 	bool	data_alloc;
 }	t_map;
 
@@ -91,7 +91,7 @@ void		move_player(t_main *m);
 t_pt2d_d	calc_ray_dir(int x, t_pt2d_d raydr, t_pt2d_d dir, t_pt2d_d plane);
 t_pt2d_d 	calc_delta_dist(t_pt2d_d delta_dist, t_pt2d_d raydr);
 void		calc_step_and_side_dist(t_main *m);
-void			perform_dda(t_main *m);
+void		perform_dda(t_main *m);
 double		getperp_wall_dist(int side, t_pt2d_d side_dist, t_pt2d_d delta_dist);
 void		draw_tex(t_main *m, int x);
 void		draw_tex2(t_main *m, int x, int drawStart, int drawEnd);
@@ -102,5 +102,5 @@ void		free_map_data(t_map *map);
 void		ft_error(char *str, t_main *m);
 int			ft_check_map_command(int argc, char **argv);
 int			ft_map_parameters_check(t_main *m);
-void 		check_map_position(int x, int y, t_main *m);
+void 		check_map_position(int x, int y, t_main *m, char map_char);
 #endif

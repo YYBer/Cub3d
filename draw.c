@@ -3,6 +3,7 @@
 void draw_floor_ceiling(t_main *m, int x, int drawStart, int drawEnd)
 {
     int y;
+
     y = 0;
 	while (y < drawStart)
 	{

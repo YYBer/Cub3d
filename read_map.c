@@ -33,7 +33,7 @@ void get_map_dims(t_main *m)
 
 void malloc_map(t_map *map)
 {
-    map->data = (char**)malloc(map->nrows * sizeof(char*));
+    map->data = (int**)malloc(map->nrows * sizeof(int*));
     if (map->data == NULL)
     {
         printf("Memory allocation error for row pointers.\n");
@@ -44,7 +44,7 @@ void malloc_map(t_map *map)
     i = 0;
     while (i < map->nrows)
     {
-        map->data[i] = (char*)malloc(map->ncols * sizeof(char));
+        map->data[i] = (int*)malloc(map->ncols * sizeof(int));
         if (map->data[i] == NULL) {
             printf("Memory allocation error for row %d.\n", i);
             exit(EXIT_FAILURE);
@@ -98,7 +98,7 @@ void fill_map(t_main *m)
                 printf("read error\n");
                 exit(EXIT_FAILURE);
             }
-            // check_map_position(row, col, m);
+            check_map_position(row, col, m, onechar[0]);
             m->map.data[row][col] = atoi(onechar);
             col++;
         }

@@ -68,46 +68,39 @@ void read_subject_file(char **argv, t_main *m)
     read_char(m, '\n');
 }
 
-void check_map_position(int x, int y, t_main *m)
+void check_map_position(int x, int y, t_main *m, char map_char)
 {
-    printf("xy: %i %i\n", x, y);
-    printf("mc: %c\n", m->map.data[x][y]);
-    if (m->map.data[x][y] == 'N' || m->map.data[x][y] == 'S' || m->map.data[x][y] == 'W' || m->map.data[x][y] == 'E')
+    if (map_char == 'N' || map_char == 'S' || map_char == 'W' || map_char == 'E')
     {
-        printf("here!\n");
         m->pos.x = x;
         m->pos.y = y;
     }
-    if (m->map.data[x][y] == 'N')
+    if (map_char == 'N')
     {
-        printf("N!\n");
-        m->dir.x = 0;
-        m->dir.y = -1;
-        m->plane.x = 0.66;
-        m->plane.y = 0;
-    }
-    if (m->map.data[x][y] == 'S')
-    {
-        printf("S!\n");
-        m->dir.x = 0;
-        m->dir.y = 1;
-        m->plane.x = -0.66;
-        m->plane.y = 0;		               
-    }
-    if (m->map.data[x][y] == 'W')
-    {
-        printf("W!\n");
-        m->dir.x = -1;
-        m->dir.y = 0;
-        m->plane.x = 0;
-        m->plane.y = -0.66;                
-    }
-    if (m->map.data[x][y] == 'E')
-    {
-        printf("E!\n");
         m->dir.x = 1;
         m->dir.y = 0;
         m->plane.x = 0;
-        m->plane.y = 0.66;                
+        m->plane.y = 0.66;        
+    }
+    if (map_char == 'S')
+    {
+        m->dir.x = -1;
+        m->dir.y = 0;
+        m->plane.x = 0;
+        m->plane.y = -0.66;                             
+    }
+    if (map_char == 'W')
+    {
+        m->dir.x = 0;
+        m->dir.y = -1;
+        m->plane.x = 0.66;
+        m->plane.y = 0;                  
+    }
+    if (map_char == 'E')
+    {
+        m->dir.x = 0;
+        m->dir.y = 1;
+        m->plane.x = -0.66;
+        m->plane.y = 0;
     }
 }

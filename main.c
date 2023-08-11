@@ -34,18 +34,6 @@ void init_m(char **argv, t_main *m)
 	if (ft_map_parameters_check(m))
 		exit(1);
 	load_textures(m);
-	m->pos.x = 2;
-	m->pos.y = 2;
-	// // NORTH
-	m->dir.x = 0;
-	m->dir.y = -1;
-	m->plane.x = 0.66;
-	m->plane.y = 0;
-	// // EAST
-	// m->dir.x = 1;
-	// m->dir.y = 0;
-	// m->plane.x = 0;
-	// m->plane.y = 0.66;	
 	m->move_speed = SQRS_PER_SEC / 100; 
 	m->rot_speed = RADS_PER_SEC / 100;
 	m->pitch = 100;

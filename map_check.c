@@ -18,26 +18,6 @@ int	ft_check_map_command(int argc, char **argv)
 	return (0);
 }
 
-// void print_map(t_map *map)
-// {
-// 	int col;
-// 	int row;
-
-// 	col = 0;
-// 	row = 0;
-// 	while(row < map->nrows)
-// 	{
-//         col = 0;
-// 		while(col < map->ncols)
-// 		{
-// 			printf("%i", map->data[row][col]);
-// 			col++;
-// 		}
-// 		printf("\n");
-// 		row++;
-// 	}
-// }
-
 static int  ft_surround_check(t_map map)
 {
 	int col;
