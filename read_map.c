@@ -37,8 +37,11 @@ void get_map_dims(t_main *m)
     m->map.data = NULL;
 }
 
-void malloc_map(t_map *map)
+static void malloc_map2(t_map *map)
 {
+    int i;
+
+    i = 0;
     map->data = (int**)malloc(map->nrows * sizeof(int*));
     if (map->data == NULL)
     {
@@ -46,8 +49,6 @@ void malloc_map(t_map *map)
         exit(EXIT_FAILURE);
     }
     map->data_alloc = true;
-    int i;
-    i = 0;
     while (i < map->nrows)
     {
         map->data[i] = (int*)malloc(map->ncols * sizeof(int));
@@ -58,6 +59,80 @@ void malloc_map(t_map *map)
         i++;
     }
 }
+
+// #include <stdio.h>
+// int main()
+// {
+// 	int fd = open("map.cub", O_RDONLY);
+// 	char *wbuffer = get_next_line(fd);
+// 	while (wbuffer)
+// 	{
+// 		printf("%s", wbuffer);
+// 		free(wbuffer);
+// 		wbuffer = get_next_line(fd);
+// 	}
+// 	close(fd);
+// 	return (0);
+// }
+
+
+void    malloc_map(t_main *m)
+{
+    char *wbuffer;
+    char *wmap;
+
+    wmap = ft_strdup("");
+    m->fd = open(m->filename, O_RDONLY);
+    if (m->fd < 0)
+        ft_error("open map failed", m);
+    while (1)
+    {
+        wbuffer = get_next_line(m->fd);
+        if (wbuffer == NULL)
+            break ;
+        wmap = ft_strjoin_free1(wmap, wbuffer);
+        m->map.ncols = ft_strlen(wbuffer) - 1;
+        free(wbuffer);
+        m->map.nrows++;
+    }
+    close(m->fd);
+    m->map.cmap = ft_split(wmap, '\n');
+    // printf("%s", m->map.cmap[0]);
+    // printf("%s", m->map.cmap[1]);
+    // printf("%s", m->map.cmap[3]);
+    printf("wmap: %s\n", wmap);
+    free(wmap);
+    m->map.cmap_alloc = true;
+    malloc_map2(&m->map);
+    print_map(&m->map);
+}
+
+// void	ft_init_map(t_game *game, char **argv)
+// {
+// 	char	*wbuffer;
+// 	char	*wmap;
+
+// 	game->fd = open(argv[1], O_RDONLY);
+// 	game->map.rows = 0;
+// 	if (game->fd < 0)
+// 		ft_error("can't read the map", game);
+// 	wmap = ft_strdup("");
+// 	while (true)
+// 	{
+// 		wbuffer = get_next_line(game->fd);
+// 		if (wbuffer == NULL)
+// 			break ;
+// 		wmap = ft_strjoin_frees1(wmap, wbuffer);
+// 		game->map.columns = ft_strlen(wbuffer) - 1;
+// 		free(wbuffer);
+// 		game->map.rows++;
+// 	}
+// 	printf("in map init = %d\n", game->map.columns);
+// 	close(game->fd);
+// 	game->map.full = ft_split(wmap, '\n');
+// 	free(wmap);
+// 	game->map_alloc = true;
+// }
 
 void free_map_data(t_map *map)
 {
@@ -78,8 +153,9 @@ void fill_map(t_main *m)
     int i;
 
     m->map.data_alloc = false;
-    malloc_map(&m->map);
-    close(m->fd);
+    m->map.cmap_alloc = false;
+    malloc_map(m);
+    //close(m->fd);
     m->fd = open(m->filename, O_RDONLY); // re-read
     if (m->fd == -1)
     {
@@ -121,6 +197,7 @@ void print_map(t_map *map)
 
 	col = 0;
 	row = 0;
+    printf("---------------start--------------\n");
 	while(row < map->nrows)
 	{
         col = 0;
@@ -132,4 +209,5 @@ void print_map(t_map *map)
 		printf("\n");
 		row++;
 	}
+    printf("---------------end----------------\n");
 }

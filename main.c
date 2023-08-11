@@ -29,7 +29,7 @@ void init_m(char **argv, t_main *m)
     get_map_dims(m);
     fill_map(m);
 	printf("map dimensions: %i %i\n", m->map.nrows, m->map.ncols);	
-	print_map(&m->map);
+	// print_map(&m->map);
 	m->texture_alloc = false; // where should this go?
 	if (ft_map_parameters_check(m))
 		exit(1);

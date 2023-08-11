@@ -15,5 +15,7 @@ void	ft_error(char *str, t_main *m)
 			delete_textures(m);
 		if (m->map.data_alloc == true)
 			free_map_data(&m->map);
+		// if (m->map.cmap_alloc == true)
+		// 	todo
 	}
 }

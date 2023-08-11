@@ -17,6 +17,7 @@
 #define SQRS_PER_SEC 5.0
 #define RADS_PER_SEC 3.0
 #define NUM_TEXTURES 4
+#define	BUFFER_SIZE 100
 
 #define COLOUR_RED 0xFF0000FF
 #define COLOUR_BLUE 0x00FF00FF
@@ -38,7 +39,9 @@ typedef struct s_map {
 	int	nrows;
 	int	ncols;
     int **data;
+	char	**cmap;
 	bool	data_alloc;
+	bool	cmap_alloc;
 }	t_map;
 
 // comment all vars below
@@ -103,4 +106,11 @@ void		ft_error(char *str, t_main *m);
 int			ft_check_map_command(int argc, char **argv);
 int			ft_map_parameters_check(t_main *m);
 void 		check_map_position(int x, int y, t_main *m, char map_char);
+
+char	*get_wstr(int fd, char *wstr);
+char	*get_wbuffer(char *wstr);
+char	*get_strrst(char *wstr);
+char	*get_next_line(int fd);
+char	*ft_strjoin_free1(char *s1, char *s2);
+char	*ft_strchr_gnl(char *s, int c);
 #endif
