@@ -3,14 +3,17 @@
 void get_map_dims(t_main *m)
 {
     char onechar[1];
+    int longest_ncols;
 
+    longest_ncols = 0;
     m->map.nrows = 0;
     m->map.ncols = 0;
     while(read(m->fd, &onechar, 1) > 0)
     {
-        if ((onechar[0] < '0' || onechar[0] > '1') && 
-            onechar[0] != 'N' && onechar[0] != 'E' && onechar[0] != 'S' && onechar[0] != 'W' &&
-                onechar[0] != '\n')
+        if (onechar[0] != '0' && onechar[0] != '1' && 
+            onechar[0] != 'N' && onechar[0] != 'E' && 
+            onechar[0] != 'S' && onechar[0] != 'W' &&
+            onechar[0] != '\n')
         {
             printf("invalid character in map\n");
             close(m->fd);
@@ -19,6 +22,8 @@ void get_map_dims(t_main *m)
         }
         if (onechar[0] == '\n')
         {
+            if (m->map.ncols > longest_ncols)   
+                longest_ncols = m->map.ncols;
             m->map.ncols = 0;
             m->map.nrows++;
         }
@@ -28,6 +33,7 @@ void get_map_dims(t_main *m)
         }
     }
     m->map.nrows++;
+    m->map.ncols = longest_ncols;
     m->map.data = NULL;
 }
 

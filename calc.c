@@ -83,9 +83,9 @@ void perform_dda(t_main *m)
 			{
 				m->side = 0;
 				if (m->step.x < 0) // West wall
-					m->wall_direction = 3;
-				else // East wall
 					m->wall_direction = 2;
+				else // East wall
+					m->wall_direction = 3;
 			}
 			else // EW wall
 			{
