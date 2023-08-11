@@ -53,14 +53,14 @@ typedef struct s_main {
 	mlx_texture_t*	textures[4];
 	bool			texture_alloc;
 	t_pt2d_d		pos; 				// player start position
-	t_pt2d_d		dir; 				// initial direction vector
+	t_pt2d_d		dir; 				// initial direction vector (line from player position to )
 	t_pt2d_d		plane; 				// 2d raycaster version of camera plane
-	t_pt2d_d		raydr;				
-	t_pt2d_d		side_dist;
-	t_pt2d_d		delta_dist;
+	t_pt2d_d		raydr;				// the direction in which the ray will be cast
+	t_pt2d_d		side_dist;			// the distance the ray has to travel from its start position to the next x square and next y square
+	t_pt2d_d		delta_dist;			// distance between one x square to next x square, or one y square to next y square
 	t_pt2d_i		map_pos; 			// which square the player is in on the map
 	t_pt2d_i		step; 				// what direction to step in x or y-direction (either +1 or -1)
-	t_pt2d_i		tex;
+	t_pt2d_i		tex;				// 
 	double			move_speed;
 	double			rot_speed;
 	int				side;
