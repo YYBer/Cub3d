@@ -31,8 +31,8 @@ void init_m(char **argv, t_main *m)
 	printf("map dimensions: %i %i\n", m->map.nrows, m->map.ncols);	
 	print_map(&m->map);
 	m->texture_alloc = false; // where should this go?
-	if (ft_map_parameters_check(m))
-		exit(1);
+	// if (ft_map_parameters_check(m))
+	// 	exit(1);
 	load_textures(m);
 	m->move_speed = SQRS_PER_SEC / 100; 
 	m->rot_speed = RADS_PER_SEC / 100;

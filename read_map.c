@@ -22,7 +22,7 @@ void get_map_dims(t_main *m)
         }
         if (onechar[0] == '\n')
         {
-            if (m->map.ncols > longest_ncols)   
+            if (m->map.ncols > longest_ncols)
                 longest_ncols = m->map.ncols;
             m->map.ncols = 0;
             m->map.nrows++;
@@ -33,6 +33,8 @@ void get_map_dims(t_main *m)
         }
     }
     m->map.nrows++;
+	if (m->map.ncols > longest_ncols)
+		longest_ncols = m->map.ncols;
     m->map.ncols = longest_ncols;
     m->map.data = NULL;
 }
@@ -92,25 +94,45 @@ void fill_map(t_main *m)
         read(m->fd, &onechar, 1);
         i++;
     }
-    int col = 0;
-    int row = 0;
-    while(row < m->map.nrows)
-    {
-        col = 0;
-        while(col < m->map.ncols)
-        {
-            if (read(m->fd, &onechar, 1) < 1)
-            {
-                printf("read error\n");
-                exit(EXIT_FAILURE);
-            }
-            check_map_position(row, col, m, onechar[0]);
-            m->map.data[row][col] = atoi(onechar);
-            col++;
-        }
-        read(m->fd, &onechar, 1); // read the newline char but don't use it
-        row++;
-    }
+	int row;
+	int col;
+	bool shortline_found;
+
+	printf("ncols: %i\n", m->map.ncols);
+	row = 0;
+	while(row < m->map.nrows)
+	{
+		col = 0;
+		shortline_found = false;
+		while(col < m->map.ncols)
+		{
+			if (shortline_found == false)
+			{
+				if (read(m->fd, &onechar, 1) == 0) // end of file reached (if last line is shorter than others)
+					shortline_found = true;
+				if (col == 0 && onechar[0] == '\n') // skip the newline and read another char
+					read(m->fd, &onechar, 1);
+				if (col > 0 && onechar[0] == '\n')
+				{
+					shortline_found = true;
+				}
+			}
+			if (shortline_found == false)
+			{
+				check_map_position(row, col, m, onechar[0]);
+				// printf("%c", onechar[0]);
+				m->map.data[row][col] = atoi(onechar);
+			}
+			if (shortline_found == true)
+			{
+				// printf("9");
+				m->map.data[row][col] = 9;
+			}		
+			col++;
+		}
+		// printf("\n");
+		row++;
+	}
     close(m->fd);
 }
 
