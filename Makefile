@@ -1,5 +1,6 @@
 NAME	:= cub3d
-CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g3
+CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -g3
+# removed -Ofast due to errors
 LIBMLX	:= ./MLX42
 LIBFT 	:= libft/libft.a
 LIBFT_PATH := libft/
