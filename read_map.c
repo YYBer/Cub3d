@@ -13,7 +13,7 @@ void get_map_dims(t_main *m)
         if (onechar[0] != '0' && onechar[0] != '1' && 
             onechar[0] != 'N' && onechar[0] != 'E' && 
             onechar[0] != 'S' && onechar[0] != 'W' &&
-            onechar[0] != '\n')
+            onechar[0] != ' ' && onechar[0] != '\n')
         {
             printf("invalid character in map\n");
             close(m->fd);
@@ -98,7 +98,6 @@ void fill_map(t_main *m)
 	int col;
 	bool shortline_found;
 
-	printf("ncols: %i\n", m->map.ncols);
 	row = 0;
 	while(row < m->map.nrows)
 	{
@@ -120,6 +119,8 @@ void fill_map(t_main *m)
 			if (shortline_found == false)
 			{
 				check_map_position(row, col, m, onechar[0]);
+				if (onechar[0] == ' ')
+					onechar[0] = '9';
 				// printf("%c", onechar[0]);
 				m->map.data[row][col] = atoi(onechar);
 			}
