@@ -89,7 +89,7 @@ void fill_map(t_main *m)
         exit(EXIT_FAILURE);
     }
     i = 0;
-    while(i < m->num_chars_read) // seek to same point as before
+    while(i < m->total_chars_read) // seek to same point as before
     {
         read(m->fd, &onechar, 1);
         i++;

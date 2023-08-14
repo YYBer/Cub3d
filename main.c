@@ -1,3 +1,6 @@
+// TODO: fix ERROR: cannot parse map file(read_prefixes) - we are one char too far ahead
+// DONE: Except for the map, each type of information from an element can be separated by one or more space(s). [???]
+
 #include "cub3d.h"
 
 void init_window(t_main *m)
@@ -55,6 +58,26 @@ void my_closehook(void *param)
 	free_map_data(&m->map);
 	delete_textures(m);
 	exit(0);
+}
+
+void load_textures(t_main *m)
+{
+    printf("0: \"%s\"\n", m->tex_paths[0]);
+    printf("1: \"%s\"\n", m->tex_paths[1]);
+    printf("2: \"%s\"\n", m->tex_paths[2]);
+    printf("3: \"%s\"\n", m->tex_paths[3]);
+    m->textures[0] = mlx_load_png(m->tex_paths[0]);
+    m->textures[1] = mlx_load_png(m->tex_paths[1]);
+    m->textures[2] = mlx_load_png(m->tex_paths[2]);
+    m->textures[3] = mlx_load_png(m->tex_paths[3]);
+}
+
+void delete_textures(t_main *m)
+{
+    mlx_delete_texture(m->textures[0]);
+	mlx_delete_texture(m->textures[1]);
+	mlx_delete_texture(m->textures[2]);
+	mlx_delete_texture(m->textures[3]);
 }
 
 int	main(int argc, char **argv)

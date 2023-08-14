@@ -11,6 +11,7 @@
 #include <stdbool.h>
 #include "MLX42.h"
 #include "libft/libft.h"
+#include <string.h> // needed?
 
 #define WIN_WIDTH 640
 #define WIN_HEIGHT 480
@@ -41,11 +42,23 @@ typedef struct s_map {
 	bool	data_alloc;
 }	t_map;
 
+typedef struct s_fileflags {
+	bool no;
+	bool so;
+	bool we;
+	bool ea;
+	bool f;
+	bool c;
+}	t_fileflags;
+
 // comment all vars below
+
 typedef struct s_main {
 	char 			*filename;
 	int				fd;
-	int				num_chars_read;
+	char			char_read;
+	int				total_chars_read;
+	t_fileflags 	fileflags;
 	char			*tex_paths[4];
 	t_map 			map;
 	mlx_t			*mlx;
@@ -81,7 +94,6 @@ typedef struct s_main {
 int			alloc_map(t_main *m);
 void 		read_subject_file(char **argv, t_main *m);
 void		read_tex_filenames(t_main *m);
-int 		read_color_value(t_main *m, char *onecharbuf);
 void 		load_textures(t_main *m);
 void		delete_textures(t_main *m);
 void		free_map(t_main *m);
@@ -103,4 +115,13 @@ void		ft_error(char *str, t_main *m);
 int			ft_check_map_command(int argc, char **argv);
 int			ft_map_parameters_check(t_main *m);
 void 		check_map_position(int x, int y, t_main *m, char map_char);
+
+void init_fileflags(t_main *m);
+void read_prefixes(t_main *m);
+void read_char(t_main *m);
+bool match_char(t_main *m, char char_to_match);
+bool *choose_fileflag(t_main *m, char *path);
+bool read_tex_prefix(t_main *m, char *path);
+bool read_color_prefix(t_main *m, char *path);
+
 #endif
