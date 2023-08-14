@@ -7,7 +7,7 @@ void read_subject_file(char **argv, t_main *m)
     m->fd = open(m->filename, O_RDONLY);
     if (m->fd == -1)
     {
-        printf("file error\n");
+        printf("%s%s", ERR_MSG, ERR_FILE);
         exit(EXIT_FAILURE);
     }
 	init_fileflags(m);

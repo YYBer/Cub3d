@@ -31,7 +31,7 @@ input_files=(
     # "maps/preamble_color_invalid_value_3.cub"
     # "maps/preamble_color_omitted_comma.cub"
     # "maps/preamble_color_omitted_prefix.cub"
-    # "maps/preamble_colour_repeated_prefix.cub"
+    # "maps/preamble_color_repeated_prefix.cub"
     # "maps/preamble_newlines_none.cub"
     # "maps/preamble_newlines_random.cub"
     # "maps/preamble_random_order.cub"

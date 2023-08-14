@@ -8,7 +8,7 @@ void	read_char(t_main *m)
 	num_chars_read = read(m->fd, &onechar, 1);
     if (num_chars_read < 1)
     {
-        printf("file error\n");
+        printf("%s%s", ERR_MSG, ERR_FILE);
 		close(m->fd);
         exit(EXIT_FAILURE);
     }
@@ -70,7 +70,7 @@ void	read_prefixes(t_main *m)
 		return;
 	if (read_color_prefix(m, "C") == true)
 		return;
-	printf("ERROR: cannot parse map file(read_prefixes)\n");
+	printf("%s%s%s", ERR_MSG, ERR_FORMAT, ERR_PREFIXES);
 	close(m->fd);
 	exit(EXIT_FAILURE);		
 }

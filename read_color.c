@@ -14,7 +14,7 @@ int read_color_value(t_main *m)
         {
             if (i == 0) // if no digits have been read previously and we find a non-digit map format is invalid
             {
-                printf("invalid map format(color)\n");
+                printf("%s%s%s", ERR_MSG, ERR_FORMAT, ERR_COL_VAL);
 				close(m->fd);
                 exit(EXIT_FAILURE);
             }                        
@@ -53,7 +53,7 @@ int read_color_path(t_main *m)
     blue = read_color_value(m);
 	if (red < 0 || red > 255 || green < 0 || green > 255 || blue < 0 || blue > 255)
 	{
-		printf("ERROR: invalid color value\n");
+		printf("%s%s%s", ERR_MSG, ERR_FORMAT, ERR_COL_VAL);
 		close(m->fd);
 		exit(EXIT_FAILURE);
 	}
@@ -72,7 +72,7 @@ void print_rgba(int value)
     int blue = (value >> 8) & 0xFF;
     int alpha = value & 0xFF;
 
-    printf("0x%02X%02X%02X%02X\n", red, green, blue, alpha);
+    printf("0x%02X%02X%02X%02X", red, green, blue, alpha);
 }
 
 bool read_color_prefix(t_main *m, char *path)
@@ -87,20 +87,22 @@ bool read_color_prefix(t_main *m, char *path)
 		chosen_fileflag = choose_fileflag(m, path);
 		if (*chosen_fileflag == true)
 		{
-			printf("ERROR: multiple %s paths in file(2)\n", path);
+			printf("%s%s%s", ERR_MSG, ERR_FORMAT, ERR_DUPL);
 			close(m->fd);
 			exit(EXIT_FAILURE);
 		}
-		printf("%s path found:", path);
 		if (strcmp(path, "F") == 0)
 		{
 			m->floor_color = read_color_path(m);
-			print_rgba(m->floor_color);	
+			printf("%s color:	\"", path);
+			print_rgba(m->floor_color);
+			printf("\"\n");
 		}
 		if (strcmp(path, "C") == 0)
 		{
-			m->ceiling_color = read_color_path(m);
-			print_rgba(m->ceiling_color);	
+			printf("%s color:	\"", path);
+			print_rgba(m->ceiling_color);
+			printf("\"\n");
 		}
 		*chosen_fileflag = true;
 		return (true);

@@ -48,20 +48,21 @@ bool read_tex_prefix(t_main *m, char *path)
 			chosen_fileflag = choose_fileflag(m, path);
 			if (*chosen_fileflag == true)
 			{
-				printf("ERROR: multiple %s paths in file\n", path);
+				printf("%s%s%s", ERR_MSG, ERR_FORMAT, ERR_DUPL);
 				close(m->fd);
 				exit(EXIT_FAILURE);
 			}
-			printf("%s path found:", path);
+			printf("%s texture:	\"", path);
 			tex_path_index = choose_tex_path_index(path);
 			m->tex_paths[tex_path_index] = read_wall_tex_path(m);
-			printf("%s\n", m->tex_paths[tex_path_index]);
+			printf("%s", m->tex_paths[tex_path_index]);
+			printf("\"\n");
 			*chosen_fileflag = true;
 			return (true);
 		}
 		else
 		{	
-			printf("ERROR: cannot parse map file\n");
+			printf("%s%s%s", ERR_MSG, ERR_FORMAT, ERR_PREFIXES); // is ERR_PREFIXES the right kind of message for this error?
 			close(m->fd);
 			exit(EXIT_FAILURE);
 		}

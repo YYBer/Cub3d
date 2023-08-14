@@ -1,14 +1,13 @@
 # TODO:
 
 ## Mandatory
-TOFIX: sometimes on run the 0's in the map are 8's!!
+TOFIX: sometimes on run the 0's in the map are 8's!! (file read error)
 TOFIX: worlds are mirrored!
-TODO : handle that first lines in map file can come in any order and can have any number of newlines between them [GRAHAM]
-TODO : map error checking [YUANYING]
+TODO : map error checking
     - make sure has surrounding wall
     - has single player position (N,E,S or W)
-    - can handle different row lengths
-    - can handle spaces within the map
+    - can handle different line lengths
+    - can handle spaces at start of lines
 TODO : tidy up and refactor code into 5 functions per file, then norminette
 TODO : leak checks, free correct resources for every 'exit' command (currently it seems MLX42 itself leaks)
 
