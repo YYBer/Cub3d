@@ -1,0 +1,265 @@
+  F path found:0xDC6400FF
+  SO path found:./texture/wall2.png
+  EA path found:./texture/wall4.png
+  C path found:0xE11E00FF
+  NO path found:./texture/wall1.png
+  WE path found:./texture/wall3.png
+  map dimensions: 21 15
+  099999999999999
+  099999999999999
+  099999999999999
+  111999111999999
+  101111101111999
+  100000000001119
+  111110010000001
+  999910191011119
+  999910010019999
+  991100111199999
+  991000199999999
+  111001999999999
+  100019999999999
+  101199999999999
+  919999999999999
+  999999999999999
+  999999999999999
+  999999999999999
+  999999999999999
+  999999999999999
+  999999999999999
+  0: "./texture/wall1.png"
+  1: "./texture/wall2.png"
+  2: "./texture/wall3.png"
+  3: "./texture/wall4.png"
+  NO path found:./texture/wall1.png
+  SO path found:./texture/wall2.png
+  WE path found:./texture/wall3.png
+  EA path found:./texture/wall4.png
+  F path found:0xFFFF00FF
+  C path found:0x0000FFFF
+  map dimensions: 6 24
+  111111111111111111111111
+  991000000000000000000001
+  991000000000000000000001
+  991000000000000000000001
+  111111111111111111111111
+  999999999999999999999999
+  0: "./texture/wall1.png"
+  1: "./texture/wall2.png"
+  2: "./texture/wall3.png"
+  3: "./texture/wall4.png"
+  NO path found:./texture/wall1.png
+  SO path found:./texture/wall2.png
+  WE path found:./texture/wall3.png
+  EA path found:./texture/wall4.png
+  F path found:0xFFFF00FF
+  C path found:0x0000FFFF
+  map dimensions: 6 24
+  111111111111111111111111
+  991000000000000000000001
+  910000000000000000000001
+  991000000000000000000001
+  111111111111111111111111
+  999999999999999999999999
+  0: "./texture/wall1.png"
+  1: "./texture/wall2.png"
+  2: "./texture/wall3.png"
+  3: "./texture/wall4.png"
+  NO path found:./texture/wall1.png
+  SO path found:./texture/wall2.png
+  WE path found:./texture/wall3.png
+  EA path found:./texture/wall4.png
+  F path found:0xFFFF00FF
+  C path found:0x0000FFFF
+  map dimensions: 6 29
+  11111111111111111111111199999
+  99100000000000000000000019999
+  99100000000000000000000011111
+  99100000000000000000000119999
+  11111111111111111111111199999
+  99999999999999999999999999999
+  0: "./texture/wall1.png"
+  1: "./texture/wall2.png"
+  2: "./texture/wall3.png"
+  3: "./texture/wall4.png"
+  NO path found:./texture/wall1.png
+  SO path found:./texture/wall2.png
+  WE path found:./texture/wall3.png
+  EA path found:./texture/wall4.png
+  F path found:0xDC6400FF
+  C path found:0xE11E00FF
+  map dimensions: 16 33
+  099999999111111111111111111111111
+  199999999999999999999999999999999
+  999999991000000000110000000000001
+  999999991011000001110000000000001
+  999999991001000000000000000000001
+  111111111011000001110000000000001
+  100000000011000001110111111111111
+  111101111111110111000000100019999
+  111101111111110111010100100019999
+  110000001101010111000000100019999
+  100000000000000011000000100019999
+  100000000000000011010100100019999
+  110000011101010111110111100019999
+  111101119111010191011110100019999
+  111111119111111191111111111119999
+  999999999999999999999999999999999
+  0: "./texture/wall1.png"
+  1: "./texture/wall2.png"
+  2: "./texture/wall3.png"
+  3: "./texture/wall4.png"
+  NO path found:./texture/wall1.png
+  SO path found:./texture/wall2.png
+  WE path found:./texture/wall3.png
+  EA path found:./texture/wall4.png
+  F path found:0xDC6400FF
+  C path found:file error
+  NO path found:./texture/wall1.png
+  SO path found:./texture/wall2.png
+  WE path found:./texture/wall3.png
+  EA path found:./texture/wall4.png
+  F path found:0xDC6400FF
+  C path found:0xE11E00FF
+  map dimensions: 5 5
+  11111
+  10001
+  10001
+  11111
+  99999
+  0: "./texture/wall1.png"
+  1: "./texture/wall2.png"
+  2: "./texture/wall3.png"
+  3: "./texture/wall4.png"
+  NO path found:./texture/wall1.png
+  SO path found:./texture/wall2.png
+  WE path found:./texture/wall3.png
+  EA path found:./texture/wall4.png
+  F path found:0xDC6400FF
+  C path found:0xE11E00FF
+  invalid character in map
+  NO path found:./texture/wall1.png
+  SO path found:./texture/wall2.png
+  WE path found:./texture/wall3.png
+  EA path found:./texture/wall4.png
+  F path found:0xDC6400FF
+  C path found:0xE11E00FF
+  map dimensions: 5 5
+  11111
+  10001
+  10001
+  11111
+  99999
+  0: "./texture/wall1.png"
+  1: "./texture/wall2.png"
+  2: "./texture/wall3.png"
+  3: "./texture/wall4.png"
+  NO path found:./texture/wall1.png
+  SO path found:./texture/wall2.png
+  WE path found:./texture/wall3.png
+  EA path found:./texture/wall4.png
+  F path found:0x1E1E32FF
+  C path found:0x0064DCFF
+  map dimensions: 7 24
+  011111111111111111111111
+  199999999999999999999999
+  100000000000000000000001
+  100010000000000000000001
+  100000000000000000000001
+  111111111111111111111111
+  999999999999999999999999
+  0: "./texture/wall1.png"
+  1: "./texture/wall2.png"
+  2: "./texture/wall3.png"
+  3: "./texture/wall4.png"
+  NO path found:./texture/wall1.png
+  SO path found:./texture/wall2.png
+  WE path found:./texture/wall3.png
+  EA path found:./texture/wall4.png
+  F path found:0xDC6400FF
+  C path found:0xE11E00FF
+  invalid character in map
+  NO path found:./texture/wall1.png
+  SO path found:./texture/wall2.png
+  WE path found:./texture/wall3.png
+  EA path found:./texture/wall4.png
+  F path found:0xDC6400FF
+  C path found:0xE11E00FF
+  map dimensions: 13 15
+  111999111999999
+  101111101111999
+  100000000001119
+  111110010000001
+  999910191011119
+  999910010019999
+  991100111199999
+  991000199999999
+  111001999999999
+  100019999999999
+  101199999999999
+  919999999999999
+  999999999999999
+  0: "./texture/wall1.png"
+  1: "./texture/wall2.png"
+  2: "./texture/wall3.png"
+  3: "./texture/wall4.png"
+  NO path found:./texture/wall1.png
+  SO path found:./texture/wall2.png
+  WE path found:./texture/wall3.png
+  EA path found:./texture/wall4.png
+  F path found:invalid map format(color)
+  NO path found:./texture/wall1.png
+  SO path found:./texture/wall2.png
+  WE path found:./texture/wall3.png
+  EA path found:./texture/wall4.png
+  F path found:0x1E3264FF
+  C path found:0x0064FEFF
+  invalid character in map
+  NO path found:./texture/wall1.png
+  SO path found:./texture/wall2.png
+  WE path found:./texture/wall3.png
+  EA path found:./texture/wall4.png
+  F path found:invalid map format(color)
+  NO path found:./texture/wall1.png
+  SO path found:./texture/wall2.png
+  WE path found:./texture/wall3.png
+  EA path found:./texture/wall4.png
+  F path found:0x1E1E32FF
+  C path found:ERROR: invalid color value
+  NO path found:./texture/wall1.png
+  SO path found:./texture/wall2.png
+  WE path found:./texture/wall3.png
+  EA path found:./texture/wall4.png
+  F path found:0x1E1E32FF
+  C path found:ERROR: invalid color value
+  NO path found:./texture/wall1.png
+  SO path found:./texture/wall2.png
+  WE path found:./texture/wall3.png
+  EA path found:./texture/wall4.png
+  F path found:invalid map format(color)
+  NO path found:./texture/wall1.png
+  SO path found:./texture/wall2.png
+  WE path found:./texture/wall3.png
+  EA path found:./texture/wall4.png
+  F path found:0x1E1E32FF
+  ERROR: cannot parse map file(read_prefixes)
+  NO path found:./texture/wall1.png
+  SO path found:./texture/wall2.png
+  WE path found:./texture/wall3.png
+  EA path found:./texture/wall4.png
+  F path found:0x1E1E32FF
+  C path found:0x0064DCFF
+  invalid character in map
+  file error
+  NO path found:./texture/wall1.png
+  SO path found:./texture/wall2.png
+  ERROR: multiple SO paths in file
+  MLX42: LodePNG: failed to open file for reading
+  NO path found:./texture/wall1.png
+  SO path found:./texture/wall2.png
+  EA path found:./texture/wall4.png
+  F path found:0x1E1E32FF
+  C path found:0x0064DCFF
+  ERROR: cannot parse map file(read_prefixes)
+  NO path found:./texture/wall1.png
+  SO path found:./texture/wall2.png
+  ERROR: multiple SO paths in file

@@ -1,0 +1,12 @@
+NO ./texture/wall1.png
+SO ./texture/wall2.png
+SO ./texture/wall3.png
+WE ./texture/wall4.png
+EA ./texture/wall4.png
+NO ./texture/wall4.png
+F 30,30,50
+C 0,100,220
+
+111
+1S1
+111
