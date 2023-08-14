@@ -100,6 +100,7 @@ bool read_color_prefix(t_main *m, char *path)
 		}
 		if (strcmp(path, "C") == 0)
 		{
+			m->ceiling_color = read_color_path(m);
 			printf("%s color:	\"", path);
 			print_rgba(m->ceiling_color);
 			printf("\"\n");
