@@ -45,7 +45,8 @@ typedef struct s_point2Di {
 typedef struct s_map {
 	int	nrows;
 	int	ncols;
-    int **data;
+    char **data_c; // map as characters (printable)
+    int **data_i; // map as int (converted from data_c) (used by calc.c move.c)
 	bool	data_alloc;
 }	t_map;
 
@@ -116,19 +117,22 @@ void		draw_tex(t_main *m, int x);
 void		draw_tex2(t_main *m, int x, int drawStart, int drawEnd);
 void		get_map_dims(t_main *m);
 void 		fill_map(t_main *m);
-void 		print_map(t_map *map);
+void 		print_map_c(t_map *map);
+void 		print_map_i(t_map *map);
 void		free_map_data(t_map *map);
 void		ft_error(char *str, t_main *m);
 int			ft_check_map_command(int argc, char **argv);
 int			ft_map_parameters_check(t_main *m);
 void 		check_map_position(int x, int y, t_main *m, char map_char);
 
-void init_fileflags(t_main *m);
-void read_prefixes(t_main *m);
-void read_char(t_main *m);
-bool match_char(t_main *m, char char_to_match);
-bool *choose_fileflag(t_main *m, char *path);
-bool read_tex_prefix(t_main *m, char *path);
-bool read_color_prefix(t_main *m, char *path);
+void		init_fileflags(t_main *m);
+void		read_prefixes(t_main *m);
+void		read_char(t_main *m);
+bool		match_char(t_main *m, char char_to_match);
+bool		*choose_fileflag(t_main *m, char *path);
+bool		read_tex_prefix(t_main *m, char *path);
+bool		read_color_prefix(t_main *m, char *path);
+
+void		malloc_map_i(t_map *map);
 
 #endif

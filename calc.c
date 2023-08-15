@@ -75,7 +75,7 @@ void perform_dda(t_main *m)
 			side = 1;
 		}
 		// Check if ray has hit a wall
-		if (m->map.data[m->map_pos.x][m->map_pos.y] > 0)
+		if (m->map.data_i[m->map_pos.x][m->map_pos.y] > 0)
 		{
 			hit = 1;
 			// Determine which wall side and direction were hit

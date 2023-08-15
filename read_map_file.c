@@ -17,6 +17,8 @@ void read_subject_file(char **argv, t_main *m)
 	read_prefixes(m);
 	read_prefixes(m);
 	read_prefixes(m);
+    while (m->char_read == '\n') // skip newlines
+       read_char(m);
 }
 
 void check_map_position(int x, int y, t_main *m, char map_char)

@@ -3,18 +3,18 @@
 //move forward if no wall in front of you
 void	move_forwards(t_main *m)
 {
-	if (m->map.data[(int)(m->pos.x + m->dir.x * m->move_speed)][(int)(m->pos.y)] == false)
+	if (m->map.data_i[(int)(m->pos.x + m->dir.x * m->move_speed)][(int)(m->pos.y)] == false)
 		m->pos.x += m->dir.x * m->move_speed;
-	if (m->map.data[(int)(m->pos.x)][(int)(m->pos.y + m->dir.y * m->move_speed)] == false)
+	if (m->map.data_i[(int)(m->pos.x)][(int)(m->pos.y + m->dir.y * m->move_speed)] == false)
 		m->pos.y += m->dir.y * m->move_speed;
 }
 
 //move backwards if no wall behind you
 void	move_backwards(t_main *m)
 {
-	if (m->map.data[(int)(m->pos.x - m->dir.x * m->move_speed)][(int)(m->pos.y)] == false)
+	if (m->map.data_i[(int)(m->pos.x - m->dir.x * m->move_speed)][(int)(m->pos.y)] == false)
 		m->pos.x -= m->dir.x * m->move_speed;
-	if (m->map.data[(int)(m->pos.x)][(int)(m->pos.y - m->dir.y * m->move_speed)] == false)
+	if (m->map.data_i[(int)(m->pos.x)][(int)(m->pos.y - m->dir.y * m->move_speed)] == false)
 		m->pos.y -= m->dir.y * m->move_speed;
 }
 
@@ -24,13 +24,13 @@ void move_left(t_main *m)
     double side_x = m->dir.y; // Perpendicular vector to the direction
     double side_y = -m->dir.x;
 
-    if (m->map.data[(int)(m->pos.x + side_x * m->move_speed)][(int)(m->pos.y)] == false)
+    if (m->map.data_i[(int)(m->pos.x + side_x * m->move_speed)][(int)(m->pos.y)] == false)
 	{
         m->pos.x += side_x * m->move_speed;
 		if (m->pos.x <= 1.05)
 			m->pos.x = 1.05;
 	}
-    if (m->map.data[(int)(m->pos.x)][(int)(m->pos.y + side_y * m->move_speed)] == false)
+    if (m->map.data_i[(int)(m->pos.x)][(int)(m->pos.y + side_y * m->move_speed)] == false)
 	{
         m->pos.y += side_y * m->move_speed;
 	}
@@ -43,14 +43,14 @@ void move_right(t_main *m)
     double side_x = -m->dir.y; // Perpendicular vector to the direction
     double side_y = m->dir.x;
 
-    if (m->map.data[(int)(m->pos.x + side_x * m->move_speed)][(int)(m->pos.y)] == false)
+    if (m->map.data_i[(int)(m->pos.x + side_x * m->move_speed)][(int)(m->pos.y)] == false)
 	{
     	m->pos.x += side_x * m->move_speed;
 		if (m->pos.x >= m->map.nrows -1.05)
 			m->pos.x = m->map.nrows -1.05;
 	}    
 	
-    if (m->map.data[(int)(m->pos.x)][(int)(m->pos.y + side_y * m->move_speed)] == false)
+    if (m->map.data_i[(int)(m->pos.x)][(int)(m->pos.y + side_y * m->move_speed)] == false)
 	{
         m->pos.y += side_y * m->move_speed;
 		// if (m->pos.y < 2)

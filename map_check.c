@@ -4,11 +4,12 @@ int	ft_check_map_command(int argc, char **argv)
 {
     size_t i;
 
-	if(argc != 2)
-	{
-        ft_error("wrong number of args.", NULL);
-		return (1);
-	}
+    (void)argc;
+	// if(argc != 2)
+	// {
+    //     ft_error("wrong number of args.", NULL);
+	// 	return (1);
+	// }
 	i = ft_strlen((const char *)argv[1]);
 	if (ft_strnstr(&argv[1][i - 4], ".cub", 4) == NULL)
 	{
@@ -27,13 +28,13 @@ static int  ft_surround_check(t_map map)
 	row = 0;
     while (row < map.nrows)
     {
-        if (map.data[row][0] != 1 || map.data[row][map.ncols - 1] != 1)
+        if (map.data_i[row][0] != 1 || map.data_i[row][map.ncols - 1] != 1)
             return (1);
         row++;
     }
     while (col < map.ncols)
     {
-        if (map.data[0][col] != 1 || map.data[map.nrows - 1][col] != 1)
+        if (map.data_i[0][col] != 1 || map.data_i[map.nrows - 1][col] != 1)
             return (1);
         col++;
     }
@@ -56,8 +57,8 @@ int ft_map_parameters_check(t_main *m)
         x = 0;
         while (x < m->map.ncols)
         {
-            if (!x && !y && m->map.data[y][x] == ' ' && m->map.data[y + 1][x] == ' ' && m->map.data[y - 1][x] == ' ' &&
-                m->map.data[y][x + 1] == ' ' && m->map.data[y][x - 1] == ' ')
+            if (!x && !y && m->map.data_c[y][x] == ' ' && m->map.data_c[y + 1][x] == ' ' && m->map.data_c[y - 1][x] == ' ' &&
+                m->map.data_c[y][x + 1] == ' ' && m->map.data_c[y][x - 1] == ' ')
             {
                 ft_error("wrong parameter1", m);
                 return (1);

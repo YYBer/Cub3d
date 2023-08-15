@@ -3,6 +3,39 @@
 
 #include "cub3d.h"
 
+void convert_map_data_c_to_i(t_main *m)
+{
+    int col;
+    int row;
+
+
+	malloc_map_i(&m->map);
+
+	// fill map i
+    row = 0;
+    while(row < m->map.nrows)
+    {
+		col = 0;
+        while(col < m->map.ncols)
+        {
+			char char_str[2];
+
+            if (m->map.data_c[row][col] == 'N' || m->map.data_c[row][col] == 'S' || m->map.data_c[row][col] == 'W' || m->map.data_c[row][col] == 'E')
+                m->map.data_i[row][col] = 0;
+            else if (m->map.data_c[row][col] == ' ')
+                m->map.data_i[row][col] = -1;
+            else
+			{
+				char_str[0] = m->map.data_c[row][col];
+				char_str[1] = '\0';
+				m->map.data_i[row][col] = atoi(char_str);
+			}
+            col++;
+        }
+        row++;
+    }
+}
+
 void init_window(t_main *m)
 {
 	m->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Raycaster", false);
@@ -31,9 +64,9 @@ void init_m(char **argv, t_main *m)
 	read_subject_file(argv, m);
     get_map_dims(m);
     fill_map(m);
-	printf("map dimensions: %i %i\n", m->map.nrows, m->map.ncols);	
-	print_map(&m->map);
-	m->texture_alloc = false; // where should this go?
+	print_map_c(&m->map);
+	convert_map_data_c_to_i(m);
+	print_map_i(&m->map);	
 	// if (ft_map_parameters_check(m))
 	// 	exit(1);
 	load_textures(m);
@@ -62,6 +95,7 @@ void my_closehook(void *param)
 
 void load_textures(t_main *m)
 {
+	m->texture_alloc = false;
     printf("0: \"%s\"\n", m->tex_paths[0]);
     printf("1: \"%s\"\n", m->tex_paths[1]);
     printf("2: \"%s\"\n", m->tex_paths[2]);
@@ -88,6 +122,8 @@ int	main(int argc, char **argv)
 		exit(1);
 	mlx_set_setting(MLX_STRETCH_IMAGE, false);
 	init_m(argv, &m);
+	if (strcmp(argv[2], "test") == 0)
+		exit(EXIT_SUCCESS);
 	if ((mlx_image_to_window(m.mlx, m.img, 0, 0) < 0))
 	{
 		ft_error("Error: Could not put image to window.", &m);

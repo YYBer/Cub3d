@@ -2,8 +2,8 @@
 
 void get_map_dims(t_main *m)
 {
-    char onechar[1];
-    int longest_ncols;
+    char    onechar[1];
+    int     longest_ncols;
 
     longest_ncols = 0;
     m->map.nrows = 0;
@@ -36,13 +36,36 @@ void get_map_dims(t_main *m)
 	if (m->map.ncols > longest_ncols)
 		longest_ncols = m->map.ncols;
     m->map.ncols = longest_ncols;
-    m->map.data = NULL;
+    m->map.data_c = NULL;
 }
 
-void malloc_map(t_map *map)
+void malloc_map_c(t_map *map)
 {
-    map->data = (int**)malloc(map->nrows * sizeof(int*));
-    if (map->data == NULL)
+    map->data_c = (char**)malloc(map->nrows * sizeof(char*));
+    if (map->data_c == NULL)
+    {
+        printf("%s", ERR_MSG);
+        printf("Memory allocation error for row pointers.\n");
+        exit(EXIT_FAILURE);
+    }
+    int i;
+    i = 0;
+    while (i < map->nrows)
+    {
+        map->data_c[i] = (char*)malloc(map->ncols * sizeof(char));
+        if (map->data_c[i] == NULL) {
+            printf("%s", ERR_MSG);
+            printf("Memory allocation error for row %d.\n", i);
+            exit(EXIT_FAILURE);
+        }
+        i++;
+    }
+}
+
+void malloc_map_i(t_map *map)
+{
+    map->data_i = (int**)malloc(map->nrows * sizeof(int*));
+    if (map->data_i == NULL)
     {
         printf("%s", ERR_MSG);
         printf("Memory allocation error for row pointers.\n");
@@ -53,8 +76,8 @@ void malloc_map(t_map *map)
     i = 0;
     while (i < map->nrows)
     {
-        map->data[i] = (int*)malloc(map->ncols * sizeof(int));
-        if (map->data[i] == NULL) {
+        map->data_i[i] = (int*)malloc(map->ncols * sizeof(int));
+        if (map->data_i[i] == NULL) {
             printf("%s", ERR_MSG);
             printf("Memory allocation error for row %d.\n", i);
             exit(EXIT_FAILURE);
@@ -70,10 +93,12 @@ void free_map_data(t_map *map)
     i = 0;
     while (i < map->nrows)
     {
-        free(map->data[i]);
+        free(map->data_c[i]);
+        free(map->data_i[i]);
         i++;
     }
-    free(map->data);
+    free(map->data_c);
+    free(map->data_i);    
 }
 
 void fill_map(t_main *m)
@@ -82,7 +107,7 @@ void fill_map(t_main *m)
     int i;
 
     m->map.data_alloc = false;
-    malloc_map(&m->map);
+    malloc_map_c(&m->map);
     close(m->fd);
     m->fd = open(m->filename, O_RDONLY); // re-read
     if (m->fd == -1)
@@ -96,7 +121,8 @@ void fill_map(t_main *m)
         read(m->fd, &onechar, 1);
         i++;
     }
-	int row;
+
+    int row;
 	int col;
 	bool shortline_found;
 
@@ -120,30 +146,26 @@ void fill_map(t_main *m)
 			}
 			if (shortline_found == false)
 			{
-				check_map_position(row, col, m, onechar[0]);
-				if (onechar[0] == ' ')
-					onechar[0] = '9';
-				// printf("%c", onechar[0]);
-				m->map.data[row][col] = atoi(onechar);
+				check_map_position(row, col, m, onechar[0]); // this can now be done outside this function
+				m->map.data_c[row][col] = onechar[0];
 			}
 			if (shortline_found == true)
 			{
-				// printf("9");
-				m->map.data[row][col] = 9;
+				m->map.data_c[row][col] = ' ';
 			}		
 			col++;
 		}
-		// printf("\n");
 		row++;
 	}
     close(m->fd);
 }
 
-void print_map(t_map *map)
+void print_map_c(t_map *map)
 {
 	int col;
 	int row;
 
+    printf("map.data_c[%i][%i]:\n", map->nrows, map->ncols);	
 	col = 0;
 	row = 0;
 	while(row < map->nrows)
@@ -151,7 +173,28 @@ void print_map(t_map *map)
         col = 0;
 		while(col < map->ncols)
 		{
-			printf("%i", map->data[row][col]);
+			printf("%c", map->data_c[row][col]);
+			col++;
+		}
+		printf("\n");
+		row++;
+	}
+}
+
+void print_map_i(t_map *map)
+{
+	int col;
+	int row;
+
+    printf("map.data_i[%i][%i]:\n", map->nrows, map->ncols);	
+	col = 0;
+	row = 0;
+	while(row < map->nrows)
+	{
+        col = 0;
+		while(col < map->ncols)
+		{
+			printf("%i", map->data_i[row][col]);
 			col++;
 		}
 		printf("\n");

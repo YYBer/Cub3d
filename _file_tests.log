@@ -1,7 +1,47 @@
-Running maps/preamble_color_double_comma.cub
-  NO path found:./texture/wall1.png
-  SO path found:./texture/wall2.png
-  WE path found:./texture/wall3.png
-  EA path found:./texture/wall4.png
-  F path found:invalid map format(color)
+Running maps/preamble_newlines_none.cub
+  NO texture:	"./texture/wall1.png"
+  SO texture:	"./texture/wall2.png"
+  WE texture:	"./texture/wall3.png"
+  EA texture:	"./texture/wall4.png"
+  F color:	"0x1E1E32FF"
+  C color:	"0x0064DCFF"
+  map.data_c[3][3]:
+  111
+  1S1
+  111
+  map.data_i[3][3]:
+  111
+  101
+  111
+  0: "./texture/wall1.png"
+  1: "./texture/wall2.png"
+  2: "./texture/wall3.png"
+  3: "./texture/wall4.png"
+--------------------------------------------------
+Running maps/preamble_newlines_random.cub
+  NO texture:	"./texture/wall1.png"
+  SO texture:	"./texture/wall2.png"
+  WE texture:	"./texture/wall3.png"
+  EA texture:	"./texture/wall4.png"
+  F color:	"0x1E1E32FF"
+  C color:	"0x0064DCFF"
+  map.data_c[6][3]:
+  
+    
+  111
+  1S1
+  111
+     
+     
+  map.data_i[6][3]:
+  0-1-1
+  111
+  101
+  111
+  -1-1-1
+  -1-1-1
+  0: "./texture/wall1.png"
+  1: "./texture/wall2.png"
+  2: "./texture/wall3.png"
+  3: "./texture/wall4.png"
 --------------------------------------------------

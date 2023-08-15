@@ -32,8 +32,8 @@ input_files=(
     # "maps/preamble_color_omitted_comma.cub"
     # "maps/preamble_color_omitted_prefix.cub"
     # "maps/preamble_color_repeated_prefix.cub"
-    # "maps/preamble_newlines_none.cub"
-    # "maps/preamble_newlines_random.cub"
+     "maps/preamble_newlines_none.cub"
+     "maps/preamble_newlines_random.cub"
     # "maps/preamble_random_order.cub"
     # "maps/preamble_spaces_none.cub"
     # "maps/preamble_spaces_random.cub"
@@ -49,6 +49,6 @@ input_files=(
 # Loop through each input file and run ./cub3d, logging the result
 for file in "${input_files[@]}"; do
     echo "Running $file" >> "$log_file"
-    ./cub3d "$file" 2>&1 | sed 's/^/  /' >> "$log_file"
+    ./cub3d "$file" "test" 2>&1 | sed 's/^/  /' >> "$log_file"
     echo "--------------------------------------------------" >> "$log_file"
 done
