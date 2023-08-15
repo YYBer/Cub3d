@@ -19,6 +19,10 @@ void read_subject_file(char **argv, t_main *m)
 	read_prefixes(m);
     while (m->char_read == '\n') // skip newlines
        read_char(m);
+    get_map_dims(m);
+    fill_map(m);
+	convert_map_data_c_to_i(m);	
+	load_textures(m);
 }
 
 void check_map_position(int x, int y, t_main *m, char map_char)

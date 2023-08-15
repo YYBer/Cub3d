@@ -1,10 +1,43 @@
+Running maps/preamble_newlines_at_end_invalid.cub
+  found NO texture:	"./texture/wall1.png"
+  found SO texture:	"./texture/wall2.png"
+  found WE texture:	"./texture/wall3.png"
+  found EA texture:	"./texture/wall4.png"
+  --Printing .cub file summary:
+  texture path 0: "./texture/wall1.png"
+  texture path 1: "./texture/wall2.png"
+  texture path 2: "./texture/wall3.png"
+  texture path 3: "./texture/wall4.png"
+  floor color:		0x1E1E32FF
+  ceiling color:	0x0064DCFF
+  map.data_c[6][3]:
+  111
+  1S1
+  111
+  
+    
+     
+     
+  map.data_i[6][3]:
+  111
+  101
+  111
+  0-1-1
+  -1-1-1
+  -1-1-1
+--------------------------------------------------
 Running maps/preamble_newlines_none.cub
-  NO texture:	"./texture/wall1.png"
-  SO texture:	"./texture/wall2.png"
-  WE texture:	"./texture/wall3.png"
-  EA texture:	"./texture/wall4.png"
-  F color:	"0x1E1E32FF"
-  C color:	"0x0064DCFF"
+  found NO texture:	"./texture/wall1.png"
+  found SO texture:	"./texture/wall2.png"
+  found WE texture:	"./texture/wall3.png"
+  found EA texture:	"./texture/wall4.png"
+  --Printing .cub file summary:
+  texture path 0: "./texture/wall1.png"
+  texture path 1: "./texture/wall2.png"
+  texture path 2: "./texture/wall3.png"
+  texture path 3: "./texture/wall4.png"
+  floor color:		0x1E1E32FF
+  ceiling color:	0x0064DCFF
   map.data_c[3][3]:
   111
   1S1
@@ -13,35 +46,88 @@ Running maps/preamble_newlines_none.cub
   111
   101
   111
-  0: "./texture/wall1.png"
-  1: "./texture/wall2.png"
-  2: "./texture/wall3.png"
-  3: "./texture/wall4.png"
 --------------------------------------------------
 Running maps/preamble_newlines_random.cub
-  NO texture:	"./texture/wall1.png"
-  SO texture:	"./texture/wall2.png"
-  WE texture:	"./texture/wall3.png"
-  EA texture:	"./texture/wall4.png"
-  F color:	"0x1E1E32FF"
-  C color:	"0x0064DCFF"
-  map.data_c[6][3]:
-  
-    
+  found NO texture:	"./texture/wall1.png"
+  found SO texture:	"./texture/wall2.png"
+  found WE texture:	"./texture/wall3.png"
+  found EA texture:	"./texture/wall4.png"
+  --Printing .cub file summary:
+  texture path 0: "./texture/wall1.png"
+  texture path 1: "./texture/wall2.png"
+  texture path 2: "./texture/wall3.png"
+  texture path 3: "./texture/wall4.png"
+  floor color:		0x1E1E32FF
+  ceiling color:	0x0064DCFF
+  map.data_c[3][3]:
   111
   1S1
   111
-     
-     
-  map.data_i[6][3]:
-  0-1-1
+  map.data_i[3][3]:
   111
   101
   111
-  -1-1-1
-  -1-1-1
-  0: "./texture/wall1.png"
-  1: "./texture/wall2.png"
-  2: "./texture/wall3.png"
-  3: "./texture/wall4.png"
+--------------------------------------------------
+Running maps/preamble_random_order.cub
+  found EA texture:	"./texture/wall4.png"
+  found SO texture:	"./texture/wall2.png"
+  found WE texture:	"./texture/wall3.png"
+  found NO texture:	"./texture/wall1.png"
+  --Printing .cub file summary:
+  texture path 0: "./texture/wall1.png"
+  texture path 1: "./texture/wall2.png"
+  texture path 2: "./texture/wall3.png"
+  texture path 3: "./texture/wall4.png"
+  floor color:		0x1E1E32FF
+  ceiling color:	0x0064DCFF
+  map.data_c[3][3]:
+  111
+  1S1
+  111
+  map.data_i[3][3]:
+  111
+  101
+  111
+--------------------------------------------------
+Running maps/preamble_spaces_none.cub
+  found NO texture:	"./texture/wall1.png"
+  found SO texture:	"./texture/wall2.png"
+  found WE texture:	"./texture/wall3.png"
+  found EA texture:	"./texture/wall4.png"
+  --Printing .cub file summary:
+  texture path 0: "./texture/wall1.png"
+  texture path 1: "./texture/wall2.png"
+  texture path 2: "./texture/wall3.png"
+  texture path 3: "./texture/wall4.png"
+  floor color:		0x1E1E32FF
+  ceiling color:	0x0064DCFF
+  map.data_c[3][3]:
+  111
+  1S1
+  111
+  map.data_i[3][3]:
+  111
+  101
+  111
+--------------------------------------------------
+Running maps/preamble_spaces_random.cub
+  found NO texture:	"./texture/wall1.png"
+  found SO texture:	"./texture/wall2.png"
+  found WE texture:	"./texture/wall3.png"
+  found EA texture:	"./texture/wall4.png"
+  --Printing .cub file summary:
+  texture path 0: "./texture/wall1.png"
+  texture path 1: "./texture/wall2.png"
+  texture path 2: "./texture/wall3.png"
+  texture path 3: "./texture/wall4.png"
+  floor color:		0x1E1E32FF
+  ceiling color:	0x0064DCFF
+  map.data_c[3][3]:
+  111
+  1S1
+  111
+  map.data_i[3][3]:
+  111
+  101
+  111
 --------------------------------------------------

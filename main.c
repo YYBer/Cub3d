@@ -8,9 +8,7 @@ void convert_map_data_c_to_i(t_main *m)
     int col;
     int row;
 
-
 	malloc_map_i(&m->map);
-
 	// fill map i
     row = 0;
     while(row < m->map.nrows)
@@ -55,6 +53,48 @@ void init_window(t_main *m)
 	}	
 }
 
+void print_tex_paths(t_main *m)
+{
+    printf("texture path 0: \"%s\"\n", m->tex_paths[0]);
+    printf("texture path 1: \"%s\"\n", m->tex_paths[1]);
+    printf("texture path 2: \"%s\"\n", m->tex_paths[2]);
+    printf("texture path 3: \"%s\"\n", m->tex_paths[3]);	
+}
+
+void print_rgba(int value)
+{
+    // if (value < 0 || value > 0xFFFFFFFF) {
+    //     printf("Input value must be between 0 and 4294967295 (0xFFFFFFFF)\n");
+    //     return;
+    // }
+
+    int red = (value >> 24) & 0xFF;
+    int green = (value >> 16) & 0xFF;
+    int blue = (value >> 8) & 0xFF;
+    int alpha = value & 0xFF;
+
+    printf("0x%02X%02X%02X%02X", red, green, blue, alpha);
+}
+
+void print_floor_ceiling_colors(t_main *m)
+{
+	printf("floor color:		");
+	print_rgba(m->floor_color);
+	printf("\n");
+	printf("ceiling color:	");	
+	print_rgba(m->ceiling_color);
+	printf("\n");
+}
+
+void print_cub_file_summary(t_main *m)
+{
+	printf("--Printing .cub file summary:\n");
+	print_tex_paths(m);
+	print_floor_ceiling_colors(m);
+	print_map_c(&m->map);
+	print_map_i(&m->map);
+}
+
 // printf("tex_paths:\nNO:%s\nSO:%s\nWE:%s\nEA:%s\n", m->tex_paths[0], m->tex_paths[1], m->tex_paths[2], m->tex_paths[3]);
 // printf("map dimensions: %i %i\n", m->map.nrows, m->map.ncols);
 // print_map(&m->map);
@@ -62,14 +102,9 @@ void init_window(t_main *m)
 void init_m(char **argv, t_main *m)
 {
 	read_subject_file(argv, m);
-    get_map_dims(m);
-    fill_map(m);
-	print_map_c(&m->map);
-	convert_map_data_c_to_i(m);
-	print_map_i(&m->map);	
 	// if (ft_map_parameters_check(m))
 	// 	exit(1);
-	load_textures(m);
+	print_cub_file_summary(m);
 	m->move_speed = SQRS_PER_SEC / 100; 
 	m->rot_speed = RADS_PER_SEC / 100;
 	m->pitch = 100;
@@ -96,10 +131,6 @@ void my_closehook(void *param)
 void load_textures(t_main *m)
 {
 	m->texture_alloc = false;
-    printf("0: \"%s\"\n", m->tex_paths[0]);
-    printf("1: \"%s\"\n", m->tex_paths[1]);
-    printf("2: \"%s\"\n", m->tex_paths[2]);
-    printf("3: \"%s\"\n", m->tex_paths[3]);
     m->textures[0] = mlx_load_png(m->tex_paths[0]);
     m->textures[1] = mlx_load_png(m->tex_paths[1]);
     m->textures[2] = mlx_load_png(m->tex_paths[2]);

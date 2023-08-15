@@ -8,19 +8,19 @@ void get_map_dims(t_main *m)
     longest_ncols = 0;
     m->map.nrows = 0;
     m->map.ncols = 0;
-    while(read(m->fd, &onechar, 1) > 0)
+    while(1)
     {
-        if (onechar[0] != '0' && onechar[0] != '1' && 
-            onechar[0] != 'N' && onechar[0] != 'E' && 
-            onechar[0] != 'S' && onechar[0] != 'W' &&
-            onechar[0] != ' ' && onechar[0] != '\n')
+        if (m->char_read != '0' && m->char_read != '1' && 
+            m->char_read != 'N' && m->char_read != 'E' && 
+            m->char_read != 'S' && m->char_read != 'W' &&
+            m->char_read != ' ' && m->char_read != '\n')
         {
             printf("%s%s%s", ERR_MSG, ERR_FORMAT, ERR_INVALID_MAP_CHAR);
             close(m->fd);
             // free
             exit(EXIT_FAILURE);
         }
-        if (onechar[0] == '\n')
+        if (m->char_read == '\n')
         {
             if (m->map.ncols > longest_ncols)
                 longest_ncols = m->map.ncols;
@@ -31,6 +31,9 @@ void get_map_dims(t_main *m)
         {
             m->map.ncols++;
         }
+        if (read(m->fd, &onechar, 1) <= 0)
+            break;
+        m->char_read = onechar[0]; 
     }
     m->map.nrows++;
 	if (m->map.ncols > longest_ncols)
@@ -116,12 +119,11 @@ void fill_map(t_main *m)
         exit(EXIT_FAILURE);
     }
     i = 0;
-    while(i < m->total_chars_read) // seek to same point as before
+    while(i < m->total_chars_read - 1) // seek to same point as before (-1 to allow next char to be read below)
     {
         read(m->fd, &onechar, 1);
         i++;
     }
-
     int row;
 	int col;
 	bool shortline_found;

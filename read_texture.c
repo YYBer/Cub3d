@@ -35,13 +35,11 @@ bool read_tex_prefix(t_main *m, char *path)
 {
 	if (match_char(m, path[0]) == true)
 	{
-		// printf("%c found\n", path[0]);
 		read_char(m);
 		if (match_char(m, path[1]) == true)
 		{
 			bool *chosen_fileflag;
 			int tex_path_index;
-			// printf("%c found\n", path[1]);
 			read_char(m);
 			while (m->char_read == ' ') // skip spaces
 				read_char(m);
@@ -52,7 +50,7 @@ bool read_tex_prefix(t_main *m, char *path)
 				close(m->fd);
 				exit(EXIT_FAILURE);
 			}
-			printf("%s texture:	\"", path);
+			printf("found %s texture:	\"", path);
 			tex_path_index = choose_tex_path_index(path);
 			m->tex_paths[tex_path_index] = read_wall_tex_path(m);
 			printf("%s", m->tex_paths[tex_path_index]);

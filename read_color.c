@@ -60,21 +60,6 @@ int read_color_path(t_main *m)
     return ((red << 24) | (green << 16) | (blue << 8) | 0xFF);
 }
 
-void print_rgba(int value)
-{
-    // if (value < 0 || value > 0xFFFFFFFF) {
-    //     printf("Input value must be between 0 and 4294967295 (0xFFFFFFFF)\n");
-    //     return;
-    // }
-
-    int red = (value >> 24) & 0xFF;
-    int green = (value >> 16) & 0xFF;
-    int blue = (value >> 8) & 0xFF;
-    int alpha = value & 0xFF;
-
-    printf("0x%02X%02X%02X%02X", red, green, blue, alpha);
-}
-
 bool read_color_prefix(t_main *m, char *path)
 {
 	if (match_char(m, path[0]) == true)
@@ -94,16 +79,16 @@ bool read_color_prefix(t_main *m, char *path)
 		if (strcmp(path, "F") == 0)
 		{
 			m->floor_color = read_color_path(m);
-			printf("%s color:	\"", path);
-			print_rgba(m->floor_color);
-			printf("\"\n");
+			// printf("%s color:	\"", path);
+			// print_rgba(m->floor_color);
+			// printf("\"\n");
 		}
 		if (strcmp(path, "C") == 0)
 		{
 			m->ceiling_color = read_color_path(m);
-			printf("%s color:	\"", path);
-			print_rgba(m->ceiling_color);
-			printf("\"\n");
+			// printf("%s color:	\"", path);
+			// print_rgba(m->ceiling_color);
+			// printf("\"\n");
 		}
 		*chosen_fileflag = true;
 		return (true);

@@ -134,5 +134,6 @@ bool		read_tex_prefix(t_main *m, char *path);
 bool		read_color_prefix(t_main *m, char *path);
 
 void		malloc_map_i(t_map *map);
+void		convert_map_data_c_to_i(t_main *m);
 
 #endif

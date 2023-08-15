@@ -32,11 +32,12 @@ input_files=(
     # "maps/preamble_color_omitted_comma.cub"
     # "maps/preamble_color_omitted_prefix.cub"
     # "maps/preamble_color_repeated_prefix.cub"
-     "maps/preamble_newlines_none.cub"
-     "maps/preamble_newlines_random.cub"
-    # "maps/preamble_random_order.cub"
-    # "maps/preamble_spaces_none.cub"
-    # "maps/preamble_spaces_random.cub"
+     "maps/preamble_newlines_at_end_invalid.cub" #TESTED
+     "maps/preamble_newlines_none.cub" #TESTED
+     "maps/preamble_newlines_random.cub" #TESTED
+     "maps/preamble_random_order.cub" #TESTED
+     "maps/preamble_spaces_none.cub" #TESTED
+     "maps/preamble_spaces_random.cub" #TESTED
     # "maps/preamble_texture_double_repeated_prefix.cub"
     # "maps/preamble_texture_invalid.cub"
     # "maps/preamble_texture_omitted_prefix.cub"
