@@ -50,11 +50,11 @@ bool read_tex_prefix(t_main *m, char *path)
 				close(m->fd);
 				exit(EXIT_FAILURE);
 			}
-			printf("found %s texture:	\"", path);
 			tex_path_index = choose_tex_path_index(path);
 			m->tex_paths[tex_path_index] = read_wall_tex_path(m);
-			printf("%s", m->tex_paths[tex_path_index]);
-			printf("\"\n");
+			// printf("found %s texture:	\"", path);
+			// printf("%s", m->tex_paths[tex_path_index]);
+			// printf("\"\n");
 			*chosen_fileflag = true;
 			return (true);
 		}

@@ -65,7 +65,7 @@ bool read_color_prefix(t_main *m, char *path)
 	if (match_char(m, path[0]) == true)
 	{
 		bool *chosen_fileflag;
-		// printf("%c found\n", path[0]);
+
 		read_char(m);
 		while (m->char_read == ' ') // skip spaces
 			read_char(m);
@@ -79,16 +79,10 @@ bool read_color_prefix(t_main *m, char *path)
 		if (strcmp(path, "F") == 0)
 		{
 			m->floor_color = read_color_path(m);
-			// printf("%s color:	\"", path);
-			// print_rgba(m->floor_color);
-			// printf("\"\n");
 		}
 		if (strcmp(path, "C") == 0)
 		{
 			m->ceiling_color = read_color_path(m);
-			// printf("%s color:	\"", path);
-			// print_rgba(m->ceiling_color);
-			// printf("\"\n");
 		}
 		*chosen_fileflag = true;
 		return (true);

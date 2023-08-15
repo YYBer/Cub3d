@@ -115,7 +115,7 @@ void fill_map(t_main *m)
     m->fd = open(m->filename, O_RDONLY); // re-read
     if (m->fd == -1)
     {
-        printf("%s%s", ERR_MSG, ERR_FILE);
+        printf("%s%s\"%s\"\n", ERR_MSG, ERR_FILE, m->filename);
         exit(EXIT_FAILURE);
     }
     i = 0;

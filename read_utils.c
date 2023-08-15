@@ -8,7 +8,7 @@ void	read_char(t_main *m)
 	num_chars_read = read(m->fd, &onechar, 1);
     if (num_chars_read < 1)
     {
-        printf("%s%s", ERR_MSG, ERR_FILE);
+        printf("%s%s", ERR_MSG, ERR_READ);
 		close(m->fd);
         exit(EXIT_FAILURE);
     }

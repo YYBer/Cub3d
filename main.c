@@ -130,11 +130,23 @@ void my_closehook(void *param)
 
 void load_textures(t_main *m)
 {
+	int i;
+	int fd;
+
 	m->texture_alloc = false;
-    m->textures[0] = mlx_load_png(m->tex_paths[0]);
-    m->textures[1] = mlx_load_png(m->tex_paths[1]);
-    m->textures[2] = mlx_load_png(m->tex_paths[2]);
-    m->textures[3] = mlx_load_png(m->tex_paths[3]);
+	i = 0;
+	while(i < NUM_TEXTURES)
+	{
+		fd = open(m->tex_paths[i], O_RDONLY);
+		if (fd == -1)
+		{
+			printf("%s%s%s\"%s\"\n", ERR_MSG, ERR_FILE, ERR_FILE_PATH, m->tex_paths[i]);
+			exit(EXIT_FAILURE);
+		}
+		close(fd);
+		m->textures[i] = mlx_load_png(m->tex_paths[i]);
+		i++;
+	}
 }
 
 void delete_textures(t_main *m)

@@ -25,13 +25,15 @@
 #define COLOUR_WHITE 0xFFFFFFFF
 #define COLOUR_YELLOW 0XFFFF00FF
 
-#define ERR_MSG "\nError\n"
+#define ERR_MSG "Error\n"
 #define ERR_FORMAT "Invalid file format\n"
 #define ERR_COL_VAL "(Invalid color value)\n"
 #define ERR_DUPL "(Duplicate entries in file)\n"
 #define ERR_FILE "File not found\n" // may not always be that the file isn't found!
+#define ERR_READ "Could not read from file or unexpectedly reached end\n"
 #define ERR_PREFIXES "(Prefix not of form NO, SO, WE, EA, F or C)\n"
 #define ERR_INVALID_MAP_CHAR "(Invalid character in map)\n"
+#define ERR_FILE_PATH "(Invalid texture file path)\n"
 typedef struct s_point2Dd {
 	double	x;
 	double	y;
