@@ -5,11 +5,11 @@ log_file="_file_tests.log"
 
 # List of input files
 input_files=(
-    # "maps/everything_valid.cub"
-    # "maps/map_complex_leading_spaces_1.cub"
-    # "maps/map_complex_leading_spaces_2.cub"
-    # "maps/map_complex_leading_spaces_differing_line_lengths.cub"
-    # "maps/map_complex_subject.cub"
+    # "maps/everything_valid.cub" #TESTED
+    # "maps/map_complex_leading_spaces_1.cub" #TESTED
+    # "maps/map_complex_leading_spaces_2.cub" #TESTED
+    # "maps/map_complex_leading_spaces_differing_line_lengths.cub" #TESTED
+    # "maps/map_complex_subject.cub" #TESTED
     # "maps/map_none.cub" #TESTED
     # "maps/map_simple_all_walls.cub" #TESTED
     # "maps/map_simple_extra_position.cub" #TESTED

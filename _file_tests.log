@@ -1,139 +1,4 @@
-Running maps/map_simple_illegal_char.cub
-  Error
-  Invalid file format
-  (Invalid character in map)
---------------------------------------------------
-Running maps/map_simple_large.cub
-  --Printing .cub file summary:
-  texture path 0: "./texture/wall1.png"
-  texture path 1: "./texture/wall2.png"
-  texture path 2: "./texture/wall3.png"
-  texture path 3: "./texture/wall4.png"
-  floor color:		0x1E1E32FF
-  ceiling color:	0x0064DCFF
-  map.data_c[24][24]:
-  111111111111111111111111
-  1S0100000000000000000001
-  100000000000000000000001
-  100000000000000000000001
-  100000000000000000000001
-  100000100010000000000001
-  100000100010000100010001
-  100000100010000000000001
-  100000110110000101010001
-  100000000000000000010001
-  100000000000000000010001
-  100000000000000000010001
-  100000111111111000010001
-  100000100000001000010001
-  111011101111101000010001
-  110000000010101000000001
-  111111111010101000010001
-  110100001010101000010001
-  110000101010101000010001
-  110101101000101000010001
-  110111111111101000010001
-  110000000000001000010001
-  111111111111111000010001
-  111111111111111111111111
-  map.data_i[24][24]:
-  111111111111111111111111
-  100100000000000000000001
-  100000000000000000000001
-  100000000000000000000001
-  100000000000000000000001
-  100000100010000000000001
-  100000100010000100010001
-  100000100010000000000001
-  100000110110000101010001
-  100000000000000000010001
-  100000000000000000010001
-  100000000000000000010001
-  100000111111111000010001
-  100000100000001000010001
-  111011101111101000010001
-  110000000010101000000001
-  111111111010101000010001
-  110100001010101000010001
-  110000101010101000010001
-  110101101000101000010001
-  110111111111101000010001
-  110000000000001000010001
-  111111111111111000010001
-  111111111111111111111111
---------------------------------------------------
-Running maps/map_simple_no_position.cub
-  --Printing .cub file summary:
-  texture path 0: "./texture/wall1.png"
-  texture path 1: "./texture/wall2.png"
-  texture path 2: "./texture/wall3.png"
-  texture path 3: "./texture/wall4.png"
-  floor color:		0xDC6400FF
-  ceiling color:	0xE11E00FF
-  map.data_c[4][5]:
-  11111
-  10001
-  10001
-  11111
-  map.data_i[4][5]:
-  11111
-  10001
-  10001
-  11111
---------------------------------------------------
-Running maps/map_simple_rect_wide.cub
-  --Printing .cub file summary:
-  texture path 0: "./texture/wall1.png"
-  texture path 1: "./texture/wall2.png"
-  texture path 2: "./texture/wall3.png"
-  texture path 3: "./texture/wall4.png"
-  floor color:		0x1E1E32FF
-  ceiling color:	0x0064DCFF
-  map.data_c[5][24]:
-  111111111111111111111111
-  100000000000000000000001
-  100010000000000000000W01
-  100000000000000000000001
-  111111111111111111111111
-  map.data_i[5][24]:
-  111111111111111111111111
-  100000000000000000000001
-  100010000000000000000001
-  100000000000000000000001
-  111111111111111111111111
---------------------------------------------------
-Running maps/map_single_0.cub
-  --Printing .cub file summary:
-  texture path 0: "./texture/wall1.png"
-  texture path 1: "./texture/wall2.png"
-  texture path 2: "./texture/wall3.png"
-  texture path 3: "./texture/wall4.png"
-  floor color:		0xDC6400FF
-  ceiling color:	0xE11E00FF
-  map.data_c[1][1]:
-  0
-  map.data_i[1][1]:
-  0
---------------------------------------------------
-Running maps/map_single_1.cub
-  --Printing .cub file summary:
-  texture path 0: "./texture/wall1.png"
-  texture path 1: "./texture/wall2.png"
-  texture path 2: "./texture/wall3.png"
-  texture path 3: "./texture/wall4.png"
-  floor color:		0xDC6400FF
-  ceiling color:	0xE11E00FF
-  map.data_c[1][1]:
-  1
-  map.data_i[1][1]:
-  1
---------------------------------------------------
-Running maps/map_single_illegal_char.cub
-  Error
-  Invalid file format
-  (Invalid character in map)
---------------------------------------------------
-Running maps/map_wall_jean.cub
+Running maps/everything_valid.cub
   --Printing .cub file summary:
   texture path 0: "./texture/wall1.png"
   texture path 1: "./texture/wall2.png"
@@ -168,49 +33,70 @@ Running maps/map_wall_jean.cub
   1011-1-1-1-1-1-1-1-1-1-1-1
   -11-1-1-1-1-1-1-1-1-1-1-1-1-1
 --------------------------------------------------
-Running maps/map_wall_slack_1_valid.cub
+Running maps/map_complex_leading_spaces_1.cub
   --Printing .cub file summary:
   texture path 0: "./texture/wall1.png"
   texture path 1: "./texture/wall2.png"
   texture path 2: "./texture/wall3.png"
   texture path 3: "./texture/wall4.png"
-  floor color:		0xDC6400FF
-  ceiling color:	0xE11E00FF
-  map.data_c[5][5]:
-  111  
-  101  
-  10111
-  100W1
-  11111
-  map.data_i[5][5]:
-  111-1-1
-  101-1-1
-  10111
-  10001
-  11111
+  floor color:		0xFFFF00FF
+  ceiling color:	0x0000FFFF
+  map.data_c[5][24]:
+  111111111111111111111111
+    1000000000000000000001
+    10000000W0000000000001
+    1000000000000000000001
+  111111111111111111111111
+  map.data_i[5][24]:
+  111111111111111111111111
+  -1-11000000000000000000001
+  -1-11000000000000000000001
+  -1-11000000000000000000001
+  111111111111111111111111
 --------------------------------------------------
-Running maps/map_wall_slack_2_valid.cub
+Running maps/map_complex_leading_spaces_2.cub
   --Printing .cub file summary:
   texture path 0: "./texture/wall1.png"
   texture path 1: "./texture/wall2.png"
   texture path 2: "./texture/wall3.png"
   texture path 3: "./texture/wall4.png"
-  floor color:		0xDC6400FF
-  ceiling color:	0xE11E00FF
-  map.data_c[5][5]:
-  11100
-  10100
-  10111
-  100W1
-  11111
-  map.data_i[5][5]:
-  11100
-  10100
-  10111
-  10001
-  11111
+  floor color:		0xFFFF00FF
+  ceiling color:	0x0000FFFF
+  map.data_c[5][24]:
+  111111111111111111111111
+    1000000000000000000001
+   100000000W0000000000001
+    1000000000000000000001
+  111111111111111111111111
+  map.data_i[5][24]:
+  111111111111111111111111
+  -1-11000000000000000000001
+  -110000000000000000000001
+  -1-11000000000000000000001
+  111111111111111111111111
 --------------------------------------------------
-Running maps/map_wall_slack_3_invalid.cub
+Running maps/map_complex_leading_spaces_differing_line_lengths.cub
+  --Printing .cub file summary:
+  texture path 0: "./texture/wall1.png"
+  texture path 1: "./texture/wall2.png"
+  texture path 2: "./texture/wall3.png"
+  texture path 3: "./texture/wall4.png"
+  floor color:		0xFFFF00FF
+  ceiling color:	0x0000FFFF
+  map.data_c[5][29]:
+  111111111111111111111111     
+    10000000000000000000001    
+    10000000W000000000000011111
+    10000000000000000000011    
+  111111111111111111111111     
+  map.data_i[5][29]:
+  111111111111111111111111-1-1-1-1-1
+  -1-110000000000000000000001-1-1-1-1
+  -1-1100000000000000000000011111
+  -1-110000000000000000000011-1-1-1-1
+  111111111111111111111111-1-1-1-1-1
+--------------------------------------------------
+Running maps/map_complex_subject.cub
   --Printing .cub file summary:
   texture path 0: "./texture/wall1.png"
   texture path 1: "./texture/wall2.png"
@@ -218,16 +104,60 @@ Running maps/map_wall_slack_3_invalid.cub
   texture path 3: "./texture/wall4.png"
   floor color:		0xDC6400FF
   ceiling color:	0xE11E00FF
-  map.data_c[5][5]:
-  111  
-  100  
-  10111
-  100W1
-  11111
-  map.data_i[5][5]:
-  111-1-1
-  100-1-1
-  10111
-  10001
-  11111
+  map.data_c[14][33]:
+          1111111111111111111111111
+          1000000000110000000000001
+          1011000001110000000000001
+          1001000000000000000000001
+  111111111011000001110000000000001
+  100000000011000001110111111111111
+  11110111111111011100000010001    
+  11110111111111011101010010001    
+  11000000110101011100000010001    
+  10000000000000001100000010001    
+  10000000000000001101010010001    
+  11000001110101011111011110N01    
+  11110111 1110101 101111010001    
+  11111111 1111111 111111111111    
+  map.data_i[14][33]:
+  -1-1-1-1-1-1-1-11111111111111111111111111
+  -1-1-1-1-1-1-1-11000000000110000000000001
+  -1-1-1-1-1-1-1-11011000001110000000000001
+  -1-1-1-1-1-1-1-11001000000000000000000001
+  111111111011000001110000000000001
+  100000000011000001110111111111111
+  11110111111111011100000010001-1-1-1-1
+  11110111111111011101010010001-1-1-1-1
+  11000000110101011100000010001-1-1-1-1
+  10000000000000001100000010001-1-1-1-1
+  10000000000000001101010010001-1-1-1-1
+  11000001110101011111011110001-1-1-1-1
+  11110111-11110101-1101111010001-1-1-1-1
+  11111111-11111111-1111111111111-1-1-1-1
+--------------------------------------------------
+Running maps/map_single_0.cub
+  --Printing .cub file summary:
+  texture path 0: "./texture/wall1.png"
+  texture path 1: "./texture/wall2.png"
+  texture path 2: "./texture/wall3.png"
+  texture path 3: "./texture/wall4.png"
+  floor color:		0xDC6400FF
+  ceiling color:	0xE11E00FF
+  map.data_c[1][1]:
+  0
+  map.data_i[1][1]:
+  0
+--------------------------------------------------
+Running maps/map_single_1.cub
+  --Printing .cub file summary:
+  texture path 0: "./texture/wall1.png"
+  texture path 1: "./texture/wall2.png"
+  texture path 2: "./texture/wall3.png"
+  texture path 3: "./texture/wall4.png"
+  floor color:		0xDC6400FF
+  ceiling color:	0xE11E00FF
+  map.data_c[1][1]:
+  1
+  map.data_i[1][1]:
+  1
 --------------------------------------------------
