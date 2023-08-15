@@ -34,6 +34,9 @@
 #define ERR_PREFIXES "(Prefix not of form NO, SO, WE, EA, F or C)\n"
 #define ERR_INVALID_MAP_CHAR "(Invalid character in map)\n"
 #define ERR_FILE_PATH "(Invalid texture file path)\n"
+#define ERR_NO_PLAYPOS "(No initial player position found in map)\n"
+#define ERR_DUP_PLAYPOS "(Duplicate initial player position found in map)\n"
+
 typedef struct s_point2Dd {
 	double	x;
 	double	y;
@@ -97,8 +100,8 @@ typedef struct s_main {
 	bool			key_a_pressed;
 	bool			key_left_pressed;
 	bool			key_right_pressed;	
-	int				ceiling_color;
-	int				floor_color;
+	uint32_t		ceiling_color; // int?
+	uint32_t		floor_color; // int?
 }	t_main;
 
 int			alloc_map(t_main *m);
@@ -125,7 +128,7 @@ void		free_map_data(t_map *map);
 void		ft_error(char *str, t_main *m);
 int			ft_check_map_command(int argc, char **argv);
 int			ft_map_parameters_check(t_main *m);
-void 		check_map_position(int x, int y, t_main *m, char map_char);
+void 		get_player_position(t_main *m);
 
 void		init_fileflags(t_main *m);
 void		read_prefixes(t_main *m);

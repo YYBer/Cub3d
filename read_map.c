@@ -148,7 +148,6 @@ void fill_map(t_main *m)
 			}
 			if (shortline_found == false)
 			{
-				check_map_position(row, col, m, onechar[0]); // this can now be done outside this function
 				m->map.data_c[row][col] = onechar[0];
 			}
 			if (shortline_found == true)

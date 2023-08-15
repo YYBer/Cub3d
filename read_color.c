@@ -34,7 +34,7 @@ int read_color_value(t_main *m)
     return (atoi(color_str)); // convert to ft_atoi!
 }
 
-int read_color_path(t_main *m)
+uint32_t read_color_path(t_main *m)
 {
     int     red;
     int     green;
@@ -79,10 +79,12 @@ bool read_color_prefix(t_main *m, char *path)
 		if (strcmp(path, "F") == 0)
 		{
 			m->floor_color = read_color_path(m);
+			printf("fc:%i", m->floor_color);
 		}
 		if (strcmp(path, "C") == 0)
 		{
 			m->ceiling_color = read_color_path(m);
+			printf("cc:%i", m->ceiling_color);
 		}
 		*chosen_fileflag = true;
 		return (true);

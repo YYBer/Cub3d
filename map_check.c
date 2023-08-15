@@ -5,11 +5,11 @@ int	ft_check_map_command(int argc, char **argv)
     size_t i;
 
     (void)argc;
-	// if(argc != 2)
-	// {
-    //     ft_error("wrong number of args.", NULL);
-	// 	return (1);
-	// }
+	if(argc != 2 || (argc == 3 && strcmp(argv[2], "test") == 0))
+	{
+        ft_error("wrong number of args.", NULL);
+		return (1);
+	}
 	i = ft_strlen((const char *)argv[1]);
 	if (ft_strnstr(&argv[1][i - 4], ".cub", 4) == NULL)
 	{

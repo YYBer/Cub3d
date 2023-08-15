@@ -1,13 +1,12 @@
 # TODO:
 
 ## Mandatory
+TODO: ensure initial player position is set to middle of square
+TODO: use ft_error whenever there is an exit call and make it call the same code as when window is closed with mouse or ESC
+TOFIX: replace strcmp and atoi with ft versions (and check for others!)
 TOFIX: sometimes on run the 0's in the map are 8's!! (file read error)
 TOFIX: worlds are mirrored!
-TODO : map error checking
-    - make sure has surrounding wall
-    - has single player position (N,E,S or W)
-    - can handle different line lengths
-    - can handle spaces at start of lines
+TODO : map wall checks and tests
 TODO : tidy up and refactor code into 5 functions per file, then norminette
 TODO : leak checks, free correct resources for every 'exit' command (currently it seems MLX42 itself leaks)
 

@@ -21,7 +21,7 @@ void convert_map_data_c_to_i(t_main *m)
             if (m->map.data_c[row][col] == 'N' || m->map.data_c[row][col] == 'S' || m->map.data_c[row][col] == 'W' || m->map.data_c[row][col] == 'E')
                 m->map.data_i[row][col] = 0;
             else if (m->map.data_c[row][col] == ' ')
-                m->map.data_i[row][col] = -1;
+                m->map.data_i[row][col] = 0; // convert to 0 for now to avoid segfaults! (in the end better if -1)
             else
 			{
 				char_str[0] = m->map.data_c[row][col];
@@ -165,7 +165,7 @@ int	main(int argc, char **argv)
 		exit(1);
 	mlx_set_setting(MLX_STRETCH_IMAGE, false);
 	init_m(argv, &m);
-	if (strcmp(argv[2], "test") == 0)
+	if (argc == 3 && strcmp(argv[2], "test") == 0)
 		exit(EXIT_SUCCESS);
 	if ((mlx_image_to_window(m.mlx, m.img, 0, 0) < 0))
 	{

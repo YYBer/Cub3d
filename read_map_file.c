@@ -21,43 +21,72 @@ void read_subject_file(char **argv, t_main *m)
        read_char(m);
     get_map_dims(m);
     fill_map(m);
+    get_player_position(m);
 	convert_map_data_c_to_i(m);	
 	load_textures(m);
 }
 
-void check_map_position(int x, int y, t_main *m, char map_char)
+void get_player_position(t_main *m)
 {
-    if (map_char == 'N' || map_char == 'S' || map_char == 'W' || map_char == 'E')
+    int row;
+    int col;
+    bool found;
+    char map_char;
+
+    found = false;    
+    row = 0;
+    while(row < m->map.nrows)
     {
-        m->pos.x = x;
-        m->pos.y = y;
+        col = 0;
+        while(col < m->map.ncols)
+        {
+            map_char = m->map.data_c[row][col];
+            if (map_char == 'N' || map_char == 'S' || map_char == 'W' || map_char == 'E')
+            {
+                if (found == true)
+                {
+                    printf("%s%s%s", ERR_MSG, ERR_FORMAT, ERR_DUP_PLAYPOS);
+                    exit(EXIT_FAILURE);
+                }
+                m->pos.x = row;
+                m->pos.y = col;
+                found = true;
+            }
+            if (map_char == 'N')
+            {
+                m->dir.x = 1;
+                m->dir.y = 0;
+                m->plane.x = 0;
+                m->plane.y = 0.66;        
+            }
+            if (map_char == 'S')
+            {
+                m->dir.x = -1;
+                m->dir.y = 0;
+                m->plane.x = 0;
+                m->plane.y = -0.66;                             
+            }
+            if (map_char == 'W')
+            {
+                m->dir.x = 0;
+                m->dir.y = -1;
+                m->plane.x = 0.66;
+                m->plane.y = 0;                  
+            }
+            if (map_char == 'E')
+            {
+                m->dir.x = 0;
+                m->dir.y = 1;
+                m->plane.x = -0.66;
+                m->plane.y = 0;
+            }
+            col++;
+        }
+        row++;
     }
-    if (map_char == 'N')
+    if (found == false)
     {
-        m->dir.x = 1;
-        m->dir.y = 0;
-        m->plane.x = 0;
-        m->plane.y = 0.66;        
-    }
-    if (map_char == 'S')
-    {
-        m->dir.x = -1;
-        m->dir.y = 0;
-        m->plane.x = 0;
-        m->plane.y = -0.66;                             
-    }
-    if (map_char == 'W')
-    {
-        m->dir.x = 0;
-        m->dir.y = -1;
-        m->plane.x = 0.66;
-        m->plane.y = 0;                  
-    }
-    if (map_char == 'E')
-    {
-        m->dir.x = 0;
-        m->dir.y = 1;
-        m->plane.x = -0.66;
-        m->plane.y = 0;
+        printf("%s%s%s", ERR_MSG, ERR_FORMAT, ERR_NO_PLAYPOS);
+        exit(EXIT_FAILURE);
     }
 }
