@@ -4,22 +4,16 @@ void draw_floor_ceiling(t_main *m, int x, int drawStart, int drawEnd)
 {
     int y;
 
-	printf("%i\n", x);
     y = 0;
-	printf("h0\n");
 	while (y < drawStart)
 	{
-		// printf("cc:%i\n", m->ceiling_color);
-		printf("h1\n");
-		mlx_put_pixel(m->img, x, y, 0xFFFFFFFF);
-		printf("h2\n");		
+		mlx_put_pixel(m->img, x, y, m->ceiling_color);	
 		y++;
 	}
     y = drawEnd;
 	while (y < WIN_HEIGHT)
 	{
-		// printf("fc:%i\n", m->floor_color);
-		mlx_put_pixel(m->img, x, y, 0xFFFFFFFF);
+		mlx_put_pixel(m->img, x, y, m->floor_color);
 		y++;
 	}
 }
@@ -78,6 +72,6 @@ void	draw_tex(t_main *m, int x)
 	drawEnd = m->lineHeight / 2 + WIN_HEIGHT / 2 + m->pitch;
 	if (drawEnd >= WIN_HEIGHT)
 		drawEnd = WIN_HEIGHT - 1;
-	// draw_floor_ceiling(m, x, drawStart, drawEnd);
+	draw_floor_ceiling(m, x, drawStart, drawEnd);
 	draw_tex2(m, x, drawStart, drawEnd);
 }
