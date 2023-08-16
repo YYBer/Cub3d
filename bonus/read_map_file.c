@@ -17,6 +17,7 @@ void read_subject_file(char **argv, t_main *m)
 	read_prefixes(m);
 	read_prefixes(m);
 	read_prefixes(m);
+    read_prefixes(m);
     while (m->char_read == '\n') // skip newlines
        read_char(m);
     get_map_dims(m);

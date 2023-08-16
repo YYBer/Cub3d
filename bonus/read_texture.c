@@ -27,7 +27,9 @@ int choose_tex_path_index(char *path)
 	if (strcmp(path, "WE") == 0)
 		return (2);
 	if (strcmp(path, "EA") == 0)
-		return (3);		
+		return (3);
+	if (strcmp(path, "D") == 0)
+		return (4);
 	return (-1);
 }
 

@@ -33,6 +33,7 @@ void init_fileflags(t_main *m)
 	m->fileflags.ea = false;
 	m->fileflags.f = false;
 	m->fileflags.c = false;
+	m->fileflags.d = false;
 }
 
 bool *choose_fileflag(t_main *m, char *path)
@@ -48,7 +49,9 @@ bool *choose_fileflag(t_main *m, char *path)
 	if (strcmp(path, "F") == 0)
 		return (&m->fileflags.f);
 	if (strcmp(path, "C") == 0)
-		return (&m->fileflags.c);				
+		return (&m->fileflags.c);
+	if (strcmp(path, "D") == 0)
+		return (&m->fileflags.d);			
 	return (NULL);
 }
 
@@ -69,6 +72,8 @@ void	read_prefixes(t_main *m)
 	if (read_color_prefix(m, "F") == true)
 		return;
 	if (read_color_prefix(m, "C") == true)
+		return;
+	if (read_color_prefix(m, "D") == true)
 		return;
 	printf("%s%s%s", ERR_MSG, ERR_FORMAT, ERR_PREFIXES);
 	close(m->fd);

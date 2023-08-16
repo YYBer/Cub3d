@@ -70,6 +70,7 @@ typedef struct s_fileflags {
 	bool ea;
 	bool f;
 	bool c;
+	bool d;
 }	t_fileflags;
 // comment all vars below
 

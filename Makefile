@@ -54,4 +54,4 @@ re: clean all
 rebonus: fclean
 				make bonus
 
-.PHONY: all, clean, fclean, re, libmlx, rebonus
+.PHONY: all, clean, fclean, re, libmlx, rebonus, bonus
