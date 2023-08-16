@@ -7,7 +7,7 @@ LIBFT_PATH := libft/
 
 HEADERS	:= -I ./include -I $(LIBMLX)/include/MLX42 -I $(LIBFT_PATH)
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
-SRCS	:= main.c calc.c draw.c keys.c move.c read_color.c read_map_file.c read_map.c read_texture.c read_utils.c map_check.c render.c error.c
+SRCS	:= main.c calc.c draw.c keys.c move.c mouse.c read_color.c read_map_file.c read_map.c read_texture.c read_utils.c map_check.c render.c error.c
 OBJS	:= ${SRCS:.c=.o}
 
 all: libmlx $(LIBFT) $(NAME)

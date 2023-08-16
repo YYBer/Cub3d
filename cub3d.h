@@ -13,10 +13,12 @@
 #include "libft/libft.h"
 #include <string.h> // needed?
 
-#define WIN_WIDTH 640
-#define WIN_HEIGHT 480
-#define MINIMAP_WIDTH 80
+#define WIN_WIDTH 1200
+#define WIN_HEIGHT 800
+#define MINIMAP_WIDTH 250
 #define MINIMAP_OFFSET 40
+#define MINIMAP_BORDER_SCALE 0.05
+
 #define SQRS_PER_SEC 5.0
 #define RADS_PER_SEC 3.0
 #define NUM_TEXTURES 4
@@ -108,6 +110,7 @@ typedef struct s_main {
 	bool			key_right_pressed;	
 	uint32_t		ceiling_color;
 	uint32_t		floor_color;
+	int				prev_mouse_x;
 }	t_main;
 
 int			alloc_map(t_main *m);
@@ -117,6 +120,7 @@ void 		load_textures(t_main *m);
 void		delete_textures(t_main *m);
 void		free_map(t_main *m);
 void		my_keyhook(mlx_key_data_t keydata, void *param);
+void		my_mousehook(void *param);
 void		ft_raycast(void *param);
 void		move_player(t_main *m);
 t_pt2d_d	calc_ray_dir(int x, t_pt2d_d raydr, t_pt2d_d dir, t_pt2d_d plane);
