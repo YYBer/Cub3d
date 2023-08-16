@@ -48,8 +48,9 @@ void get_player_position(t_main *m)
                     printf("%s%s%s", ERR_MSG, ERR_FORMAT, ERR_DUP_PLAYPOS);
                     exit(EXIT_FAILURE);
                 }
-                m->pos.x = row;
-                m->pos.y = col;
+                // + 0.5 sets pos to middle of square
+                m->pos.x = row + 0.5;
+                m->pos.y = col + 0.5;
                 found = true;
             }
             if (map_char == 'N')
