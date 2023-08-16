@@ -71,7 +71,6 @@ typedef struct s_fileflags {
 	bool f;
 	bool c;
 }	t_fileflags;
-
 // comment all vars below
 
 typedef struct s_main {
@@ -137,8 +136,9 @@ void 		print_map_i(t_map *map);
 void		free_map_data(t_map *map);
 void		ft_error(char *str, t_main *m);
 int			ft_check_map_command(int argc, char **argv);
-int			ft_map_parameters_check(t_main *m);
+//int			//ft_map_parameters_check(t_main *m);
 void 		get_player_position(t_main *m);
+int 		ft_surround_check(t_main *m);
 
 void		init_fileflags(t_main *m);
 void		read_prefixes(t_main *m);

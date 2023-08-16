@@ -165,8 +165,12 @@ int	main(int argc, char **argv)
 		exit(1);
 	mlx_set_setting(MLX_STRETCH_IMAGE, false);
 	init_m(argv, &m);
+	if (ft_surround_check(&m))
+		exit(1);
 	if (argc == 3 && strcmp(argv[2], "test") == 0)
 		exit(EXIT_SUCCESS);
+	//printf("-----print map-------\n");
+	//printf("check map: %d \n", ft_surround_check(&m));
 	if ((mlx_image_to_window(m.mlx, m.img, 0, 0) < 0))
 	{
 		ft_error("Error: Could not put image to window.", &m);
