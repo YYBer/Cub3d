@@ -43,7 +43,10 @@ int ft_surround_check(t_main *m)
                         + ft_surround_check_utils(m->map.data_c, x - 1, y) 
                             + ft_surround_check_utils(m->map.data_c, x, y + 1) 
                                 + ft_surround_check_utils(m->map.data_c, x, y - 1)) > 0)
+                {
+                    ft_error("the map is not completely closed!", m);
                     return (1);
+                }
             }
             y++;
         }
