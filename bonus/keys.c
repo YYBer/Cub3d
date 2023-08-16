@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void	my_keyhook(mlx_key_data_t keydata, void *param)
 {

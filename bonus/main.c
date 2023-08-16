@@ -1,7 +1,7 @@
 // TODO: fix ERROR: cannot parse map file(read_prefixes) - we are one char too far ahead
 // DONE: Except for the map, each type of information from an element can be separated by one or more space(s). [???]
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void convert_map_data_c_to_i(t_main *m)
 {

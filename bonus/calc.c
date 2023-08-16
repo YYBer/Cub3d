@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 // camera_x = x-coordinate in camera space
 t_pt2d_d	calc_ray_dir(int x, t_pt2d_d raydr, t_pt2d_d dir, t_pt2d_d plane)

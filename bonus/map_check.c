@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 int	ft_check_map_command(int argc, char **argv)
 {

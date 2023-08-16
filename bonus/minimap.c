@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void draw_minimap_window(t_main *m)
 {

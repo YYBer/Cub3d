@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 char *read_wall_tex_path(t_main *m)
 {

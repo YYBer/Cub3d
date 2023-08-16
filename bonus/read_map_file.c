@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void read_subject_file(char **argv, t_main *m)
 {

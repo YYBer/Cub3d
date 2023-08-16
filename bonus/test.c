@@ -1,4 +1,4 @@
-#include "mlx42.h"
+#include "cub3d_bonus.h"
 
 int main() {
     mlx42_init();  // Initialize the graphics library

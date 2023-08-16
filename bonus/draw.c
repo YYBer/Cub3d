@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void draw_floor_ceiling(t_main *m, int x, int drawStart, int drawEnd)
 {

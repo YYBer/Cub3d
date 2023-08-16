@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 //move forward if no wall in front of you
 void	move_forwards(t_main *m)
