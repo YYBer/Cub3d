@@ -15,6 +15,8 @@
 
 #define WIN_WIDTH 640
 #define WIN_HEIGHT 480
+#define MINIMAP_WIDTH 80
+#define MINIMAP_OFFSET 40
 #define SQRS_PER_SEC 5.0
 #define RADS_PER_SEC 3.0
 #define NUM_TEXTURES 4
@@ -23,7 +25,11 @@
 #define COLOUR_BLUE 0x00FF00FF
 #define COLOUR_GREEN 0x0000FFFF
 #define COLOUR_WHITE 0xFFFFFFFF
-#define COLOUR_YELLOW 0XFFFF00FF
+#define COLOUR_YELLOW 0xFFFF00FF
+#define MINIMAP_BGND_COL 0xAAAAAAFF
+#define MINIMAP_WALL_COL 0x8B4513FF
+#define MINIMAP_EMPTY_COL 0xADD8E6FF
+#define MINIMAP_PLAYPOS_COL 0x22DD22FF
 
 #define ERR_MSG "Error\n"
 #define ERR_FORMAT "Invalid file format\n"
@@ -100,8 +106,8 @@ typedef struct s_main {
 	bool			key_a_pressed;
 	bool			key_left_pressed;
 	bool			key_right_pressed;	
-	uint32_t		ceiling_color; // int?
-	uint32_t		floor_color; // int?
+	uint32_t		ceiling_color;
+	uint32_t		floor_color;
 }	t_main;
 
 int			alloc_map(t_main *m);
@@ -140,5 +146,6 @@ bool		read_color_prefix(t_main *m, char *path);
 
 void		malloc_map_i(t_map *map);
 void		convert_map_data_c_to_i(t_main *m);
+void		draw_minimap(t_main *m);
 
 #endif

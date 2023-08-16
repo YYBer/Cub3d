@@ -41,4 +41,5 @@ void	ft_raycast(void *param)
 		draw_tex(m, x);
 		x++;
 	}
+	draw_minimap(m);
 }

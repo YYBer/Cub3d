@@ -157,6 +157,100 @@ void delete_textures(t_main *m)
 	mlx_delete_texture(m->textures[3]);
 }
 
+void draw_minimap_window(t_main *m)
+{
+	int dxStart;
+	int dyStart;
+	int dxEnd;
+	int dyEnd;
+	int win_width;
+	int win_offset;
+
+	win_width = MINIMAP_WIDTH * 1.2;
+	win_offset = MINIMAP_WIDTH * 0.1;
+
+	dxEnd = win_width;
+	dyEnd = (win_width / m->map.ncols) * m->map.nrows;
+	dxStart = 0;
+	while(dxStart < dxEnd)
+	{
+		dyStart = 0;
+		while(dyStart < dyEnd)
+		{
+			mlx_put_pixel(m->img, dxStart - win_offset + MINIMAP_OFFSET, dyStart - win_offset + MINIMAP_OFFSET, MINIMAP_BGND_COL);
+			dyStart++;
+		}
+		dxStart++;
+	}	
+}
+
+void draw_minimap_square(t_main *m, int x, int y, uint32_t color)
+{
+	int dxStart;
+	int dyStart;
+	int dxEnd;
+	int dyEnd;
+
+	dxEnd = (x + 1) * (MINIMAP_WIDTH / m->map.ncols);
+	dyEnd = (y + 1) * (MINIMAP_WIDTH / m->map.ncols);
+	
+	dxStart = x * (MINIMAP_WIDTH / m->map.ncols);
+	while(dxStart < dxEnd)
+	{
+		dyStart = y * (MINIMAP_WIDTH / m->map.ncols);
+		while(dyStart < dyEnd)
+		{
+			mlx_put_pixel(m->img, dxStart + MINIMAP_OFFSET, dyStart + MINIMAP_OFFSET, color);
+			dyStart++;
+		}
+		dxStart++;
+	}
+}
+
+// draw walls not walls
+void draw_minimap_squares(t_main *m)
+{
+	int x;
+	int y;
+	uint32_t color;
+
+	x = 0;
+	while(x < m->map.ncols)
+	{
+		y = 0;
+		while(y < m->map.nrows)
+		{
+			int elem;
+
+			elem = m->map.data_i[x][y];
+			if (elem == 0)
+			{
+				color = MINIMAP_EMPTY_COL; // empty space
+			}
+			else if (elem == 1)
+			{
+				color = MINIMAP_WALL_COL; // wall
+			}
+			draw_minimap_square(m, x, y, color);
+			y++;
+		}
+		x++;
+	}
+}
+
+void draw_minimap_player_pos(t_main *m)
+{
+	draw_minimap_square(m, m->pos.x, m->pos.y, MINIMAP_PLAYPOS_COL);
+}
+
+void draw_minimap(t_main *m)
+{
+	// should be a bit translucent
+	draw_minimap_window(m);
+	draw_minimap_squares(m);
+	draw_minimap_player_pos(m);
+}
+
 int	main(int argc, char **argv)
 {
 	t_main	m;
