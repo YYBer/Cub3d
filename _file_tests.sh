@@ -53,6 +53,6 @@ input_files=(
 # Loop through each input file and run ./cub3d, logging the result
 for file in "${input_files[@]}"; do
     echo "Running $file" >> "$log_file"
-    ./cub3d "$file" "test" 2>&1 | sed 's/^/  /' >> "$log_file"
+    ./cub3d "$file" 2>&1 | sed 's/^/  /' >> "$log_file"
     echo "--------------------------------------------------" >> "$log_file"
 done

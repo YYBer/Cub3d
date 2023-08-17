@@ -1,11 +1,13 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mouse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/17 09:33:52 by gbooth            #+#    #+#             */
+/*   Updated: 2023/08/17 12:55:08 by gbooth           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
-
-// void	my_mousehook(mouse_key_t button, action_t action, modifier_key_t mods, void *param)
-// {
-// 	t_main	*m;
-
-// 	m = (t_main *)param;
-
-// 	printf("mx:%i\n", mousedata.x);
-// }
-

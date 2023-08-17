@@ -1,93 +1,124 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minimap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/17 09:33:49 by gbooth            #+#    #+#             */
+/*   Updated: 2023/08/17 12:56:17 by gbooth           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-void draw_minimap_window(t_main *m)
+void	draw_minimap_window(t_main *m)
 {
-	int dxStart;
-	int dyStart;
-	int dxEnd;
-	int dyEnd;
-	int expWidth;
+	int	dx_start;
+	int	dy_start;
+	int	dx_end;
+	int	dy_end;
+	int	exp_width;
 
-	expWidth = MINIMAP_WIDTH * MINIMAP_BORDER_SCALE;	
-	dxStart = MINIMAP_OFFSET - expWidth;
-	dxEnd = MINIMAP_OFFSET + MINIMAP_WIDTH + expWidth;
-	while(dxStart < dxEnd)
+	exp_width = MINIMAP_WIDTH * MINIMAP_BORDER_SCALE;
+	dx_start = MINIMAP_OFFSET - exp_width;
+	dx_end = MINIMAP_OFFSET + MINIMAP_WIDTH + exp_width;
+	while (dx_start < dx_end)
 	{
-		dyStart = MINIMAP_OFFSET - expWidth;
-		dyEnd = MINIMAP_OFFSET + ((MINIMAP_WIDTH / m->map.ncols) * m->map.nrows) + expWidth;
-		while(dyStart < dyEnd)
+		dy_start = MINIMAP_OFFSET - exp_width;
+		dy_end = MINIMAP_OFFSET + ((MINIMAP_WIDTH / m->map.ncols)
+				* m->map.nrows) + exp_width;
+		while (dy_start < dy_end)
 		{
-			mlx_put_pixel(m->img, dxStart, dyStart, MINIMAP_BGND_COL);
-			dyStart++;
+			mlx_put_pixel(m->img, dx_start, dy_start, MINIMAP_BGND_COL);
+			dy_start++;
 		}
-		dxStart++;
+		dx_start++;
 	}
 }
 
-void draw_minimap_square(t_main *m, int x, int y, uint32_t color)
+void	draw_minimap_square(t_main *m, int x, int y, uint32_t color)
 {
-	int dxStart;
-	int dyStart;
-	int dxEnd;
-	int dyEnd;
-	int sqxy;
+	int	dx_start;
+	int	dy_start;
+	int	dx_end;
+	int	dy_end;
+	int	sqxy;
 
 	sqxy = MINIMAP_WIDTH / m->map.ncols;
-	dxStart = MINIMAP_OFFSET + (x * sqxy);
-	dxEnd = MINIMAP_OFFSET + (((x + 1) * sqxy) - 1);
-	while(dxStart < dxEnd)
+	dx_start = MINIMAP_OFFSET + (x * sqxy);
+	dx_end = MINIMAP_OFFSET + (((x + 1) * sqxy) - 1);
+	while (dx_start < dx_end)
 	{
-		dyStart = MINIMAP_OFFSET + (y * sqxy);
-		dyEnd = MINIMAP_OFFSET + (((y + 1) * sqxy) - 1);
-		while(dyStart < dyEnd)
+		dy_start = MINIMAP_OFFSET + (y * sqxy);
+		dy_end = MINIMAP_OFFSET + (((y + 1) * sqxy) - 1);
+		while (dy_start < dy_end)
 		{
-			mlx_put_pixel(m->img,  + dxStart, dyStart, color);
-			dyStart++;
+			mlx_put_pixel(m->img, dx_start, dy_start, color);
+			dy_start++;
 		}
-		dxStart++;
+		dx_start++;
 	}
+}
+
+void	draw_line(t_main *m, int cx, int cy, double angle)
+{
+	int	i;
+	int	px;
+	int	py;
+	int	sqxy;
+
+	sqxy = MINIMAP_WIDTH / m->map.ncols;
+	i = 0;
+	while (i <= sqxy / 2)
+	{
+		px = cx + i * cos(angle);
+		py = cy - i * sin(angle);
+		mlx_put_pixel(m->img, px, py, MINIMAP_PLAYDIR_COL);
+		i++;
+	}
+}
+
+void	draw_player_direction_line(t_main *m, int x, int y)
+{
+	int		sqxy;
+	int		line_center_x;
+	int		line_center_y;
+	double	rotated_angle;
+
+	sqxy = MINIMAP_WIDTH / m->map.ncols;
+	line_center_x = MINIMAP_OFFSET + (x * sqxy) + sqxy / 2;
+	line_center_y = MINIMAP_OFFSET + (y * sqxy) + sqxy / 2;
+	rotated_angle = -M_PI / 2.0;
+	rotated_angle += atan2(m->dir.y, m->dir.x);
+	draw_line(m, line_center_x, line_center_y, rotated_angle);
 }
 
 // draw walls not walls
-void draw_minimap_squares(t_main *m)
+void	draw_minimap(t_main *m)
 {
-	int x;
-	int y;
-	uint32_t color;
+	int			x;
+	int			y;
+	uint32_t	color;
+	int			elem;
 
+	draw_minimap_window(m);
 	x = 0;
-	while(x < m->map.ncols)
+	while (x < m->map.ncols)
 	{
 		y = 0;
-		while(y < m->map.nrows)
+		while (y < m->map.nrows)
 		{
-			int elem;
-
 			elem = m->map.data_i[y][x];
 			if (elem == 0)
-			{
-				color = MINIMAP_EMPTY_COL; // empty space
-			}
+				color = MINIMAP_EMPTY_COL;
 			else if (elem == 1)
-			{
-				color = MINIMAP_WALL_COL; // wall
-			}
+				color = MINIMAP_WALL_COL;
 			draw_minimap_square(m, x, y, color);
 			y++;
 		}
 		x++;
 	}
-}
-
-void draw_minimap_player_pos(t_main *m)
-{
 	draw_minimap_square(m, m->pos.y, m->pos.x, MINIMAP_PLAYPOS_COL);
-}
-
-void draw_minimap(t_main *m)
-{
-	// should be a bit translucent
-	draw_minimap_window(m);
-	draw_minimap_squares(m);
-	draw_minimap_player_pos(m);
+	draw_player_direction_line(m, m->pos.y, m->pos.x);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/17 09:34:36 by gbooth            #+#    #+#             */
+/*   Updated: 2023/08/17 12:22:12 by gbooth           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	clear_image(t_main *m)
@@ -18,6 +30,9 @@ void	clear_image(t_main *m)
 	}
 }
 
+// in while loop:
+// calculate ray position and direction
+// length of ray from current position to next x or y-side
 void	ft_raycast(void *param)
 {
 	t_main	*m;
@@ -29,15 +44,16 @@ void	ft_raycast(void *param)
 	x = 0;
 	while (x < WIN_WIDTH)
 	{
-		//calculate ray position and direction
-		//length of ray from current position to next x or y-side:
 		m->raydr = calc_ray_dir(x, m->raydr, m->dir, m->plane);
 		m->map_pos.x = (int)(m->pos.x);
 		m->map_pos.y = (int)(m->pos.y);
 		m->delta_dist = calc_delta_dist(m->delta_dist, m->raydr);
 		calc_step_and_side_dist(m);
 		perform_dda(m);
-		m->perp_wall_dist = getperp_wall_dist(m->side, m->side_dist, m->delta_dist);
+		if (m->side == 0)
+			m->perp_wall_dist = m->side_dist.x - m->delta_dist.x;
+		else
+			m->perp_wall_dist = m->side_dist.y - m->delta_dist.y;
 		draw_tex(m, x);
 		x++;
 	}
