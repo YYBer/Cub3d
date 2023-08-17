@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:40 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 11:49:50 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/17 16:17:07 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 //both camera direction and camera plane must be rotated
 void	rotate_left(t_main *m)

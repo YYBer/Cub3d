@@ -6,11 +6,11 @@
 /*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:26 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 14:55:41 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/17 16:16:52 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 char	*read_wall_tex_path(t_main *m)
 {

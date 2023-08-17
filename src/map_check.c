@@ -6,11 +6,11 @@
 /*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:33:43 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 15:00:40 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/17 16:16:28 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 int	ft_check_map_command(int argc, char **argv)
 {

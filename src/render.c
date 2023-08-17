@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:36 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 12:22:12 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/17 16:17:03 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 void	clear_image(t_main *m)
 {

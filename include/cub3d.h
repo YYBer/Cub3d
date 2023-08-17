@@ -6,7 +6,7 @@
 /*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:47:07 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 15:42:06 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/17 16:19:05 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <fcntl.h>
 # include <limits.h>
 # include <stdbool.h>
-# include "MLX42.h"
+# include "../MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"
 
 # define WIN_WIDTH 1200
@@ -177,7 +177,7 @@ void		draw_minimap(t_main *m);
 void		print_cub_file_summary(t_main *m);
 
 void		my_closehook(void *param);
-
+void    	free_m(t_main *m);
 int			ft_strcmp(char *str1, char *str2);
 
 #endif

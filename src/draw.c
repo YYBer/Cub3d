@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:32:37 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 12:34:50 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/17 16:15:56 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 void	draw_floor_ceiling(t_main *m, int x)
 {

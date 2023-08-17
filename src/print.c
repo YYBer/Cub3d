@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:03 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 09:42:55 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/17 16:16:39 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 void	print_rgba(int value)
 {

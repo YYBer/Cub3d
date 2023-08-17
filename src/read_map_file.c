@@ -6,11 +6,11 @@
 /*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:23 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 15:19:09 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/17 16:16:49 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 void	read_subject_file(char **argv, t_main *m)
 {

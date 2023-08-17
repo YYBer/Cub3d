@@ -6,11 +6,11 @@
 /*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:41:51 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 15:00:08 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/17 16:16:23 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 void	init_window(t_main *m)
 {
@@ -71,11 +71,11 @@ int	main(int argc, char **argv)
 	t_main	m;
 
 	if (ft_check_map_command(argc, argv))
-		exit(1);
+		ft_error("Incorrect map format", NULL);
 	mlx_set_setting(MLX_STRETCH_IMAGE, false);
 	init_m(argv, &m);
 	if (ft_surround_check(&m))
-		exit(1);
+		ft_error("Map is not completely surrouned by walls!", &m);
 	if (argc == 3 && ft_strcmp(argv[2], "test") == 0)
 		exit(EXIT_SUCCESS);
 	if ((mlx_image_to_window(m.mlx, m.img, 0, 0) < 0))
@@ -85,6 +85,7 @@ int	main(int argc, char **argv)
 	mlx_loop_hook(m.mlx, ft_raycast, &m);
 	mlx_loop(m.mlx);
 	mlx_terminate(m.mlx);
-	free_map_data(&m.map);
+	//free_map_data(&m.map);
+	free_m(&m);
 	return (EXIT_SUCCESS);
 }

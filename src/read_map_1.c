@@ -6,11 +6,11 @@
 /*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:08 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 15:47:16 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/17 16:16:44 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 void	process_map_characters(t_main *m, char *onechar, int *longest_ncols)
 {

@@ -6,11 +6,11 @@
 /*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:06 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 15:03:42 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/17 16:16:41 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 int	read_color_value(t_main *m)
 {
