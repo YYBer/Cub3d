@@ -6,7 +6,7 @@
 /*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:41:51 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 16:16:23 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/17 20:55:56 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	load_textures(t_main *m)
 	int	i;
 	int	fd;
 
-	m->texture_alloc = false;
 	i = 0;
+	m->texture_alloc = false;
 	while (i < NUM_TEXTURES)
 	{
 		fd = open(m->tex_paths[i], O_RDONLY);
@@ -55,6 +55,7 @@ void	load_textures(t_main *m)
 		m->textures[i] = mlx_load_png(m->tex_paths[i]);
 		i++;
 	}
+	m->texture_alloc = true;
 }
 
 int	ft_strcmp(char *str1, char *str2)
@@ -84,6 +85,7 @@ int	main(int argc, char **argv)
 	mlx_close_hook(m.mlx, &my_closehook, &m);
 	mlx_loop_hook(m.mlx, ft_raycast, &m);
 	mlx_loop(m.mlx);
+	//write(1, "hello\n",5);
 	mlx_terminate(m.mlx);
 	//free_map_data(&m.map);
 	free_m(&m);
