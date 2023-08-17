@@ -6,7 +6,7 @@
 /*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:08 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 16:35:38 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/17 20:03:26 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,16 +87,19 @@ static void	malloc_map_c(t_main *m)
 	t_map	*map;
 
 	map = &m->map;
-	map->data_c = (char **)malloc(map->nrows * sizeof(char *));
+	//printf("nrows: %d ncols: %d\n", m->map.nrows, m->map.ncols);
+	map->data_c = (char **)malloc(map->nrows * sizeof(char *) + sizeof(char *));
 	if (map->data_c == NULL)
 		ft_error("Memory allocation error for row pointers.", m);
+	map->data_c[map->nrows] = 0;
 	map->data_alloc = true;
 	i = 0;
 	while (i < map->nrows)
 	{
-		map->data_c[i] = (char *)malloc(map->ncols * sizeof(char));
+		map->data_c[i] = (char *)malloc(map->ncols * sizeof(char) + 1);
 		if (map->data_c[i] == NULL)
 			ft_error("Memory allocation error for row", m);
+		map->data_c[i][map->ncols] = '\0';
 		i++;
 	}
 }
