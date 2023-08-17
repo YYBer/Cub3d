@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:47:07 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 12:46:51 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/17 15:42:06 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <limits.h>
 # include <stdbool.h>
 # include "MLX42.h"
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 # define WIN_WIDTH 1200
 # define WIN_HEIGHT 800
@@ -99,6 +99,7 @@ typedef struct s_main {
 	int				total_chars_read;
 	t_fileflags		fileflags;
 	char			*tex_paths[4];
+	bool			tex_paths_alloc;
 	t_map			map;
 	mlx_t			*mlx;
 	mlx_image_t		*img;
@@ -169,7 +170,7 @@ bool		*choose_fileflag(t_main *m, char *path);
 bool		read_tex_prefix(t_main *m, char *path);
 bool		read_color_prefix(t_main *m, char *path);
 
-void		malloc_map_i(t_map *map);
+void		malloc_map_i(t_main *m);
 void		convert_map_data_c_to_i(t_main *m);
 void		draw_minimap(t_main *m);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:32 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 12:45:56 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/17 15:20:12 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,5 @@ void	read_prefixes(t_main *m)
 		return ;
 	if (read_color_prefix(m, "C") == true)
 		return ;
-	printf("%s%s%s", ERR_MSG, ERR_FORMAT, ERR_PREFIXES);
-	close(m->fd);
-	exit(EXIT_FAILURE);
+	ft_error("Invalid file format.", m);
 }

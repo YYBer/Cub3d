@@ -36,4 +36,3 @@ int	main(void)
 	printf("%c\n", str[5]);
 	return (0);
 }*/
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:33:43 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 12:45:56 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/17 15:00:40 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,10 @@ int	ft_check_map_command(int argc, char **argv)
 	size_t	i;
 
 	if (argc != 2 || (argc == 3 && ft_strcmp(argv[2], "test") == 0))
-	{
 		ft_error("wrong number of args.", NULL);
-		return (1);
-	}
 	i = ft_strlen((const char *)argv[1]);
 	if (ft_strnstr(&argv[1][i - 4], ".cub", 4) == NULL)
-	{
 		ft_error("file type is wrong, should be .cub", NULL);
-		return (1);
-	}
 	return (0);
 }
 

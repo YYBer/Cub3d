@@ -6,11 +6,11 @@
 /*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:00:44 by yli               #+#    #+#             */
-/*   Updated: 2022/12/12 20:54:30 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/17 15:52:56 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 int	ft_setcheck(char c, char const *set)
 {

@@ -6,11 +6,11 @@
 /*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:00:31 by yli               #+#    #+#             */
-/*   Updated: 2023/01/24 20:11:14 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/17 15:52:28 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 static	size_t	count_str(char const *s, char const c)
 {

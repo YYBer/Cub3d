@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_color.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:06 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 12:45:56 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/17 15:03:42 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,7 @@ int	read_color_value(t_main *m)
 		read_char(m);
 	}
 	if (i == 0)
-	{
-		printf("%s%s%s", ERR_MSG, ERR_FORMAT, ERR_COL_VAL);
-		close(m->fd);
-		exit(EXIT_FAILURE);
-	}
+		ft_error("Invalid file format", m);
 	color_str[i] = '\0';
 	return (ft_atoi(color_str));
 }
@@ -52,11 +48,7 @@ uint32_t	read_color_path(t_main *m)
 	blue = read_color_value(m);
 	if (red < 0 || red > 255 || green < 0
 		|| green > 255 || blue < 0 || blue > 255)
-	{
-		printf("%s%s%s", ERR_MSG, ERR_FORMAT, ERR_COL_VAL);
-		close(m->fd);
-		exit(EXIT_FAILURE);
-	}
+		ft_error("Invalid file format", m);
 	return ((red << 24) | (green << 16) | (blue << 8) | 0xFF);
 }
 
@@ -71,11 +63,7 @@ bool	read_color_prefix(t_main *m, char *path)
 			read_char(m);
 		chosen_fileflag = choose_fileflag(m, path);
 		if (*chosen_fileflag == true)
-		{
-			printf("%s%s%s", ERR_MSG, ERR_FORMAT, ERR_DUPL);
-			close(m->fd);
-			exit(EXIT_FAILURE);
-		}
+			ft_error("Invalid file format", m);
 		if (ft_strcmp(path, "F") == 0)
 			m->floor_color = read_color_path(m);
 		if (ft_strcmp(path, "C") == 0)

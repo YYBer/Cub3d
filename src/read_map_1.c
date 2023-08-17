@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:08 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 09:43:30 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/17 15:47:16 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,7 @@ void	process_map_characters(t_main *m, char *onechar, int *longest_ncols)
 			&& m->char_read != 'N' && m->char_read != 'E'
 			&& m->char_read != 'S' && m->char_read != 'W'
 			&& m->char_read != ' ' && m->char_read != '\n')
-		{
-			printf("%s%s%s", ERR_MSG, ERR_FORMAT, ERR_INVALID_MAP_CHAR);
-			close(m->fd);
-			exit(EXIT_FAILURE);
-		}
+			ft_error("Invalid file format.", m);
 		if (m->char_read == '\n')
 		{
 			if (m->map.ncols > *longest_ncols)
@@ -85,27 +81,22 @@ void	process_row(t_main *m, int row)
 	}
 }
 
-void	malloc_map_c(t_map *map)
+static void	malloc_map_c(t_main *m)
 {
-	int	i;
+	int		i;
+	t_map	*map;
 
+	map = &m->map;
 	map->data_c = (char **)malloc(map->nrows * sizeof(char *));
 	if (map->data_c == NULL)
-	{
-		printf("%s", ERR_MSG);
-		printf("Memory allocation error for row pointers.\n");
-		exit(EXIT_FAILURE);
-	}
+		ft_error("Memory allocation error for row pointers.", m);
+	map->data_alloc = true;
 	i = 0;
 	while (i < map->nrows)
 	{
 		map->data_c[i] = (char *)malloc(map->ncols * sizeof(char));
 		if (map->data_c[i] == NULL)
-		{
-			printf("%s", ERR_MSG);
-			printf("Memory allocation error for row %d.\n", i);
-			exit(EXIT_FAILURE);
-		}
+			ft_error("Memory allocation error for row", m);
 		i++;
 	}
 }
@@ -117,14 +108,11 @@ void	fill_map(t_main *m)
 	int		row;
 
 	m->map.data_alloc = false;
-	malloc_map_c(&m->map);
+	malloc_map_c(m);
 	close(m->fd);
 	m->fd = open(m->filename, O_RDONLY);
 	if (m->fd == -1)
-	{
-		printf("%s%s\"%s\"\n", ERR_MSG, ERR_FILE, m->filename);
-		exit(EXIT_FAILURE);
-	}
+		ft_error("File not found", m);
 	i = 0;
 	while (i < m->total_chars_read - 1)
 	{

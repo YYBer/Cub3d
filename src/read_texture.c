@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:26 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 12:49:31 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/17 14:55:41 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	choose_tex_path_index(char *path)
 	return (-1);
 }
 
-// is ERR_PREFIXES the right kind of message for below?
 bool	read_tex_prefix(t_main *m, char *path)
 {
 	bool	*chosen_fileflag;
@@ -59,22 +58,15 @@ bool	read_tex_prefix(t_main *m, char *path)
 				read_char(m);
 			chosen_fileflag = choose_fileflag(m, path);
 			if (*chosen_fileflag == true)
-			{
-				printf("%s%s%s", ERR_MSG, ERR_FORMAT, ERR_DUPL);
-				close(m->fd);
-				exit(EXIT_FAILURE);
-			}
+				ft_error("Invalid file format", m);
 			tex_path_index = choose_tex_path_index(path);
 			m->tex_paths[tex_path_index] = read_wall_tex_path(m);
+			m->tex_paths_alloc = true;
 			*chosen_fileflag = true;
 			return (true);
 		}
 		else
-		{
-			printf("%s%s%s", ERR_MSG, ERR_FORMAT, ERR_PREFIXES);
-			close(m->fd);
-			exit(EXIT_FAILURE);
-		}
+			ft_error("Invalid file format", m);
 	}
 	return (false);
 }

@@ -6,11 +6,11 @@
 /*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 20:45:04 by yli               #+#    #+#             */
-/*   Updated: 2022/12/12 17:05:59 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/17 15:52:30 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 char	*ft_strchr(const char*str, int c)
 {

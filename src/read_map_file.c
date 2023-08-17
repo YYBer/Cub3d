@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:23 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 10:12:08 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/17 15:19:09 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ void	read_subject_file(char **argv, t_main *m)
 	m->total_chars_read = 0; 
 	m->fd = open(m->filename, O_RDONLY);
 	if (m->fd == -1)
-	{
-		printf("%s%s\"%s\"\n", ERR_MSG, ERR_FILE, m->filename);
-		exit(EXIT_FAILURE);
-	}
+		ft_error("File not found.", m);
 	init_fileflags(m);
 	read_prefixes(m);
 	read_prefixes(m);
@@ -44,10 +41,7 @@ void	set_player_pos(t_main *m, int row, int col, bool *found)
 		|| m->map_char == 'W' || m->map_char == 'E')
 	{
 		if (*found == true)
-		{
-			printf("%s%s%s", ERR_MSG, ERR_FORMAT, ERR_DUP_PLAYPOS);
-			exit(EXIT_FAILURE);
-		}
+			ft_error("Invalid file format.", m);
 		m->pos.x = row + 0.5;
 		m->pos.y = col + 0.5;
 		*found = true;
@@ -113,8 +107,5 @@ void	get_player_position(t_main *m)
 		row++;
 	}
 	if (found == false)
-	{
-		printf("%s%s%s", ERR_MSG, ERR_FORMAT, ERR_NO_PLAYPOS);
-		exit(EXIT_FAILURE);
-	}
+		ft_error("Invalid file format.", m);
 }
