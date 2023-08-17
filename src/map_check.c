@@ -6,7 +6,7 @@
 /*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:33:43 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 16:16:28 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/17 16:29:39 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_surround_check(t_main *m)
 	while (x < m->map.nrows)
 	{
 		y = 0;
-		while (y < (int)ft_strlen(m->map.data_c[x]))
+		while (y < (int)ft_strlen(m->map.data_c[x]) - 1)
 		{
 			if (m->map.data_c[x][y] == '0')
 			{
@@ -52,6 +52,7 @@ int	ft_surround_check(t_main *m)
 			}
 			y++;
 		}
+		printf("x: %d, m->map.nrows: %d y: %d, (int)ft_strlen(m->map.data_c[x]: %d\n", x, m->map.nrows, y, (int)ft_strlen(m->map.data_c[x]));
 		x++;
 	}
 	return (0);

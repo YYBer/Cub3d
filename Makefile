@@ -25,6 +25,7 @@ libmlx:
 
 $(NAME): $(OBJS) $(LIBFT)
 	@$(CC) $(SRCS) $(LIBS) $(LIBFT) $(HEADERS) -o $(NAME)
+	@echo "Cub3d compiled!"
 
 $(LIBFT):
 	@echo "Compiling libft..."

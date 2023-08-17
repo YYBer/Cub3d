@@ -6,7 +6,7 @@
 /*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:08 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 16:16:44 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/17 16:35:38 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	process_map_characters(t_main *m, char *onechar, int *longest_ncols)
 			&& m->char_read != 'N' && m->char_read != 'E'
 			&& m->char_read != 'S' && m->char_read != 'W'
 			&& m->char_read != ' ' && m->char_read != '\n')
-			ft_error("Invalid file format.", m);
+			ft_error("Invalid file format.0", m);
 		if (m->char_read == '\n')
 		{
 			if (m->map.ncols > *longest_ncols)

@@ -6,7 +6,7 @@
 /*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:23 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 16:16:49 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/17 16:35:56 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	set_player_pos(t_main *m, int row, int col, bool *found)
 		|| m->map_char == 'W' || m->map_char == 'E')
 	{
 		if (*found == true)
-			ft_error("Invalid file format.", m);
+			ft_error("Invalid file format.1", m);
 		m->pos.x = row + 0.5;
 		m->pos.y = col + 0.5;
 		*found = true;
@@ -107,5 +107,5 @@ void	get_player_position(t_main *m)
 		row++;
 	}
 	if (found == false)
-		ft_error("Invalid file format.", m);
+		ft_error("Invalid file format.2", m);
 }

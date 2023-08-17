@@ -6,7 +6,7 @@
 /*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:32 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 16:16:57 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/17 16:36:04 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,5 @@ void	read_prefixes(t_main *m)
 		return ;
 	if (read_color_prefix(m, "C") == true)
 		return ;
-	ft_error("Invalid file format.", m);
+	ft_error("Invalid file format.3", m);
 }
