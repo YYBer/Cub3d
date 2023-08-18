@@ -1,144 +1,120 @@
 Running maps/everything_valid.cub
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/map_complex_leading_spaces_1.cub
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/map_complex_leading_spaces_2.cub
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/map_complex_leading_spaces_differing_line_lengths.cub
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/map_complex_subject.cub
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/map_none.cub
-  Error
-  Could not read from file or unexpectedly reached end
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/map_simple_all_walls.cub
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/map_simple_extra_position.cub
-  Error
-  Invalid file format
-  (Duplicate initial player position found in map)
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/map_simple_illegal_char.cub
-  Error
-  Invalid file format
-  (Invalid character in map)
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/map_simple_large.cub
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/map_simple_no_position.cub
-  Error
-  Invalid file format
-  (No initial player position found in map)
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/map_simple_rect_wide.cub
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/map_simple_smallest_valid.cub
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/map_single_0.cub
-  Error
-  Invalid file format
-  (No initial player position found in map)
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/map_single_1.cub
-  Error
-  Invalid file format
-  (No initial player position found in map)
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/map_single_illegal_char.cub
-  Error
-  Invalid file format
-  (Invalid character in map)
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/map_wall_jean.cub
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/map_wall_slack_1_valid.cub
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/map_wall_slack_2_valid.cub
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/map_wall_slack_3_invalid.cub
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/preamble_color_double_comma.cub
-  Error
-  Invalid file format
-  (Invalid color value)
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/preamble_color_extra_comma.cub
-  Error
-  Invalid file format
-  (Invalid character in map)
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/preamble_color_invalid_value_1.cub
-  Error
-  Invalid file format
-  (Invalid color value)
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/preamble_color_invalid_value_2.cub
-  Error
-  Invalid file format
-  (Invalid color value)
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/preamble_color_invalid_value_3.cub
-  Error
-  Invalid file format
-  (Invalid color value)
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/preamble_color_omitted_comma.cub
-  Error
-  Invalid file format
-  (Invalid color value)
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/preamble_color_omitted_prefix.cub
-  Error
-  Invalid file format
-  (Prefix not of form NO, SO, WE, EA, F or C)
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/preamble_color_omitted_values.cub
-  Error
-  Invalid file format
-  (Invalid color value)
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/preamble_color_repeated_prefix.cub
-  Error
-  Invalid file format
-  (Invalid character in map)
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/preamble_newlines_at_end_invalid.cub
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/preamble_newlines_none.cub
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/preamble_newlines_random.cub
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/preamble_random_order.cub
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/preamble_spaces_none.cub
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/preamble_spaces_random.cub
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/preamble_texture_double_repeated_prefix.cub
-  Error
-  Invalid file format
-  (Duplicate entries in file)
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/preamble_texture_invalid.cub
-  Error
-  File not found
-  (Invalid texture file path)
-  "./texture/wall_invalid.png"
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/preamble_texture_omitted_path.cub
-  Error
-  File not found
-  (Invalid texture file path)
-  ""
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/preamble_texture_omitted_prefix.cub
-  Error
-  Invalid file format
-  (Prefix not of form NO, SO, WE, EA, F or C)
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
 Running maps/preamble_texture_repeated_prefix.cub
-  Error
-  Invalid file format
-  (Duplicate entries in file)
+  ./_file_tests.sh: line 57: ./cub3d: No such file or directory
 --------------------------------------------------
