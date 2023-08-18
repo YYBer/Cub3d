@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:41:51 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 20:55:56 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/18 09:21:06 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ void	init_window(t_main *m)
 // add 'print_cub_file_summary(m);' below read_subject_file to diagnose issues!
 void	init_m(char **argv, t_main *m)
 {
+	// int	mouse_y;
+
+	// mlx_get_mouse_pos(m->mlx, &m->prev_mouse_x, &mouse_y);
 	read_subject_file(argv, m);
 	m->move_speed = SQRS_PER_SEC / 100; 
 	m->rot_speed = RADS_PER_SEC / 100;

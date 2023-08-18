@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:47:07 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 16:19:05 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/18 09:31:02 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,7 @@ void		ft_raycast(void *param);
 void		move_player(t_main *m);
 void		rotate_left(t_main *m);
 void		rotate_right(t_main *m);
+void		rotate_mouse(t_main *m, double mouse_delta);
 t_pt2d_d	calc_ray_dir(int x, t_pt2d_d raydr, t_pt2d_d dir, t_pt2d_d plane);
 t_pt2d_d	calc_delta_dist(t_pt2d_d delta_dist, t_pt2d_d raydr);
 void		calc_step_and_side_dist(t_main *m);

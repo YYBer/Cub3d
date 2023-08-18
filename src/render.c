@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:36 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 16:17:03 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/18 09:32:02 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,18 @@ void	clear_image(t_main *m)
 	}
 }
 
+void	set_rotation_with_mouse(t_main *m)
+{
+	int		mouse_x;
+	int		mouse_y;
+	double	mouse_delta;
+
+	mlx_get_mouse_pos(m->mlx, &mouse_x, &mouse_y);
+	mouse_delta = -((mouse_x - m->prev_mouse_x) * 0.01);
+	rotate_mouse(m, mouse_delta);
+	m->prev_mouse_x = mouse_x;
+}
+
 // in while loop:
 // calculate ray position and direction
 // length of ray from current position to next x or y-side
@@ -39,6 +51,7 @@ void	ft_raycast(void *param)
 	int		x;
 
 	m = (t_main *)param;
+	set_rotation_with_mouse(m);
 	move_player(m);
 	clear_image(m);
 	x = 0;

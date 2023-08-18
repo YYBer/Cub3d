@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:33:57 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 16:16:36 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/18 09:22:19 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	move_right(t_main *m)
 }
 
 // if (mouse_moved)
-// 	rotate_mouse(m);	
+// 	rotate_mouse(m);
 void	move_player(t_main *m)
 {
 	if (m->key_w_pressed)
