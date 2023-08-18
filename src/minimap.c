@@ -6,11 +6,11 @@
 /*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:33:49 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/18 10:00:50 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/18 11:16:18 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "cub3d.h"
 
 void	draw_minimap_window(t_main *m)
 {

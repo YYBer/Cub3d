@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:41:26 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 16:16:15 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/18 10:47:52 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "cub3d.h"
 
 void	keys_ws(mlx_key_data_t keydata, t_main *m)
 {

@@ -3,26 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   error_free1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:32:45 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 16:16:00 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/18 12:10:23 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "cub3d.h"
 
 void	ft_error(char *str, t_main *m)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	write(2, str, i);
-	write(2, "\n", 1);
-	if (m)
-		free_m(m);
+	printf("%s", ERR_MSG);
+	printf("%s", str);
+	(void)m;
+	// if (m)
+	// 	free_m(m);
 	exit(EXIT_FAILURE);
 }
 

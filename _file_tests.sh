@@ -15,6 +15,7 @@ input_files=(
     "maps/map_simple_extra_position.cub"
     "maps/map_simple_illegal_char.cub"
     "maps/map_simple_large.cub"
+    "maps/map_simple_minimap_test.cub"
     "maps/map_simple_no_position.cub"
     "maps/map_simple_rect_wide.cub"
     "maps/map_simple_smallest_valid.cub"
@@ -54,6 +55,7 @@ input_files=(
 for file in "${input_files[@]}"; do
     echo "Running $file" >> "$log_file"
     # remove "test" to test graphically with maps
+    # ./cub3d "$file" 2>&1 | sed 's/^/  /' >> "$log_file"
     ./cub3d "$file" "test" 2>&1 | sed 's/^/  /' >> "$log_file"
     echo "--------------------------------------------------" >> "$log_file"
 done

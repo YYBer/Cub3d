@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   read_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:26 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 16:16:52 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/18 11:53:05 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "cub3d.h"
 
 char	*read_wall_tex_path(t_main *m)
 {
@@ -58,7 +58,7 @@ bool	read_tex_prefix(t_main *m, char *path)
 				read_char(m);
 			chosen_fileflag = choose_fileflag(m, path);
 			if (*chosen_fileflag == true)
-				ft_error("Invalid file format", m);
+				ft_error(ERR_DUPL_TEX, m);
 			tex_path_index = choose_tex_path_index(path);
 			m->tex_paths[tex_path_index] = read_wall_tex_path(m);
 			m->tex_paths_alloc = true;
@@ -66,7 +66,7 @@ bool	read_tex_prefix(t_main *m, char *path)
 			return (true);
 		}
 		else
-			ft_error("Invalid file format", m);
+			ft_error(ERR_PREFIXES, m);
 	}
 	return (false);
 }

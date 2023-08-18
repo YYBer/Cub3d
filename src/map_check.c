@@ -3,25 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:33:43 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 19:50:04 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/18 12:04:26 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "cub3d.h"
 
-int	ft_check_map_command(int argc, char **argv)
+void	ft_check_map_command(int argc, char **argv)
 {
 	size_t	i;
 
-	if (argc != 2 || (argc == 3 && ft_strcmp(argv[2], "test") == 0))
-		ft_error("wrong number of args.", NULL);
+	if (argc < 2 || argc > 3)
+		ft_error(ERR_ARGS, NULL);
+	if (argc == 3 && ft_strcmp(argv[2], "test") != 0)
+		ft_error(ERR_ARGS, NULL);		
 	i = ft_strlen((const char *)argv[1]);
 	if (ft_strnstr(&argv[1][i - 4], ".cub", 4) == NULL)
-		ft_error("file type is wrong, should be .cub", NULL);
-	return (0);
+		ft_error(ERR_FILETYPE, NULL);
 }
 
 static int	ft_surround_check_utils(char **cmap, int x, int y)

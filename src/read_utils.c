@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   read_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:32 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 16:36:04 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/18 11:49:54 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "cub3d.h"
 
 void	read_char(t_main *m)
 {
@@ -19,11 +19,7 @@ void	read_char(t_main *m)
 
 	num_chars_read = read(m->fd, &onechar, 1);
 	if (num_chars_read < 1)
-	{
-		printf("%s%s", ERR_MSG, ERR_READ);
-		close(m->fd);
-		exit(EXIT_FAILURE);
-	}
+		ft_error(ERR_READ, m);
 	m->total_chars_read += num_chars_read;
 	m->char_read = onechar[0];
 }
@@ -81,5 +77,5 @@ void	read_prefixes(t_main *m)
 		return ;
 	if (read_color_prefix(m, "C") == true)
 		return ;
-	ft_error("Invalid file format.3", m);
+	ft_error(ERR_PREFIXES, m);
 }

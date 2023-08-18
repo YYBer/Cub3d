@@ -6,11 +6,11 @@
 /*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:33:57 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/18 09:22:19 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/18 10:47:52 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "cub3d.h"
 
 //move forward if no wall in front of you
 void	move_forwards(t_main *m)

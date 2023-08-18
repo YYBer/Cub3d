@@ -6,29 +6,31 @@
 /*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:41:51 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/18 09:21:06 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/18 12:07:18 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "cub3d.h"
 
 void	init_window(t_main *m)
 {
+	mlx_set_setting(MLX_STRETCH_IMAGE, false);
 	m->mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Raycaster", false);
 	if (!m->mlx)
-		ft_error("Error: Could not create MLX window.", m);
+		ft_error(ERR_MLX_WIN, m);
 	m->img = mlx_new_image(m->mlx, WIN_WIDTH, WIN_HEIGHT);
 	if (!m->img)
-		ft_error("Error: Could not create MLX image.", m);
+		ft_error(ERR_MLX_IMG, m);
+	if ((mlx_image_to_window(m->mlx, m->img, 0, 0) < 0))
+		ft_error(ERR_MLX_IMGWIN, m);	
 }
 
 // add 'print_cub_file_summary(m);' below read_subject_file to diagnose issues!
-void	init_m(char **argv, t_main *m)
+void	init_m(int argc, char **argv, t_main *m)
 {
-	// int	mouse_y;
-
-	// mlx_get_mouse_pos(m->mlx, &m->prev_mouse_x, &mouse_y);
 	read_subject_file(argv, m);
+	if (argc == 3 && ft_strcmp(argv[2], "test") == 0)
+		print_cub_file_summary(m);	
 	m->move_speed = SQRS_PER_SEC / 100; 
 	m->rot_speed = RADS_PER_SEC / 100;
 	m->pitch = 100;
@@ -39,7 +41,6 @@ void	init_m(char **argv, t_main *m)
 	m->key_left_pressed = false;
 	m->key_right_pressed = false;
 	m->tex_paths_alloc = false;
-	init_window(m);
 }
 
 void	load_textures(t_main *m)
@@ -53,7 +54,7 @@ void	load_textures(t_main *m)
 	{
 		fd = open(m->tex_paths[i], O_RDONLY);
 		if (fd == -1)
-			ft_error("File not found", m);
+			ft_error(ERR_TEX_PATH, m);
 		close(fd);
 		m->textures[i] = mlx_load_png(m->tex_paths[i]);
 		i++;
@@ -74,21 +75,17 @@ int	main(int argc, char **argv)
 {
 	t_main	m;
 
-	if (ft_check_map_command(argc, argv))
-		ft_error("Incorrect map format", NULL);
-	mlx_set_setting(MLX_STRETCH_IMAGE, false);
-	init_m(argv, &m);
+	ft_check_map_command(argc, argv);
+	init_m(argc, argv, &m);
 	if (ft_surround_check(&m))
-		ft_error("Map is not completely surrouned by walls!", &m);
+		ft_error(ERR_MAP_WALLS, &m);
 	if (argc == 3 && ft_strcmp(argv[2], "test") == 0)
 		exit(EXIT_SUCCESS);
-	if ((mlx_image_to_window(m.mlx, m.img, 0, 0) < 0))
-		ft_error("Error: Could not put image to window.", &m);
+	init_window(&m);
 	mlx_key_hook(m.mlx, &my_keyhook, &m);
 	mlx_close_hook(m.mlx, &my_closehook, &m);
 	mlx_loop_hook(m.mlx, ft_raycast, &m);
 	mlx_loop(m.mlx);
-	//write(1, "hello\n",5);
 	mlx_terminate(m.mlx);
 	//free_map_data(&m.map);
 	free_m(&m);

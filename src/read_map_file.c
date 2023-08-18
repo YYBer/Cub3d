@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   read_map_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:23 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 20:23:55 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/18 11:41:51 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "cub3d.h"
 
 void	read_subject_file(char **argv, t_main *m)
 {
@@ -18,7 +18,7 @@ void	read_subject_file(char **argv, t_main *m)
 	m->total_chars_read = 0; 
 	m->fd = open(m->filename, O_RDONLY);
 	if (m->fd == -1)
-		ft_error("File not found.", m);
+		ft_error(ERR_FILE, m);
 	init_fileflags(m);
 	read_prefixes(m);
 	read_prefixes(m);
@@ -41,7 +41,7 @@ void	set_player_pos(t_main *m, int row, int col, bool *found)
 		|| m->map_char == 'W' || m->map_char == 'E')
 	{
 		if (*found == true)
-			ft_error("Invalid file format.1", m);
+			ft_error(ERR_DUP_PLAYPOS, m);
 		m->pos.x = row + 0.5;
 		m->pos.y = col + 0.5;
 		*found = true;
@@ -107,5 +107,5 @@ void	get_player_position(t_main *m)
 		row++;
 	}
 	if (found == false)
-		ft_error("Invalid file format.2", m);
+		ft_error(ERR_NO_PLAYPOS, m);
 }

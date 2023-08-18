@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_map_2.c                                       :+:      :+:    :+:   */
+/*   read_map2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:13 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 16:16:47 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/18 11:35:16 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "cub3d.h"
 
 void	malloc_map_i(t_main *m)
 {
@@ -20,14 +20,14 @@ void	malloc_map_i(t_main *m)
 	map = &m->map;
 	map->data_i = (int **)malloc(map->nrows * sizeof(int *));
 	if (map->data_i == NULL)
-		ft_error("Memory allocation error for row pointers.", m);
+		ft_error(ERR_MEM_ROWPTR, m);
 	map->data_alloc = true;
 	i = 0;
 	while (i < map->nrows)
 	{
 		map->data_i[i] = (int *)malloc(map->ncols * sizeof(int));
 		if (map->data_i[i] == NULL)
-			ft_error("Memory allocation error for row.", m);
+			ft_error(ERR_MEM_ROW, m);
 		i++;
 	}
 }

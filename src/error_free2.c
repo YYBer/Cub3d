@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   error_free2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 15:59:27 by yli               #+#    #+#             */
-/*   Updated: 2023/08/17 20:30:51 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/18 11:18:52 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
-
+#include "cub3d.h"
 
 static void	ft_tex_paths(t_main *m)
 {
@@ -47,18 +46,17 @@ void	free_map_data(t_map *map)
 	}
 }
 
-void    free_m(t_main *m)
+void	free_m(t_main *m)
 {
-	printf("bool: %d\n", m->texture_alloc);
-    if ((m->fd != -1))
-        close(m->fd);
-    if (m->texture_alloc == true)
+	if ((m->fd != -1))
+		close(m->fd);
+	if (m->texture_alloc == true)
 	{
-        delete_textures(m);
+		delete_textures(m);
 		m->texture_alloc = false;
 	}
-    if (m->map.data_alloc == true)
-        free_map_data(&m->map);
-    if (m->tex_paths_alloc == true)
-        ft_tex_paths(m);
+	if (m->map.data_alloc == true)
+		free_map_data(&m->map);
+	if (m->tex_paths_alloc == true)
+		ft_tex_paths(m);
 }

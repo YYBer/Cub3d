@@ -6,7 +6,7 @@
 /*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:47:07 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/18 10:01:02 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/18 11:55:23 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,25 @@
 # define MINIMAP_PLAYDIR_COL 0xFFDD22FF
 
 # define ERR_MSG "Error\n"
-# define ERR_FORMAT "Invalid file format\n"
-# define ERR_COL_VAL "(Invalid color value)\n"
-# define ERR_DUPL "(Duplicate entries in file)\n"
+# define ERR_ARGS "Wrong number of arguments to program\n"
+# define ERR_FILETYPE "Wrong file extension (should be .cub)\n"
 # define ERR_FILE "File not found\n"
+# define ERR_TEX_PATH "Invalid file format: Invalid texture file path\n"
 # define ERR_READ "Could not read from file or unexpectedly reached end\n"
-# define ERR_PREFIXES "(Prefix not of form NO, SO, WE, EA, F or C)\n"
-# define ERR_INVALID_MAP_CHAR "(Invalid character in map)\n"
-# define ERR_FILE_PATH "(Invalid texture file path)\n"
-# define ERR_NO_PLAYPOS "(No initial player position found in map)\n"
-# define ERR_DUP_PLAYPOS "(Duplicate initial player position found in map)\n"
+# define ERR_MLX_WIN "Could not create MLX window\n"
+# define ERR_MLX_IMG "Could not create MLX image\n"
+# define ERR_MLX_IMGWIN "Could not put image to window\n"
+# define ERR_MAP_WALLS "Map is not completely surrouned by walls\n"
+# define ERR_MEM_ROW "Memory allocation error for row\n"
+# define ERR_MEM_ROWPTR "Memory allocation error for row pointers\n"
+# define ERR_COL_VAL "Invalid file format: Invalid color value\n"
+# define ERR_DUPL_TEX "Invalid file format: Duplicate texture path in file\n"
+# define ERR_DUPL_COL "Invalid file format: Duplicate color path in file\n"
+# define ERR_PREFIXES "Invalid file format: Prefix not NO, SO, WE, EA, F or C\n"
+# define ERR_INVALID_MAP_CHAR "Invalid file format: Invalid character in map\n"
+# define ERR_NO_PLAYPOS "Invalid file format: No player position\n"
+# define ERR_DUP_PLAYPOS "Invalid file format: Duplicate player position\n"
+
 
 typedef struct s_point2Dd {
 	double	x;
@@ -159,7 +168,7 @@ void		print_map_c(t_map *map);
 void		print_map_i(t_map *map);
 void		free_map_data(t_map *map);
 void		ft_error(char *str, t_main *m);
-int			ft_check_map_command(int argc, char **argv);
+void		ft_check_map_command(int argc, char **argv);
 void		get_player_position(t_main *m);
 int			ft_surround_check(t_main *m);
 

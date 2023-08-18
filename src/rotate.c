@@ -6,11 +6,11 @@
 /*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:40 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/18 09:30:47 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/18 10:47:52 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "cub3d.h"
 
 // for all functions below...
 // both camera direction and camera plane must be rotated

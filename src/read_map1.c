@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_map_1.c                                       :+:      :+:    :+:   */
+/*   read_map1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:08 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 20:03:26 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/18 11:34:58 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "cub3d.h"
 
 void	process_map_characters(t_main *m, char *onechar, int *longest_ncols)
 {
@@ -20,7 +20,7 @@ void	process_map_characters(t_main *m, char *onechar, int *longest_ncols)
 			&& m->char_read != 'N' && m->char_read != 'E'
 			&& m->char_read != 'S' && m->char_read != 'W'
 			&& m->char_read != ' ' && m->char_read != '\n')
-			ft_error("Invalid file format.0", m);
+			ft_error(ERR_INVALID_MAP_CHAR, m);
 		if (m->char_read == '\n')
 		{
 			if (m->map.ncols > *longest_ncols)
@@ -87,10 +87,9 @@ static void	malloc_map_c(t_main *m)
 	t_map	*map;
 
 	map = &m->map;
-	//printf("nrows: %d ncols: %d\n", m->map.nrows, m->map.ncols);
 	map->data_c = (char **)malloc(map->nrows * sizeof(char *) + sizeof(char *));
 	if (map->data_c == NULL)
-		ft_error("Memory allocation error for row pointers.", m);
+		ft_error(ERR_MEM_ROWPTR, m);
 	map->data_c[map->nrows] = 0;
 	map->data_alloc = true;
 	i = 0;
@@ -98,7 +97,7 @@ static void	malloc_map_c(t_main *m)
 	{
 		map->data_c[i] = (char *)malloc(map->ncols * sizeof(char) + 1);
 		if (map->data_c[i] == NULL)
-			ft_error("Memory allocation error for row", m);
+			ft_error(ERR_MEM_ROW, m);
 		map->data_c[i][map->ncols] = '\0';
 		i++;
 	}
@@ -115,7 +114,7 @@ void	fill_map(t_main *m)
 	close(m->fd);
 	m->fd = open(m->filename, O_RDONLY);
 	if (m->fd == -1)
-		ft_error("File not found", m);
+		ft_error(ERR_FILE, m);
 	i = 0;
 	while (i < m->total_chars_read - 1)
 	{
