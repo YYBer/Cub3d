@@ -6,7 +6,7 @@
 /*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:33:43 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/18 12:04:26 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/18 12:28:46 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_check_map_command(int argc, char **argv)
 	if (argc < 2 || argc > 3)
 		ft_error(ERR_ARGS, NULL);
 	if (argc == 3 && ft_strcmp(argv[2], "test") != 0)
-		ft_error(ERR_ARGS, NULL);		
+		ft_error(ERR_ARGS, NULL);
 	i = ft_strlen((const char *)argv[1]);
 	if (ft_strnstr(&argv[1][i - 4], ".cub", 4) == NULL)
 		ft_error(ERR_FILETYPE, NULL);
@@ -54,7 +54,6 @@ int	ft_surround_check(t_main *m)
 			}
 			y++;
 		}
-		//printf("x: %d, m->map.nrows: %d y: %d, (int)ft_strlen(m->map.data_c[x]: %d\n", x, m->map.nrows, y, (int)ft_strlen(m->map.data_c[x]));
 		x++;
 	}
 	return (0);

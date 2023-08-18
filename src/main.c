@@ -6,7 +6,7 @@
 /*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:41:51 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/18 12:07:18 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/18 12:29:10 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	init_window(t_main *m)
 	if (!m->img)
 		ft_error(ERR_MLX_IMG, m);
 	if ((mlx_image_to_window(m->mlx, m->img, 0, 0) < 0))
-		ft_error(ERR_MLX_IMGWIN, m);	
+		ft_error(ERR_MLX_IMGWIN, m);
 }
 
 // add 'print_cub_file_summary(m);' below read_subject_file to diagnose issues!
@@ -30,7 +30,7 @@ void	init_m(int argc, char **argv, t_main *m)
 {
 	read_subject_file(argv, m);
 	if (argc == 3 && ft_strcmp(argv[2], "test") == 0)
-		print_cub_file_summary(m);	
+		print_cub_file_summary(m);
 	m->move_speed = SQRS_PER_SEC / 100; 
 	m->rot_speed = RADS_PER_SEC / 100;
 	m->pitch = 100;
@@ -70,7 +70,6 @@ int	ft_strcmp(char *str1, char *str2)
 	return (ret);
 }
 
-// mlx_mouse_hook(m.mlx, &my_mousehook, &m);
 int	main(int argc, char **argv)
 {
 	t_main	m;
@@ -87,7 +86,6 @@ int	main(int argc, char **argv)
 	mlx_loop_hook(m.mlx, ft_raycast, &m);
 	mlx_loop(m.mlx);
 	mlx_terminate(m.mlx);
-	//free_map_data(&m.map);
 	free_m(&m);
 	return (EXIT_SUCCESS);
 }

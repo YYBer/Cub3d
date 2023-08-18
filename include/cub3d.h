@@ -6,7 +6,7 @@
 /*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:47:07 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/18 11:55:23 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/18 12:29:35 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@
 # define ERR_INVALID_MAP_CHAR "Invalid file format: Invalid character in map\n"
 # define ERR_NO_PLAYPOS "Invalid file format: No player position\n"
 # define ERR_DUP_PLAYPOS "Invalid file format: Duplicate player position\n"
-
 
 typedef struct s_point2Dd {
 	double	x;
@@ -187,7 +186,7 @@ void		draw_minimap(t_main *m);
 void		print_cub_file_summary(t_main *m);
 
 void		my_closehook(void *param);
-void    	free_m(t_main *m);
+void		free_m(t_main *m);
 int			ft_strcmp(char *str1, char *str2);
 
 #endif
