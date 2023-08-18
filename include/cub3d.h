@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:47:07 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/18 12:29:35 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/18 13:55:34 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ typedef struct s_map {
 	int		ncols;
 	char	**data_c;
 	int		**data_i;
-	bool	data_alloc;
+	bool	c_alloc;
+	bool	i_alloc;
 }	t_map;
 
 typedef struct s_fileflags {

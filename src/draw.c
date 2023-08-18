@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:32:37 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/18 10:47:52 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/18 15:02:52 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ void	draw_tex2(t_main *m, int x)
 // ...it going negative when outer wall reached
 void	draw_tex(t_main *m, int x)
 {
+	m->draw_start = 0;
+	m->draw_end = 0;
 	m->line_height = (int)(WIN_HEIGHT / m->perp_wall_dist);
 	m->draw_start = -m->line_height / 2 + WIN_HEIGHT / 2 + m->pitch;
 	if (m->draw_start < 0)

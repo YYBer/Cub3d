@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:41:51 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/18 12:29:10 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/18 15:03:10 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,16 @@ void	init_window(t_main *m)
 		ft_error(ERR_MLX_IMGWIN, m);
 }
 
-// add 'print_cub_file_summary(m);' below read_subject_file to diagnose issues!
 void	init_m(int argc, char **argv, t_main *m)
 {
+	m->map.data_c = NULL;
+	m->map.data_i = NULL;	
+	m->texture_alloc = false;
+	m->tex_paths_alloc = false;
+	m->map.c_alloc = false;
+	m->map.i_alloc = false;	
+	m->dir.x = 0;
+	m->dir.y = 0;
 	read_subject_file(argv, m);
 	if (argc == 3 && ft_strcmp(argv[2], "test") == 0)
 		print_cub_file_summary(m);
@@ -40,7 +47,7 @@ void	init_m(int argc, char **argv, t_main *m)
 	m->key_d_pressed = false;
 	m->key_left_pressed = false;
 	m->key_right_pressed = false;
-	m->tex_paths_alloc = false;
+
 }
 
 void	load_textures(t_main *m)
@@ -49,7 +56,6 @@ void	load_textures(t_main *m)
 	int	fd;
 
 	i = 0;
-	m->texture_alloc = false;
 	while (i < NUM_TEXTURES)
 	{
 		fd = open(m->tex_paths[i], O_RDONLY);
@@ -76,8 +82,8 @@ int	main(int argc, char **argv)
 
 	ft_check_map_command(argc, argv);
 	init_m(argc, argv, &m);
-	if (ft_surround_check(&m))
-		ft_error(ERR_MAP_WALLS, &m);
+	// if (ft_surround_check(&m))
+	// 	ft_error(ERR_MAP_WALLS, &m);
 	if (argc == 3 && ft_strcmp(argv[2], "test") == 0)
 		exit(EXIT_SUCCESS);
 	init_window(&m);
@@ -85,7 +91,9 @@ int	main(int argc, char **argv)
 	mlx_close_hook(m.mlx, &my_closehook, &m);
 	mlx_loop_hook(m.mlx, ft_raycast, &m);
 	mlx_loop(m.mlx);
+	printf("hello\n");
 	mlx_terminate(m.mlx);
+	printf("3\n");
 	free_m(&m);
 	return (EXIT_SUCCESS);
 }

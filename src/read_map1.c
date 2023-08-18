@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:08 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/18 11:34:58 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/18 14:05:40 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static void	malloc_map_c(t_main *m)
 	if (map->data_c == NULL)
 		ft_error(ERR_MEM_ROWPTR, m);
 	map->data_c[map->nrows] = 0;
-	map->data_alloc = true;
+	map->c_alloc = true;
 	i = 0;
 	while (i < map->nrows)
 	{
@@ -109,7 +109,6 @@ void	fill_map(t_main *m)
 	int		i;
 	int		row;
 
-	m->map.data_alloc = false;
 	malloc_map_c(m);
 	close(m->fd);
 	m->fd = open(m->filename, O_RDONLY);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:13 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/18 11:35:16 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/18 13:56:32 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	malloc_map_i(t_main *m)
 	map->data_i = (int **)malloc(map->nrows * sizeof(int *));
 	if (map->data_i == NULL)
 		ft_error(ERR_MEM_ROWPTR, m);
-	map->data_alloc = true;
+	map->i_alloc = true;
 	i = 0;
 	while (i < map->nrows)
 	{
