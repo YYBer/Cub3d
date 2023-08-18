@@ -6,7 +6,7 @@
 /*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:41:51 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/18 15:03:10 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/18 15:04:36 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,7 @@ int	main(int argc, char **argv)
 	mlx_close_hook(m.mlx, &my_closehook, &m);
 	mlx_loop_hook(m.mlx, ft_raycast, &m);
 	mlx_loop(m.mlx);
-	printf("hello\n");
 	mlx_terminate(m.mlx);
-	printf("3\n");
 	free_m(&m);
 	return (EXIT_SUCCESS);
 }
