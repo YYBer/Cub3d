@@ -6,7 +6,7 @@
 /*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:32:28 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/18 14:24:25 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/18 17:24:56 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ void	perform_dda(t_main *m)
 			m->map_pos.y += m->step.y;
 			side = 1;
 		}
-		//printf("di:%i\n", m->map.data_i[0][0]);
 		if (m->map.data_i[m->map_pos.x][m->map_pos.y] > 0)
 		{
 			hit = 1;

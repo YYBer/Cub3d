@@ -6,7 +6,7 @@
 /*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:32:45 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/18 14:10:46 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/18 17:21:58 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_error(char *str, t_main *m)
 {
-	printf("%s", ERR_MSG);
-	printf("%s", str);
+	write(2, "Error\n", 6);
+	write(2, str, (int)ft_strlen(str));
 	if (m)
 		free_m(m);
 	exit(EXIT_FAILURE);

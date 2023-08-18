@@ -6,7 +6,7 @@
 /*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:41:26 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/18 14:01:16 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/18 16:20:42 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	keys_left_right(keydata, param);
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
-		// mlx_terminate(m->mlx);
-		// free_map_data(&m->map);
+		mlx_terminate(m->mlx);
+		free_m(m);
 		exit(0);
 	}
 }

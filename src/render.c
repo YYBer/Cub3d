@@ -6,7 +6,7 @@
 /*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:34:36 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/18 14:21:12 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/18 17:33:35 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	ft_raycast(void *param)
 	int		x;
 
 	m = (t_main *)param;
-	
 	set_rotation_with_mouse(m);
 	move_player(m);
 	clear_image(m);
@@ -64,12 +63,12 @@ void	ft_raycast(void *param)
 		m->map_pos.y = (int)(m->pos.y);
 		m->delta_dist = calc_delta_dist(m->delta_dist, m->raydr);
 		calc_step_and_side_dist(m);
-		perform_dda(m);	
+		perform_dda(m);
 		if (m->side == 0)
 			m->perp_wall_dist = m->side_dist.x - m->delta_dist.x;
 		else
 			m->perp_wall_dist = m->side_dist.y - m->delta_dist.y;
-		draw_tex(m, x);	
+		draw_tex(m, x);
 		x++;
 	}
 	draw_minimap(m);

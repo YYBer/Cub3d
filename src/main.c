@@ -6,7 +6,7 @@
 /*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:41:51 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/18 15:04:36 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/18 17:26:13 by yli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ void	init_window(t_main *m)
 void	init_m(int argc, char **argv, t_main *m)
 {
 	m->map.data_c = NULL;
-	m->map.data_i = NULL;	
+	m->map.data_i = NULL;
 	m->texture_alloc = false;
 	m->tex_paths_alloc = false;
 	m->map.c_alloc = false;
-	m->map.i_alloc = false;	
+	m->map.i_alloc = false;
 	m->dir.x = 0;
 	m->dir.y = 0;
 	read_subject_file(argv, m);
@@ -47,7 +47,6 @@ void	init_m(int argc, char **argv, t_main *m)
 	m->key_d_pressed = false;
 	m->key_left_pressed = false;
 	m->key_right_pressed = false;
-
 }
 
 void	load_textures(t_main *m)
@@ -81,9 +80,10 @@ int	main(int argc, char **argv)
 	t_main	m;
 
 	ft_check_map_command(argc, argv);
+	memset(&m, 0, sizeof(t_main));
 	init_m(argc, argv, &m);
-	// if (ft_surround_check(&m))
-	// 	ft_error(ERR_MAP_WALLS, &m);
+	if (ft_surround_check(&m))
+		ft_error(ERR_MAP_WALLS, &m);
 	if (argc == 3 && ft_strcmp(argv[2], "test") == 0)
 		exit(EXIT_SUCCESS);
 	init_window(&m);
