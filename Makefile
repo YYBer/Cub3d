@@ -1,5 +1,5 @@
 NAME	:= cub3d
-CFLAGS	:= -g3 -Wextra -Wall -Werror -Wunreachable-code -Ofast
+CFLAGS	:= -g3 -Wextra -Wall -Werror -Wunreachable-code # -Ofast
 CC		:= cc
 LIBMLX	:= ./MLX42
 LIBFT 	:= libft/libft.a
@@ -9,7 +9,7 @@ HEADERS	:= -I ./include -I $(LIBMLX)/include/MLX42 -I $(LIBFT_PATH)
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 SRCS_DIR:= ./src/
 SRCS 	:= $(addprefix $(SRCS_DIR), calc.c draw.c error_free1.c error_free2.c keys.c main.c map_check.c minimap.c move.c \
-			mouse.c print.c read_color.c read_map_1.c read_map_2.c read_map_file.c read_texture.c read_utils.c \
+			print.c read_color.c read_map_1.c read_map_2.c read_map_file.c read_texture.c read_utils.c \
 				render.c rotate.c)
 OBJS	:= ${SRCS:.c=.o}
 
@@ -22,13 +22,15 @@ libmlx:
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS) $(LIBFT)
+	@echo "Compiling $(NAME)..."
 	@$(CC) $(SRCS) $(LIBS) $(LIBFT) $(HEADERS) -o $(NAME)
-	@echo "Cub3d compiled!"
+	@echo "$(NAME) compiled!"
 
 $(LIBFT):
 	@echo "Compiling libft..."
 	@make -sC $(LIBFT_PATH)
 	@echo "libft compiled!"
+
 clean:
 	@rm -rf $(OBJS)
 	@make clean -sC $(LIBFT_PATH)

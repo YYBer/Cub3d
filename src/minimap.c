@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:33:49 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/17 16:16:31 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/18 10:00:50 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	draw_minimap_square(t_main *m, int x, int y, uint32_t color)
 	}
 }
 
-void	draw_line(t_main *m, int cx, int cy, double angle)
+void	draw_line(t_main *m, int cx, int cy)
 {
 	int	i;
 	int	px;
@@ -72,8 +72,8 @@ void	draw_line(t_main *m, int cx, int cy, double angle)
 	i = 0;
 	while (i <= sqxy / 2)
 	{
-		px = cx + i * cos(angle);
-		py = cy - i * sin(angle);
+		px = cx + i * cos((-M_PI / 2.0) + atan2(m->dir.y, m->dir.x));
+		py = cy - i * sin((-M_PI / 2.0) + atan2(m->dir.y, m->dir.x));
 		mlx_put_pixel(m->img, px, py, MINIMAP_PLAYDIR_COL);
 		i++;
 	}
@@ -84,14 +84,11 @@ void	draw_player_direction_line(t_main *m, int x, int y)
 	int		sqxy;
 	int		line_center_x;
 	int		line_center_y;
-	double	rotated_angle;
 
 	sqxy = MINIMAP_WIDTH / m->map.ncols;
 	line_center_x = MINIMAP_OFFSET + (x * sqxy) + sqxy / 2;
 	line_center_y = MINIMAP_OFFSET + (y * sqxy) + sqxy / 2;
-	rotated_angle = -M_PI / 2.0;
-	rotated_angle += atan2(m->dir.y, m->dir.x);
-	draw_line(m, line_center_x, line_center_y, rotated_angle);
+	draw_line(m, line_center_x, line_center_y);
 }
 
 // draw walls not walls
