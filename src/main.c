@@ -6,7 +6,7 @@
 /*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:41:51 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/19 14:03:06 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/19 14:48:10 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,13 @@ void	load_textures(t_main *m)
 int	ft_strcmp(char *str1, char *str2)
 {
 	int	ret;
+	int	l;
 
-	ret = ft_strncmp(str1, str2, ft_strlen(str1));
+	if (ft_strlen(str1) > ft_strlen(str2))
+		l = ft_strlen(str1);
+	else
+		l = ft_strlen(str2);
+	ret = ft_strncmp(str1, str2, l);
 	return (ret);
 }
 
