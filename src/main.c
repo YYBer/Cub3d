@@ -6,7 +6,7 @@
 /*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:41:51 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/19 13:52:12 by gbooth           ###   ########.fr       */
+/*   Updated: 2023/08/19 14:03:06 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	init_m(int argc, char **argv, t_main *m)
 	m->key_a_pressed = false;
 	m->key_d_pressed = false;
 	m->key_left_pressed = false;
-	m->key_right_pressed = false;	
+	m->key_right_pressed = false;
 }
 
 void	load_textures(t_main *m)
@@ -78,7 +78,7 @@ int	ft_strcmp(char *str1, char *str2)
 int	main(int argc, char **argv)
 {
 	t_main	m;
-	int mouse_y;	
+	int		mouse_y;	
 
 	ft_check_map_command(argc, argv);
 	memset(&m, 0, sizeof(t_main));

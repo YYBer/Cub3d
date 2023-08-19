@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_free1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:32:45 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/18 17:21:58 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/19 14:01:37 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,14 @@ void	ft_error(char *str, t_main *m)
 
 void	delete_textures(t_main *m)
 {
-	mlx_delete_texture(m->textures[0]);
-	mlx_delete_texture(m->textures[1]);
-	mlx_delete_texture(m->textures[2]);
-	mlx_delete_texture(m->textures[3]);
+	int	i;
+
+	i = 0;
+	while (i < NUM_TEXTURES)
+	{
+		mlx_delete_texture(m->textures[i]);
+		i++;
+	}
 }
 
 void	my_closehook(void *param)
