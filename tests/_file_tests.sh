@@ -1,7 +1,9 @@
 #!/bin/bash
 
+# NOTE: run from root i.e. ./tests/_file_tests.sh
+
 # Name of the log file
-log_file="_file_tests.log"
+log_file="./tests/_file_tests.log"
 
 # List of input files
 input_files=(
@@ -51,11 +53,27 @@ input_files=(
 # Clear the log file if it exists
 > "$log_file"
 
+# Check if "full" or "map_only" argument is given
+if [[ "$1" == "full" ]]; then
+    mode="full"
+elif [[ "$1" == "map_only" ]]; then
+    mode="map_only"
+else
+    echo "Usage: $0 [full|map] input_files..."
+    exit 1
+fi
+
+shift # Remove the first argument ("full" or "map_only") from the argument list
+
 # Loop through each input file and run ./cub3d, logging the result
 for file in "${input_files[@]}"; do
     echo "Running $file" >> "$log_file"
-    # remove "test" to test graphically with maps
-    ./cub3d "$file" 2>&1 | sed 's/^/  /' >> "$log_file"
-    # ./cub3d "$file" "test" 2>&1 | sed 's/^/  /' >> "$log_file"
+    if [[ "$mode" == "full" ]]; then
+        # Run line #1 command (without "test")
+        ./cub3d "$file" 2>&1 | sed 's/^/  /' >> "$log_file"
+    elif [[ "$mode" == "map_only" ]]; then
+        # Run line #2 command (with "test")
+        ./cub3d "$file" "test" 2>&1 | sed 's/^/  /' >> "$log_file"
+    fi
     echo "--------------------------------------------------" >> "$log_file"
 done
