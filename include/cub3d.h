@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:47:07 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/18 13:55:34 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/19 14:41:30 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@
 # define MINIMAP_EMPTY_COL 0xADD8E6FF
 # define MINIMAP_PLAYPOS_COL 0x22DD22FF
 # define MINIMAP_PLAYDIR_COL 0xFFDD22FF
+
+# define TEXTURE_NO 0
+# define TEXTURE_SO 1
+# define TEXTURE_WE 2
+# define TEXTURE_EA 3
 
 # define ERR_MSG "Error\n"
 # define ERR_ARGS "Wrong number of arguments to program\n"

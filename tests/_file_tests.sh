@@ -59,7 +59,7 @@ if [[ "$1" == "full" ]]; then
 elif [[ "$1" == "map_only" ]]; then
     mode="map_only"
 else
-    echo "Usage: $0 [full|map] input_files..."
+    echo "Usage: $0 [full|map_only] input_files..."
     exit 1
 fi
 

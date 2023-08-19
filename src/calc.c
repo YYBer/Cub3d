@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:32:28 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/18 17:24:56 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/19 14:42:00 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,16 @@ void	handle_wall_hit(t_main *m, int side)
 	if (side == 0)
 	{
 		if (m->step.x < 0)
-			m->wall_direction = 2;
+			m->wall_direction = TEXTURE_NO;
 		else
-			m->wall_direction = 3;
+			m->wall_direction = TEXTURE_SO;
 	}
 	else
 	{
 		if (m->step.y < 0)
-			m->wall_direction = 0;
+			m->wall_direction = TEXTURE_WE;
 		else
-			m->wall_direction = 1;
+			m->wall_direction = TEXTURE_EA;
 	}
 }
 
