@@ -55,7 +55,7 @@ input_files=(
 for file in "${input_files[@]}"; do
     echo "Running $file" >> "$log_file"
     # remove "test" to test graphically with maps
-    # ./cub3d "$file" 2>&1 | sed 's/^/  /' >> "$log_file"
-    ./cub3d "$file" "test" 2>&1 | sed 's/^/  /' >> "$log_file"
+    ./cub3d "$file" 2>&1 | sed 's/^/  /' >> "$log_file"
+    # ./cub3d "$file" "test" 2>&1 | sed 's/^/  /' >> "$log_file"
     echo "--------------------------------------------------" >> "$log_file"
 done

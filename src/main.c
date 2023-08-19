@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yli <yli@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: gbooth <gbooth@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 09:41:51 by gbooth            #+#    #+#             */
-/*   Updated: 2023/08/18 17:26:13 by yli              ###   ########.fr       */
+/*   Updated: 2023/08/19 13:52:12 by gbooth           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	init_m(int argc, char **argv, t_main *m)
 	m->key_a_pressed = false;
 	m->key_d_pressed = false;
 	m->key_left_pressed = false;
-	m->key_right_pressed = false;
+	m->key_right_pressed = false;	
 }
 
 void	load_textures(t_main *m)
@@ -78,6 +78,7 @@ int	ft_strcmp(char *str1, char *str2)
 int	main(int argc, char **argv)
 {
 	t_main	m;
+	int mouse_y;	
 
 	ft_check_map_command(argc, argv);
 	memset(&m, 0, sizeof(t_main));
@@ -87,6 +88,7 @@ int	main(int argc, char **argv)
 	if (argc == 3 && ft_strcmp(argv[2], "test") == 0)
 		exit(EXIT_SUCCESS);
 	init_window(&m);
+	mlx_get_mouse_pos(m.mlx, &m.prev_mouse_x, &mouse_y);
 	mlx_key_hook(m.mlx, &my_keyhook, &m);
 	mlx_close_hook(m.mlx, &my_closehook, &m);
 	mlx_loop_hook(m.mlx, ft_raycast, &m);
