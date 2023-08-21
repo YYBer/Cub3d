@@ -6,4 +6,4 @@ run
 then
 *  ./cub3d maps/map_simple_large.cub
 
-[![Watch the video](https://github.com/YYBer/Cub3d/blob/main/Cub3D.mp4)]
+![image](https://github.com/YYBer/so_long/blob/main/Cub3D.gif)
